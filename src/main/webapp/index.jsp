@@ -1,8 +1,8 @@
 <html>
 <body>
-<h2></h2>
+<h2>Hello World!</h2>
 <%
-response.sendRedirect("index");
+response.sendRedirect("employee");
 %>
 </body>
 </html>
