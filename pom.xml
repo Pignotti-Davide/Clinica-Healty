@@ -1,8 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>Clinica-Healty</groupId>
-	<artifactId>Clinica-Healty</artifactId>
+	<groupId>Clinica-Healthy</groupId>
+	<artifactId>Clinica-Healthy</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<url>http://maven.apache.org</url>
@@ -123,7 +123,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>Clinica-Healty</finalName>
+		<finalName>Clinica-Healthy</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
