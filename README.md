@@ -1,1 +1,1 @@
-# Clinica-Healty
+# Clinica-Healthy
