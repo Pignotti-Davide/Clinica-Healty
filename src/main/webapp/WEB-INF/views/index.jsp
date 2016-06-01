@@ -44,10 +44,10 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="login.jsp">Log in</a>
+                        <a href="login">Log in</a>
                     </li>
                     <li>
-                        <a href="listaTipologiaEsami.jsp">Services</a>
+                        <a href="listaTipologiaEsami">Services</a>
                     </li>
                     <li>
                         <a href="#">Contact</a>
