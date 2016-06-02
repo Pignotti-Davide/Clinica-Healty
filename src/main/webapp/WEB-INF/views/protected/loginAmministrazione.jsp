@@ -15,10 +15,10 @@
 
 <title>Clinica Healthy - Accedi all'area amministratore</title>
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/shop-homepage.css" rel="stylesheet">
+    <link href="<c:url value="/resources/css/shop-homepage.css" />" rel="stylesheet">
 </head>
           <img src="http://susysksiw.altervista.org/logo3.jpg">
           

@@ -2,6 +2,11 @@ package clinica.service.impl;
 
 import java.util.List;
 
+import org.hibernate.SessionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import clinica.dao.impl.EsameDaoJPA;
 import clinica.dao.impl.MedicoDaoJPA;
 import clinica.dao.impl.PazienteDaoJPA;
@@ -12,7 +17,11 @@ import clinica.model.Paziente;
 import clinica.model.TipologiaEsame;
 
 public class FacadeDati {
-	
+	private static final Logger logger = LoggerFactory
+			.getLogger(EsameDaoJPA.class);
+
+	@Autowired
+	private SessionFactory sessionFactory;
 	public void salvaMedico(Medico m){
 		new MedicoDaoJPA().create(m);
 	}

@@ -1,27 +1,21 @@
 package clinica.service.impl;
-import javax.persistence.EntityManager;
 
-import clinica.dao.impl.Connessione;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import clinica.dao.impl.UtenteDaoJPA;
 import clinica.model.Utente;
 
+@Service
 public  class FacadeAutenticazione {
-	private EntityManager em;
+	
+	@Autowired
+	private UtenteDaoJPA utenteDaoJpa;
+	
 		public Utente login(String username, String password){
-			Connessione.getInstance().getEm().getTransaction().begin();
-			Utente u= 	Connessione.getInstance().getEm().find(Utente.class, username);
-			Connessione.getInstance().getEm().getTransaction().commit();
-			Connessione.getInstance().getEm().clear();				
-			System.out.println(username);
-			System.out.println(password);
-			
-			System.out.println(u);
+			Utente u=utenteDaoJpa.retrieve(username);
+			System.out.println(u.getRole());
 			return u;
 		}
-		public EntityManager getEm() {
-			return em;
-		}
-		public void setEm(EntityManager em) {
-			this.em = em;
-		}
-		
 	}

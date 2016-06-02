@@ -1,15 +1,17 @@
 <%@ page import="clinica.model.Utente" %>
-<% Utente utente = (Utente)session.getAttribute("utente");
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<% 
    boolean autorizzato = true;
+  Utente utente= (Utente) request.getAttribute("utente");
+  System.out.println(utente.getRole());
+  System.out.println(utente.getPassword());
    if (utente!=null)
 	   autorizzato &= (utente.getRole().equals("admin"));
    else 
    	   autorizzato = false;
    if (!autorizzato) {
-   	   out.clear();
-	   RequestDispatcher rd = application.getRequestDispatcher("/login.jsp");
-   	   rd.forward(request, response);
-	   return;
+		response.sendRedirect("error");
 	}
 %>
 
@@ -19,18 +21,18 @@
 <head>
 <meta charset="utf-8">
 <title>Clinica Healthy - Area amministrazione</title>
-    <!-- Bootstrap Core CSS -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+     <!-- Bootstrap Core CSS -->
+    <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="../css/shop-homepage.css" rel="stylesheet">
+    <link href="<c:url value="/resources/css/shop-homepage.css" />" rel="stylesheet">
 </head>
           <img src="http://susysksiw.altervista.org/logo3.jpg">
           
 <body>
 
   <h4><center>Area riservata all'amministrazione</center>    </h4>
-                                <center>Ciao, <%out.print(utente.getUsername()); %>  , sei qui come <%out.print(utente.getRole()); %>!!!!!
+                                <center>Ciao, "${utente.username}" sei qui come "${utente.role}" !!!!!
                                <form  method="get" action="../userLogout" name="form">
                                 	<button class="btn-default" type="submit"><font size="3" color="red">(LogOut)</font> </button>
                                 	</form>

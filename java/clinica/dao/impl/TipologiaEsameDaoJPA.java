@@ -1,60 +1,53 @@
 package clinica.dao.impl;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import clinica.model.TipologiaEsame;
+@Repository
 public class TipologiaEsameDaoJPA {
+	private static final Logger logger = LoggerFactory
+			.getLogger(MedicoDaoJPA.class);
+
+	@Autowired
+	private SessionFactory sessionFactory;
 	public void create(TipologiaEsame esa) {
-
-		
-			EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinica-unit");
-		
-
-			EntityManager em = emf.createEntityManager();
-	
-			EntityTransaction tx=em.getTransaction();
-	
-			tx.begin();
-			System.out.print(esa.toString());
-			em.persist(esa);
-			tx.commit();
-			em.close();
-			emf.close();
+		Session session=sessionFactory.openSession();
+		session.beginTransaction();
+		session.save(esa);
+		session.getTransaction().commit();
 	}
 
 	public TipologiaEsame retrieve(long id) {
-		TipologiaEsame es=null;
-		Connessione.getInstance().getEm().getTransaction().begin();
-		es = Connessione.getInstance().getEm().find(TipologiaEsame.class, id);
-		Connessione.getInstance().getEm().clear();
-		Connessione.getInstance().getEm().getTransaction().commit();
-		return es;
+		Session session=sessionFactory.openSession();
+		session.beginTransaction();
+		TipologiaEsame tip=(TipologiaEsame) session.load(TipologiaEsame.class,id);
+		session.getTransaction().commit();
+		return tip;
 	}
 
-	public void update(TipologiaEsame esa) {
-		Connessione.getInstance().getEm().getTransaction().begin();
-		Connessione.getInstance().getEm().merge(esa);
-		Connessione.getInstance().getEm().getTransaction().commit();
+	public void update(long id) {
+	
 	}
 
-	public void delete(TipologiaEsame e) {
-		TipologiaEsame esa=null;
-		Connessione.getInstance().getEm().getTransaction().begin();
-		esa=Connessione.getInstance().getEm().find(TipologiaEsame.class, e.getIdTipologiaEsame());
-		Connessione.getInstance().getEm().remove(esa);
-		Connessione.getInstance().getEm().getTransaction().commit();
+	public void delete(long id) {
+		Session session=sessionFactory.openSession();
+		session.beginTransaction();
+		TipologiaEsame tip=(TipologiaEsame) session.load(TipologiaEsame.class,id);
+		session.delete(tip);
+		session.getTransaction().commit();
+		
 	}
 	public List<TipologiaEsame> findAll(){
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinica-unit");
-		EntityManager em = emf.createEntityManager();
-		EntityTransaction tx=em.getTransaction();
-		tx.begin();
-		List<TipologiaEsame> list = em.createQuery("SELECT t FROM TipologiaEsame t").getResultList();
-		tx.commit();
+		Session session=sessionFactory.openSession();
+		session.beginTransaction();
+		List<TipologiaEsame> list=session.createQuery("select t from TipologiaEsame t").list();
+		session.getTransaction().commit();
 		return list;
 	}
 }
