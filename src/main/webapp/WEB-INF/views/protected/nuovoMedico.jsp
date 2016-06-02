@@ -28,7 +28,7 @@
 </head>
 
 <body>
- <img src="../Grafica/logo3.jpg">
+ <img src="<c:url value="/resources/Grafica/logo3.png"/>">
           
 	<center><h4>Aggiungi un nuovo medico</h4>
 

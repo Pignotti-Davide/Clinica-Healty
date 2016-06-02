@@ -45,7 +45,7 @@
         </div>
         <!-- /.container -->
     </nav>
-	<img src="http://susysksiw.altervista.org/logo3.jpg">
+	<img src="<c:url value="/resources/Grafica/logo3.png"/>">
 
 	<h4>
 		<center>Consulta il nostro catalogo</center>

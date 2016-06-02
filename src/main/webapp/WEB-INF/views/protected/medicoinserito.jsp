@@ -29,7 +29,7 @@
 </head>
 
 <body>
-<img src="../Grafica/logo3.jpg">
+<img src="<c:url value="/resources/Grafica/logo3.png"/>">
 
 	<h4>
 		<center>Inserimento medico</center>
