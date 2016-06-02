@@ -66,7 +66,7 @@ function AggiungiRequisito(requisiti){
 </head>
 
 <body>
-	<img src="../Grafica/logo3.jpg">
+	<img src="<c:url value="/resources/Grafica/logo3.png"/>">
 
 	<h4>Aggiungi una nuova tipologia di esame</h4>
 

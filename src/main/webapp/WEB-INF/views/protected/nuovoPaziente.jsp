@@ -28,7 +28,7 @@
     <link href="<c:url value="/resources/css/shop-homepage.css" />" rel="stylesheet">
 </head>
 <body>
-	<img src="../Grafica/logo3.jpg">
+	<img src="<c:url value="/resources/Grafica/logo3.png"/>">
 
 	<center>
 		<h4>Aggiungi un nuovo paziente</h4>

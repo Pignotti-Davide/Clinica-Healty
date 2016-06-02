@@ -21,7 +21,7 @@
     <!-- Custom CSS -->
     <link href="<c:url value="/resources/css/shop-homepage.css" />" rel="stylesheet">
 </head>
-          <img src="Grafica/logo3.jpg">
+          <img src="<c:url value="/resources/Grafica/logo3.png"/>">
           
 <body>
 

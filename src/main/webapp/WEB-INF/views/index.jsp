@@ -88,7 +88,7 @@
                 <div class="row carousel-holder">
 
                     <div class="col-md-12">
-                    <img src="http://susysksiw.altervista.org/logo3.jpg">
+                    <img src="<c:url value="/resources/Grafica/logo3.png"/>">
                         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                             <ol class="carousel-indicators">
                                 <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
