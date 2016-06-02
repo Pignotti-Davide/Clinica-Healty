@@ -2,17 +2,9 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <% Utente utente = (Utente)session.getAttribute("utente");
-   boolean autorizzato = true;
-   if (utente!=null)
-	   autorizzato &= (utente.getRole().equals("admin"));
-   else 
-   	   autorizzato = false;
-   if (!autorizzato) {
-   	   out.clear();
-	   RequestDispatcher rd = application.getRequestDispatcher("/error.jsp");
-   	   rd.forward(request, response);
-	   return;
-	}
+    boolean autorizzato = true;
+    if (utente!=null) 	 
+    	response.sendRedirect("error");
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
