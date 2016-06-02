@@ -19,7 +19,6 @@ public class TipologiaEsame {
 	private String nome;
 	@Column
 	private String descrizione;
-	
 	@ElementCollection
 	private Map<String,String> nomeRequisiti;
 	@ElementCollection

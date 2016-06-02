@@ -17,8 +17,8 @@ public class LogController {
 	private FacadeAutenticazione facadeAutenticazione;
 	
 	@RequestMapping(value="/login", method = RequestMethod.GET)
-	public String toLogIn(@ModelAttribute Utente utente, Model model){
-		model.addAttribute("utente",utente);
+	public String toLogIn(@ModelAttribute Utente utente){
+		
 		return "login";
 	}
 	

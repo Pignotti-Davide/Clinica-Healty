@@ -39,17 +39,18 @@
                                <br>Ecco ciò che puoi fare: 
                                  <br>
                                   <center>
-<img  src="../Grafica/inseriscipaziente.png"  usemap="#link1"><map name="link1" id="link1">
-<area shape="rect" coords="180, 100, 80, 200" href="nuovoPaziente.jsp"  alt="click">
-</map> <img  src="../Grafica/inseriscimedico.png"  usemap="#link2"><map name="link2" id="link2">
-<area shape="rect" coords="180, 100, 80, 200" href="nuovoMedico.jsp"  alt="click">
+                             
+<img  src="<c:url value="/resources/Grafica/inseriscipaziente.png"/>"  usemap="#link1"><map name="link1" id="link1">
+<area shape="rect" coords="180, 100, 80, 200" href="nuovoPaziente"  alt="click">
+</map> <img  src="<c:url value="/resources/Grafica/inseriscimedico.png"/>"  usemap="#link2"><map name="link2" id="link2">
+<area shape="rect" coords="180, 100, 80, 200" href="nuovoMedico"  alt="click">
 </map> <br>
-<img  src="../Grafica/inserisciesame.png"  usemap="#link3"><map name="link3" id="link3">
-<area shape="rect" coords="180, 100, 80, 200" href="nuovoEsame.jsp"  alt="click">
-</map> <img  src="../Grafica/inseriscitipologia.png"  usemap="#link4"><map name="link4" id="link4">
-<area shape="rect" coords="180, 100, 80, 200" href="nuovaTipologiaEsame.jsp"  alt="click">
+<img  src="<c:url value="/resources/Grafica/inserisciesame.png"/>"  usemap="#link3"><map name="link3" id="link3">
+<area shape="rect" coords="180, 100, 80, 200" href="nuovoEsame"  alt="click">
+</map> <img  src="<c:url value="/resources/Grafica/inseriscitipologia.png"/>"  usemap="#link4"><map name="link4" id="link4">
+<area shape="rect" coords="180, 100, 80, 200" href="nuovaTipologiaEsame"  alt="click">
 </map> 
-                               <br><a href="index.html">Torna alla homepage</a></center>
+                               <br><a href="index">Torna alla homepage</a></center>
                                 
 				
 </body>

@@ -1,4 +1,4 @@
-package clinica.controller;
+package clinica.controller.Nuovo;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,26 +14,36 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import clinica.model.TipologiaEsame;
+import clinica.model.Utente;
+import clinica.service.impl.FacadeAutenticazione;
 import clinica.service.impl.FacadeDati;
 
 @Controller
-public class ControllerNuovaTipologiaEsame extends HttpServlet {
-
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
-			throws ServletException, IOException {
+public class ControllerNuovaTipologiaEsame {
+	
+	@Autowired
+	private FacadeAutenticazione facadeAutenticazione;
+	
+	@RequestMapping(value="/nuovaTipologiaEsame",method=RequestMethod.POST)
+	public String toNTE(@ModelAttribute TipologiaEsame tipologiaEsame){
+		return "protected/nuovaTipologiaEsame";
+	}
+	
+	@RequestMapping(value="/addNuovaTipologiaEsame",method=RequestMethod.POST)
+	public String addNTE(@ModelAttribute TipologiaEsame tipologiaEsame,Model model){
+		
 		// gestione della RICHIESTA
 
 		// leggo e manipolo i parametri
-		String nome = request.getParameter("nome_Esame").toUpperCase();
-		String descrizione=request.getParameter("descrizione");
+		
 		String num = request.getParameter("num_requisiti");
 		String num1=request.getParameter("num_risultati");
 		int numeroRequisiti = Integer.parseInt(num);
@@ -46,7 +56,8 @@ public class ControllerNuovaTipologiaEsame extends HttpServlet {
 
 		if(nome.equals("")){
 			erroriPresenti=true;
-			request.setAttribute("nomeError", "Campo obbligatorio");
+			
+			model.addAttribute("nomeError", "Campo obbligatorio");
 		}
 		if(erroriPresenti){
 			nextPage  = "/protected/nuovaTipologiaEsame.jsp";

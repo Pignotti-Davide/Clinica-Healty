@@ -1,4 +1,4 @@
-package clinica.controller;
+package clinica.controller.Nuovo;
 
 import java.io.IOException;
 import java.sql.Date;
