@@ -37,13 +37,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Area riservata</a>
+                <a class="navbar-brand" href="login">Area Amministrazione</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="login">Log in</a>
+                        <a href="login">Area Amministrazione</a>
                     </li>
                     <li>
                         <a href="listaTipologiaEsami">Services</a>
@@ -74,10 +74,10 @@
                     <br>
                 </address>
                 <address>
-                    <abbr title="Phone">Davide Pignotti:</abbr><a href="mailto:#">name@example.com</a>
+                    <abbr title="Member1">Davide Pignotti:</abbr><a href="mailto:#">name@example.com</a>
                     <br>
                     
-                    <abbr title="Email">Susanna Marinai:</abbr> <a href="mailto:#">name@example.com</a>
+                    <abbr title="Member2">Susanna Marinai:</abbr> <a href="mailto:#">name@example.com</a>
                 </address>
                 Bla bla bla bla clinica che offre questi sercizi etc nasce come progetto per l'esame di Sistemi Informativi su Web della facoltà di Ingegneria informatica Roma Tre tenutosi nel 2016 bla bla bla chiacchiere
                 </div>
@@ -88,7 +88,7 @@
                 <div class="row carousel-holder">
 
                     <div class="col-md-12">
-                    <img src="<c:url value="/resources/Grafica/logo3.png"/>">
+                    <img src="<c:url value="/resources/Grafica/logo3.jpg"/>">
                         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                             <ol class="carousel-indicators">
                                 <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -97,20 +97,20 @@
                             </ol>
                             <div class="carousel-inner">
                                 <div class="item active">
-                                    <img class="slide-image" src="http://susysksiw.altervista.org/pubb1.jpg" alt="">
+                                    <img class="slide-image" src="<c:url value="/resources/Grafica/pubb1.jpg"/>" alt="">
                                 </div>
                                 <div class="item">
-                                    <img class="slide-image" src="http://susysksiw.altervista.org/pubb2.jpg" alt="">
+                               <img class="slide-image" src="<c:url value="/resources/Grafica/pubb2.jpg"/>" alt="">
                                 </div>
                                 <div class="item">
                                 
-                                    <img class="slide-image" src="http://susysksiw.altervista.org/pubb3.jpg" alt="">
+                           <img class="slide-image" src="<c:url value="/resources/Grafica/pubb3.jpg"/>" alt="">
                                 </div>
                             </div>
-                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                            <a class="left carousel-control" href="<c:url value="#carousel-example-generic" />" data-slide="prev">
                                 <span class="glyphicon glyphicon-chevron-left"></span>
                             </a>
-                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                            <a class="right carousel-control" href="<c:url value="#carousel-example-generic" />"  data-slide="next">
                                 <span class="glyphicon glyphicon-chevron-right"></span>
                             </a>
                         </div>
@@ -122,7 +122,7 @@
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="http://susysksiw.altervista.org/offerte.jpg" alt="">
+                            <img src="<c:url value="/resources/Grafica/offerte.jpg"/>" alt="">
                             <div class="caption">
                   
                                 <h4><a href="#">Accedi all'area paziente</a>
@@ -135,7 +135,7 @@
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="http://susysksiw.altervista.org/offerte2.jpg" alt="">
+                          <img src="<c:url value="/resources/Grafica/offerte2.jpg"/>" alt="">
                             <div class="caption">
            
                                 <h4><a href="listaMedici.jsp">Conosci i nostri medici</a>
@@ -148,7 +148,7 @@
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                       <div class="thumbnail">
-                        <img src="http://susysksiw.altervista.org/offerte3.jpg" alt="">
+                        <img src="<c:url value="/resources/Grafica/offerte3.jpg"/>" alt="">
                         <div class="caption">
                   
                                 <h4><a href="listaTipologiaEsami.jsp">Lista tipologie esami</a>

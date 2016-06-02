@@ -5,7 +5,7 @@
 <% Utente utente = (Utente)session.getAttribute("utente");
     boolean autorizzato = true;
     if (utente!=null) 	 
-    	response.sendRedirect("error");
+    	response.sendRedirect("index");
 %>
 <!doctype html>
 <html>
@@ -27,11 +27,7 @@
 	</h4>
 	<center>
 		Effettua il login con i tuoi dati amministrazione
-		<form:form method="get" action="logOut" name="form">
-			<button class="btn-default" type="submit">
-				<font size="3" color="red">(LogOut)</font>
-			</button>
-		</form:form>
+		
 		<form:form action="logUtente" modelAttribute="utente" method="POST">
 
 			<div class="form-group">

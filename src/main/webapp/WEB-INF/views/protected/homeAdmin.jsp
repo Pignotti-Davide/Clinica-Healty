@@ -32,7 +32,7 @@
 <body>
 
   <h4><center>Area riservata all'amministrazione</center>    </h4>
-                                <center>Ciao, "${utente.username}" sei qui come "${utente.role}" !!!!!
+                                <center>Ciao, "${utente.username}" sei qui come "${utente.role}"
                                <form  method="get" action="../userLogout" name="form">
                                 	<button class="btn-default" type="submit"><font size="3" color="red">(LogOut)</font> </button>
                                 	</form>

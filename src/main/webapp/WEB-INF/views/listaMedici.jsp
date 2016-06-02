@@ -17,7 +17,7 @@
 </head>
 
 <body>
-	<img src="<c:url value="/resources/Grafica/logo3.png"/>">
+	<img src="<c:url value="/resources/Grafica/logo3.jpg"/>">
 
 	<h4>
 		<center>Consulta l'elenco dei nostri medici</center>
