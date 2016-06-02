@@ -2,16 +2,18 @@
 <%@ page import="clinica.model.Medico"%>
 <%@ page import="clinica.dao.impl.MedicoDaoJPA"%>
 <%@ page import="java.util.List"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
 <title>Clinica Healthy - lista medici</title>
-<!-- Bootstrap Core CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
+ <!-- Bootstrap Core CSS -->
+    <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 
-<!-- Custom CSS -->
-<link href="css/shop-homepage.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="<c:url value="/resources/css/shop-homepage.css" />" rel="stylesheet">
 </head>
 
 <body>

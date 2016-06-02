@@ -1,4 +1,6 @@
 <%@ page import="clinica.model.Utente" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <% Utente utente = (Utente)session.getAttribute("utente");
    boolean autorizzato = true;
    if (utente!=null)
@@ -20,10 +22,11 @@
 <meta charset="utf-8">
 <title>Clinica Healthy - Area amministrazione</title>
 <!-- Bootstrap Core CSS -->
-<link href="../css/bootstrap.min.css" rel="stylesheet">
+ <!-- Bootstrap Core CSS -->
+    <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 
-<!-- Custom CSS -->
-<link href="../css/shop-homepage.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="<c:url value="/resources/css/shop-homepage.css" />" rel="stylesheet">
 </head>
 <img src="../Grafica/logo3.jpg">
 

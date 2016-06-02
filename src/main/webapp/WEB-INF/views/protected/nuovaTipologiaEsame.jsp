@@ -1,4 +1,6 @@
 <%@ page import="clinica.model.Utente"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <% Utente utente = (Utente)session.getAttribute("utente");
    boolean autorizzato = true;
    if (utente!=null)
@@ -16,11 +18,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<!-- Bootstrap Core CSS -->
-<link href="../css/bootstrap.min.css" rel="stylesheet">
 
-<!-- Custom CSS -->
-<link href="../css/shop-homepage.css" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Area amministrazione - aggiungi nuova tipologia esame</title>
 <script type="text/javascript">
@@ -68,6 +66,11 @@ function AggiungiRequisito(requisiti){
 	}
 }
 </script>
+ <!-- Bootstrap Core CSS -->
+    <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="<c:url value="/resources/css/shop-homepage.css" />" rel="stylesheet">
 </head>
 
 <body>

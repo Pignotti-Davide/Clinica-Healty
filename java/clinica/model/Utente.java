@@ -12,6 +12,7 @@ public class Utente {
 	private String role;
 	@Column(nullable=false)
 	private String password;
+	
 	public String getUsername() {
 		return username;
 	}
@@ -30,8 +31,5 @@ public class Utente {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
-
 
 }

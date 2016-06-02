@@ -2,66 +2,59 @@ package clinica.dao.impl;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
-import javax.persistence.RollbackException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import clinica.model.Paziente;
 
-
+@Repository
 public class PazienteDaoJPA {
-	
+
+	private static final Logger logger = LoggerFactory
+			.getLogger(EsameDaoJPA.class);
+
+	@Autowired
+	private SessionFactory sessionFactory;
 	
 	public void create(Paziente p) {
-
-		try{
-			Connessione.getInstance().getEm().getTransaction().begin();
-			Connessione.getInstance().getEm().persist(p);
-			Connessione.getInstance().getEm().getTransaction().commit();
-			Connessione.getInstance().getEm().clear();
-		}
-		catch (RollbackException e){
-			Connessione.getInstance().getEm().clear();
-		}
+		Session session=sessionFactory.openSession();
+		session.beginTransaction();
+		session.save(p);
+		session.getTransaction().commit();
+		
 	}
 
-	public Paziente retrieve(long codPaziente) {
-		Paziente paz=null;
-		Connessione.getInstance().getEm().getTransaction().begin();
-		paz = Connessione.getInstance().getEm().find(Paziente.class, codPaziente);
-		Connessione.getInstance().getEm().clear();
-		Connessione.getInstance().getEm().getTransaction().commit();
+	public Paziente retrieve(long id) {
+		Session session=sessionFactory.openSession();
+		session.beginTransaction();
+		Paziente paz= (Paziente) session.load(Paziente.class, id);
+		session.getTransaction().commit();
 		return paz;
 	}
 	
 	public List<Paziente> findAll(){
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinica-unit");
-		EntityManager em = emf.createEntityManager();
-		EntityTransaction tx=em.getTransaction();
-		tx.begin();
-		List<Paziente> list = em.createQuery("SELECT p FROM Paziente p").getResultList();
-		tx.commit();
+		Session session=sessionFactory.openSession();
+		session.beginTransaction();
+		List<Paziente> list=session.createQuery("select p from Paziente p").list();
+		session.getTransaction().commit();
 		return list;
 	}
 	
 	
 
 	public void update(Paziente p) {
-		Connessione.getInstance().getEm().getTransaction().begin();
-		Connessione.getInstance().getEm().merge(p);
-		Connessione.getInstance().getEm().getTransaction().commit();
-
 
 	}
 
-	public void delete(Paziente p) {
-		Paziente paz=null;
-		Connessione.getInstance().getEm().getTransaction().begin();
-		paz=Connessione.getInstance().getEm().find(Paziente.class, p.getIdPaziente());
-		Connessione.getInstance().getEm().remove(paz);
-		Connessione.getInstance().getEm().getTransaction().commit();
-
+	public void delete(long id) {
+		Session session=sessionFactory.openSession();
+		session.beginTransaction();
+		Paziente e=(Paziente) session.load(Paziente.class, id);
+		session.delete(e);
+		session.getTransaction().commit();
 	}
 }
