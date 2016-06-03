@@ -18,7 +18,7 @@ public class FacadeTipologiaEsame {
 		return this.tipologiaEsameDao.listaTipologiaEsame();
 	}
 
-	public void insertTipologiaEsame(TipologiaEsame tipologiaEsame) {
+	public void addTipologiaEsame(TipologiaEsame tipologiaEsame) {
 		this.tipologiaEsameDao.insertTipologiaEsame(tipologiaEsame);
 	}
 

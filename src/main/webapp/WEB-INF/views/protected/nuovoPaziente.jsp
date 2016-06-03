@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Clinica Healthy - Area amministrazione</title>
  <!-- Bootstrap Core CSS -->
     <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 
@@ -16,7 +16,7 @@
     <link href="<c:url value="/resources/css/shop-homepage.css" />" rel="stylesheet">
 </head>
 <body>
-	<img src="<c:url value="/resources/Grafica/logo3.png"/>">
+	<img src="<c:url value="/resources/Grafica/logo3.jpg"/>">
 
 	<center>
 		<h4>Aggiungi un nuovo paziente</h4>

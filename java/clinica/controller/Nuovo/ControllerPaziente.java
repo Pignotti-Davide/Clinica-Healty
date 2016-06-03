@@ -12,28 +12,25 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import clinica.model.Paziente;
 import clinica.service.impl.FacadePaziente;
-
-/**
- * Servlet implementation class ControllerNuovoPaziente
- */
 @Controller
 public class ControllerPaziente {
 	@Autowired
 	private FacadePaziente facadePaziente;
-	
-   @RequestMapping(value="/nuovoPaziente", method=RequestMethod.GET)
-   public String toNuovoPaziente(@ModelAttribute Paziente paziente){
-	   Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
-	   if (!(auth instanceof AnonymousAuthenticationToken)) {
-	   return "protected/nuovoPaziente";
-   }
-	   else return"index";}
+	@RequestMapping(value="/nuovoPaziente", method=RequestMethod.GET)
+	public String toNuovoPaziente(@ModelAttribute Paziente paziente){
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+		if (!(auth instanceof AnonymousAuthenticationToken)) {
+			return "protected/nuovoPaziente";
+		}
+		else return"index";
+	}
 
 
-   @RequestMapping(value="/addPaziente", method=RequestMethod.POST)
-   public String addPaziente(@ModelAttribute Paziente paziente,Model model){
-	   boolean erroriPresenti = false;
+	@RequestMapping(value="/addPaziente", method=RequestMethod.POST)
+	public String addPaziente(@ModelAttribute Paziente paziente,Model model){
+		boolean erroriPresenti = false;
 		String nextPage=null;
 
 		if(paziente.getNome().equals("")){
@@ -47,8 +44,8 @@ public class ControllerPaziente {
 		if(erroriPresenti)
 			nextPage  = "nuovoPaziente";
 		else {nextPage="/protected/pazienteInserito";
-		facadePaziente.addPazziente(paziente);
+		facadePaziente.addPaziente(paziente);
 		}
-	return nextPage;   
-   }
+		return nextPage;   
+	}
 }

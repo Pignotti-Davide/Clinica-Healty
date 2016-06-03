@@ -10,7 +10,7 @@ public class FacadePaziente {
 
 	@Autowired
 	private PazienteDao pazienteDao;
-	public void addPazziente(Paziente p){
+	public void addPaziente(Paziente p){
 		pazienteDao.insertPaziente(p);
 	}
 }

@@ -1,11 +1,9 @@
 
 <%@ page import="clinica.model.TipologiaEsame"%>
-<%@ page import="clinica.model.Utente"%>
 <%@ page import="clinica.dao.impl.TipologiaEsameDao"%>
 <%@ page import="java.util.List"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<% Utente utente = (Utente)session.getAttribute("utente");%>
 
 <!doctype html>
 <html>
@@ -36,10 +34,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                 
-                  <h4><font size="3" color="red"><%  if (utente!=null)
-                	  out.print(utente.getUsername().toUpperCase());
-            		if (utente!=null)out.print(utente.getRole()); %></font> <br>  </h4>
-                </ul>
+                
             </div>
             <!-- /.navbar-collapse -->
         </div>
@@ -83,6 +78,13 @@ function visualizza(id){
 							out.print("<br>"); 
 							}%>
 		<tr>
+<%-- 		  <c:forEach items="${contactForm.contactMap}" var="contactMap" --%>
+<%--             varStatus="status"> --%>
+<!--             <tr> -->
+<%--                 <td>${contactMap.key}</td> --%>
+<%--                 <td>${contactMap.value}</td> --%>
+<!--             </tr> -->
+<%--         </c:forEach> --%>
   <h4><a href="index.html">Torna alla homepage</a>
                                 </h4>
 		</tr>

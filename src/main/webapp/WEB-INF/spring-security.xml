@@ -15,6 +15,7 @@
 	  <authentication-provider>
 	    <user-service>
 		<user name="x" password="x" authorities="ROLE_USER" />
+			<user name="susy" password="admin" authorities="ROLE_USER" />
 	    </user-service>
 	  </authentication-provider>
 	</authentication-manager>

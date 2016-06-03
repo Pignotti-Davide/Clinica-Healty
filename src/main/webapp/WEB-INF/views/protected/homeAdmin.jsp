@@ -1,4 +1,4 @@
-<%@ page import="clinica.model.Utente"%>
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page session="true"%>
 
@@ -18,10 +18,39 @@
 <link href="<c:url value="/resources/css/shop-homepage.css" />"
 	rel="stylesheet">
 </head>
-<img src="<c:url value="/resources/Grafica/logo3.png"/>">
+<img src="<c:url value="/resources/Grafica/logo3.jpg"/>">
 
 <body>
-
+ <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="admin">Area Amministrazione:</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                       <a class="navbar-brand" style="color:red"> ${pageContext.request.userPrincipal.name}</a>
+                    </li>
+                    <li>
+                      
+                    </li>
+                    <li>
+               
+                    </li>
+                </ul>
+            </div>
+               <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
 	<h4>
 		<center>Area riservata all'amministrazione</center>
 	</h4>
@@ -29,8 +58,6 @@
 		Ciao, ${pageContext.request.userPrincipal.name} <a
 			href="<c:url value="/j_spring_security_logout" />"> Logout</a> <br>Ecco
 		ciò che puoi fare: <br>
-		<center>
-
 			<img src="<c:url value="/resources/Grafica/inseriscipaziente.png"/>"
 				usemap="#link1">
 			<map name="link1" id="link1">
