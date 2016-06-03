@@ -1,19 +1,8 @@
 <%@ page import="clinica.model.Utente" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page session="true"%>
 
-<% 
-   boolean autorizzato = true;
-  Utente utente= (Utente) request.getAttribute("utente");
-  System.out.println(utente.getRole());
-  System.out.println(utente.getPassword());
-   if (utente!=null)
-	   autorizzato &= (utente.getRole().equals("admin"));
-   else 
-   	   autorizzato = false;
-   if (!autorizzato) {
-		response.sendRedirect("error");
-	}
-%>
+
 
 
 <!doctype html>
@@ -32,10 +21,8 @@
 <body>
 
   <h4><center>Area riservata all'amministrazione</center>    </h4>
-                                <center>Ciao, "${utente.username}" sei qui come "${utente.role}"
-                               <form  method="get" action="../userLogout" name="form">
-                                	<button class="btn-default" type="submit"><font size="3" color="red">(LogOut)</font> </button>
-                                	</form>
+                                <center>Ciao, ${pageContext.request.userPrincipal.name}
+                                <a href="<c:url value="/j_spring_security_logout" />" > Logout</a>
                                <br>Ecco ciò che puoi fare: 
                                  <br>
                                   <center>
