@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import clinica.model.Esame;
-import clinica.model.TipologiaEsame;
+import clinica.model.Paziente;
 
 
 @Repository
@@ -47,5 +47,12 @@ public class EsameDao {
 		query.setParameter("esame_id", esameId);
 		int result = query.executeUpdate();
 		System.out.println("Row affected: " + result);
+	}
+	public List<Esame> retrieveEsamiDelPaziente(Paziente p){
+		Session session=sessionFactory.openSession();
+		session.beginTransaction();
+		List<Esame> list=session.createQuery("select e from Esame e where e.paziente.idPaziente="+p.getIdPaziente()).list();
+		session.getTransaction().commit();
+		return list;
 	}
 }

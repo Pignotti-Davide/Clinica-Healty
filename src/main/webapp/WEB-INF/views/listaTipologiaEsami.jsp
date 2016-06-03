@@ -1,7 +1,7 @@
-<%@page import="clinica.service.impl.FacadeDati"%>
+
 <%@ page import="clinica.model.TipologiaEsame"%>
 <%@ page import="clinica.model.Utente"%>
-<%@ page import="clinica.dao.impl.TipologiaEsameDaoJPA"%>
+<%@ page import="clinica.dao.impl.TipologiaEsameDao"%>
 <%@ page import="java.util.List"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -63,7 +63,7 @@ function visualizza(id){
 }
 </script>
 	<% 	
-		List<TipologiaEsame> lista =new FacadeDati().findAllTipologieEsami();
+		List<TipologiaEsame> lista =null;
 	
 						for(TipologiaEsame tipo: lista){
 							%>
