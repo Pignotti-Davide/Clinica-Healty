@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
@@ -6,9 +7,17 @@
  <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+=======
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+>>>>>>> refs/remotes/origin/master
 <head>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
+<<<<<<< HEAD
 
 <html>
 <head><script type="text/javascript">
@@ -32,6 +41,27 @@
 							+ "<br/>";
 				}
 				box.innerHTML = righe;
+=======
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Aggiungi una nuova Tipologia Esame</title>
+<script type="text/javascript">
+function AggiungiRisultato(risultati){
+var numero_risultati = risultati.value;
+	var box = document.getElementById('box_risultati');
+	if(numero_risultati==""){
+		box.innerHTML='';
+	}else{
+		if(isNaN(numero_risultati)==true){
+			box.innerHTML='';
+		}else{
+			var righe = "";
+			
+			// Inserisco una riga ad ogni ciclo
+			for(i=1; i<=numero_risultati; i++){
+				righe = righe + "Tipo Risultato n°"+i+
+				" : Nome risultato: <input type='text' name='risultato"+i+"' size='10' />"+
+				"<br/>";
+>>>>>>> refs/remotes/origin/master
 			}
 		}
 	}
@@ -69,7 +99,7 @@
 	rel="stylesheet">
 </head>
 <body>
-	<img src="<c:url value="/resources/Grafica/logo3.png"/>">
+	<img src="<c:url value="/resources/Grafica/logo3.jpg"/>">
 
 	<center>
 

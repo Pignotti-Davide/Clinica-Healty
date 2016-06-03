@@ -1,19 +1,6 @@
-<%@ page import="clinica.model.Utente" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<% Utente utente = (Utente)session.getAttribute("utente");
-   boolean autorizzato = true;
-   if (utente!=null)
-	   autorizzato &= (utente.getRole().equals("admin"));
-   else 
-   	   autorizzato = false;
-   if (!autorizzato) {
-   	   out.clear();
-	   RequestDispatcher rd = application.getRequestDispatcher("/error.jsp");
-   	   rd.forward(request, response);
-	   return;
-	}
-%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -28,30 +15,33 @@
 </head>
 
 <body>
- <img src="<c:url value="/resources/Grafica/logo3.png"/>">
+ <img src="<c:url value="/resources/Grafica/logo3.jpg"/>">
           
 	<center><h4>Aggiungi un nuovo medico</h4>
 
-	<form method="get" action="../controllerMedico" name="form">
-		           <font size="3" color="red">${nomeError}</font> <br>
-			<br>
+	<form:form method="post" action="addMedico" modelAttribute="medico" name="form">
+		      <table>
+		      <tr><td>
+		           <font size="3" color="red">${nomeError}</font>
+		           </td></tr>
 			<tr>
 				<td>Nome Medico :</td>
-				<td><input type='text' name='nome_Medico' placeholder="nome"/></td><br>
-			</tr>
-                   <font size="3" color="red">${cognomeError}</font> <br>
+				<td><form:input type='text' path='nome' placeholder="nome"/></td>
+			</tr><tr><td>
+                   <font size="3" color="red">${cognomeError}</font> </td></tr>
 			<tr>
 				<td>Cognome Medico :</td>
-				<td><input type='text' name='cognome_Medico' placeholder="cognome" /></td><br>
-			</tr>
-           <font size="3" color="red">${specializzazioneError}</font> <br>
+				<td><form:input type='text' path='cognome' placeholder="cognome" /></td><br>
+			</tr><tr><td>
+           <font size="3" color="red">${specializzazioneError}</font> </td></tr>
             <tr>
 				<td>Specializzazione medico :</td>
-				<td><input type='text' name='specializzazione_Medico' placeholder="specializzazione"/></td>
+				<td><form:input type='text' path='specializzazione' placeholder="specializzazione"/></td>
 			</tr>
-		 <br>
+		<tr><td>
 		<input type="submit" value="invia" />
-	</form>
- <br><a href="index.html">Torna alla homepage</a></center>
+		 </td></tr></table>
+	</form:form>
+ <br><a href="index">Torna alla homepage</a></center>
 </body>
 </html>

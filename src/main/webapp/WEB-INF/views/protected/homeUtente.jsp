@@ -1,19 +1,6 @@
-<%@ page import="clinica.model.Utente" %>
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<% Utente utente = (Utente)session.getAttribute("utente");
-   boolean autorizzato = true;
-   if (utente!=null)
-	   autorizzato &= (utente.getRole().equals("utente"));
-   else 
-   	   autorizzato = false;
-   if (!autorizzato) {
-   	   out.clear();
-	   RequestDispatcher rd = application.getRequestDispatcher("/error.jsp");
-   	   rd.forward(request, response);
-	   return;
-	}
-%>
 
 
 <!doctype html>
@@ -27,12 +14,12 @@
     <!-- Custom CSS -->
     <link href="<c:url value="/resources/css/shop-homepage.css" />" rel="stylesheet">
 </head>
-          <img src="<c:url value="/resources/Grafica/logo3.png"/>">
+          <img src="<c:url value="/resources/Grafica/logo3.jpg"/>">
           
 <body>
 
   <h4><center>Area dedicata agli utenti</center>    </h4>
-                             <center>Ciao, <%out.print(utente.getUsername().toUpperCase()); %>  , sei qui come <%out.print(utente.getRole()); %>!!!!!
+                             <center>Ciao, <%out.print(""); %>  , sei qui come <%out.print(""); %>!!!!!
                                
                                <br>Ecco ciò che puoi fare: 
                                  <br><a href="protected/risultatiPaziente.jsp">Consulta i risultati degli esami</a>

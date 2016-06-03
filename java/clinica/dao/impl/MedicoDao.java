@@ -23,7 +23,7 @@ public class MedicoDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	public void insertUtente(Medico m) {
+	public void insertMedico(Medico m) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		session.save(m);

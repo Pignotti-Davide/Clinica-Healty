@@ -13,14 +13,16 @@
     <!-- Custom CSS -->
     <link href="<c:url value="/resources/css/shop-homepage.css" />" rel="stylesheet">
 </head>
+<img src="<c:url value="/resources/Grafica/logo3.jpg"/>">
 <body>
 <h4>
 		<center>Inserimento Paziente</center>
 	</h4>
 	<center>
 		Hai inserito un nuovo Paziente <br> Nome:${paziente.nome}; <br> Cognome:${paziente.cognome}; <br>
-		Si prega di comunicare al paziente il suo identificatore: ${paziente.idPaziente}; <br>
-		<a href="index">Torna alla homepage</a>
+		Si prega di comunicare al paziente il suo identificatore: ${paziente.idPaziente}; <br><br> <br>
+		<a href="protected/homeAdmin">Torna alla Pagina d'amministrazione</a><br>
+		<a href="index">Torna alla HomePage</a>
 		</center>
 </body>
 </html>

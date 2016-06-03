@@ -14,13 +14,11 @@
     <!-- Custom CSS -->
     <link href="<c:url value="/resources/css/shop-homepage.css" />" rel="stylesheet">
 </head>
-          <img src="<c:url value="/resources/Grafica/logo3.png"/>">
+          <img src="<c:url value="/resources/Grafica/logo3.jpg"/>">
           
 <body>
 
   <h4><center>Area dedicata agli utenti</center>    </h4>
-             
-	</form>
 		           <font size="3" color="red">${codeError}</font> <br>
                                <br>Per consultare i risultati degli esami inserisci il codice:
                               <form method="get" action="controllerRisultati" name="form">

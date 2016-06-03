@@ -1,9 +1,16 @@
 
 <%@ page import="clinica.model.TipologiaEsame"%>
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/master
 <%@ page import="clinica.dao.impl.TipologiaEsameDao"%>
 <%@ page import="java.util.List"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/remotes/origin/master
 
 <!doctype html>
 <html>
@@ -34,7 +41,12 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                 
+<<<<<<< HEAD
                 
+=======
+                 
+                </ul>
+>>>>>>> refs/remotes/origin/master
             </div>
             <!-- /.navbar-collapse -->
         </div>
