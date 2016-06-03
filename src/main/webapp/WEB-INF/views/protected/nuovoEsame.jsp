@@ -16,7 +16,21 @@
     <link href="<c:url value="/resources/css/shop-homepage.css" />" rel="stylesheet">
 </head>
 <body>
-<form method="get" action="../controllerNuovoEsame" name="form">
+<img src="<c:url value="/resources/Grafica/logo3.png"/>">
+<center><h4>Aggiungi un nuovo esame</h4>
+<	<form:form action="nuovoEsame" modelAttribute="esame" method="POST">
+
+			<div class="form-group">
+				<p>${usernameError}</p>
+				<label>Nome:</label> <form:input type="text" path="username" />
+			</div>
+			<div class="form-group">
+				<p>${passwordError}</p>
+				<label>Password</label><form:input type="password" path="password" />
+			</div>
+
+			<button type="submit" class="btn btn-default">Invia</button>
+		</form:form>
 Seleziona Tipologia d'esame:
 <select name="tipologiaEsame">
 <%-- <% for(TipologiaEsame t:new FacadeDati().findAllTipologieEsami()) --%>

@@ -17,7 +17,7 @@ public class TipologiaEsame {
 	private Long idTipologiaEsame;
 	@Column(nullable=false)
 	private String nome;
-	@Column
+	@Column(nullable=false)
 	private String descrizione;
 	@ElementCollection
 	private Map<String,String> nomeRequisiti;

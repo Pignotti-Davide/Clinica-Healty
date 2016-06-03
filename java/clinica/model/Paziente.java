@@ -1,10 +1,6 @@
 package clinica.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Paziente {
@@ -16,10 +12,7 @@ public class Paziente {
 	private String nome;
 	@Column(nullable=false)
 	private String cognome;
-	
-	
-	
-
+	@OneToMany(mappedBy="paziente",cascade={CascadeType.MERGE, CascadeType.REMOVE})
 
 	public Long getIdPaziente() {
 		return idPaziente;

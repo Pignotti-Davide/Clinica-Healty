@@ -31,11 +31,11 @@ public class ControllerNuovaTipologiaEsame {
 	}
 
 	@RequestMapping(value = "/updateTipologiaEsame", method = RequestMethod.POST)
-	public String updateEmployee(
+	public String updateTipologiaEsame(
 			@ModelAttribute("tipologiaEsameform")TipologiaEsame tipologiaEsame, ModelMap model) {
 		this.tipologiaEsameFacade.insertTipologiaEsame(tipologiaEsame);
-		model.addAttribute("employeesList", tipologiaEsameFacade.listaTipologiaEsame());
-		return "employee";
+		model.addAttribute("tipologiaEsameList", tipologiaEsameFacade.listaTipologiaEsame());
+		return "tipologiaEsame";
 	}
 
 	@RequestMapping(value = "/delete/{tipId}", method = RequestMethod.GET)
@@ -43,7 +43,7 @@ public class ControllerNuovaTipologiaEsame {
 			ModelMap model) {
 		this.tipologiaEsameFacade.deleteTipologiaEsame(empId);
 		model.addAttribute("listaTipologiaEsame", tipologiaEsameFacade.listaTipologiaEsame());
-		return "employee";
+		return "tipologiaEsame";
 	}
 }
 

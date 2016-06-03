@@ -13,7 +13,7 @@ import clinica.model.Esame;
 import clinica.service.impl.FacadeEsame;
 
 @Controller
-@RequestMapping("/esame")
+@RequestMapping("/nuovoEsame")
 public class ControllerNuovoEsame {
 
 	@Autowired
@@ -21,28 +21,28 @@ public class ControllerNuovoEsame {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String listaTipologiaEsame(ModelMap model) {
-		model.addAttribute("esame", esameFacade.listaEsame());
+		model.addAttribute("listaEsame", esameFacade.listaEsame());
 		return "esame";
 	}
 
 	@RequestMapping(value = "/aggiungiEsame", method = RequestMethod.GET)
-	public ModelAndView aggiungiEsame(ModelMap model) {
+	public ModelAndView aggiungiTipologiaEsame(ModelMap model) {
 		return new ModelAndView("aggiungiEsame", "command", new Esame());
 	}
 
-	@RequestMapping(value = "/updateEsame", method = RequestMethod.POST)
-	public String updateEmployee(
-			@ModelAttribute("esameform")Esame esame, ModelMap model) {
-		this.esameFacade.insertEsame(esame);
-		model.addAttribute("employeesList", esameFacade.listaEsame());
-		return "employee";
+	@RequestMapping(value = "/Esame", method = RequestMethod.POST)
+	public String updateEsame(
+			@ModelAttribute("esameform")Esame Esame, ModelMap model) {
+		this.esameFacade.insertEsame(Esame);
+		model.addAttribute("EsameList", esameFacade.listaEsame());
+		return "esame";
 	}
 
-	@RequestMapping(value = "/delete/{esaId}", method = RequestMethod.GET)
-	public String deleteTipologiaEsame(@PathVariable("esaId") Integer empId,
+	@RequestMapping(value = "/delete/{tipId}", method = RequestMethod.GET)
+	public String deleteEsame(@PathVariable("tipId") Integer esaId,
 			ModelMap model) {
-		this.esameFacade.deleteEsame(empId);
-		model.addAttribute("listaEsame", esameFacade.listaEsame());
+		this.esameFacade.deleteEsame(esaId);
+		model.addAttribute("listaTipologiaEsame", esameFacade.listaEsame());
 		return "esame";
 	}
 }

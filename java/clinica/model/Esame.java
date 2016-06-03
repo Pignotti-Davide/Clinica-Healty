@@ -3,13 +3,8 @@ package clinica.model;
 import java.util.Date;
 import java.util.Map;
 
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+
 
 @Entity
 public class Esame {
@@ -20,7 +15,7 @@ public class Esame {
 	
 	@OneToOne
 	private Medico medico;
-	@OneToOne
+	@ManyToOne
 	private Paziente paziente;
 	@OneToOne
 	private TipologiaEsame tipologiaEsame;
