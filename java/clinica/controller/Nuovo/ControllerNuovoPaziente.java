@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 
 import clinica.model.Paziente;
-import clinica.service.impl.FacadeDati;
 
 /**
  * Servlet implementation class ControllerNuovoPaziente
@@ -56,7 +55,7 @@ public class ControllerNuovoPaziente extends HttpServlet {
 		p.setNome(nomePaziente);
 		p.setCognome(cognomePaziente);
 
-		new FacadeDati().salvaPaziente(p);
+	
 	
 		ServletContext application  = getServletContext();
 		HttpSession session= request.getSession();

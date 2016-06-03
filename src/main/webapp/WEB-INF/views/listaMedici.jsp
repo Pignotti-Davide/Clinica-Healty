@@ -1,6 +1,7 @@
-<%@page import="clinica.service.impl.FacadeDati"%>
+
+<%@page import="java.util.ArrayList"%>
 <%@ page import="clinica.model.Medico"%>
-<%@ page import="clinica.dao.impl.MedicoDaoJPA"%>
+<%@ page import="clinica.dao.impl.MedicoDao"%>
 <%@ page import="java.util.List"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -24,7 +25,7 @@
 	</h4>
 	<center>
 		<% 	
-						for(Medico tipo: new FacadeDati().findAllMedici()){
+						for(Medico tipo: new ArrayList<Medico>()){
 							out.print("Nome:"); 
 							out.print(tipo.getNome());
 							out.print("<br>");
