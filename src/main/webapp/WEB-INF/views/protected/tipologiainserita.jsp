@@ -1,19 +1,4 @@
-<%@ page import="clinica.model.Utente" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<% Utente utente = (Utente)session.getAttribute("utente");
-   boolean autorizzato = true;
-   if (utente!=null)
-	   autorizzato &= (utente.getRole().equals("admin"));
-   else 
-   	   autorizzato = false;
-   if (!autorizzato) {
-   	   out.clear();
-	   RequestDispatcher rd = application.getRequestDispatcher("/error.jsp");
-   	   rd.forward(request, response);
-	   return;
-	}
-%>
 
 <%@ page import="clinica.model.TipologiaEsame"%>
 <!doctype html>
@@ -28,7 +13,7 @@
     <!-- Custom CSS -->
     <link href="<c:url value="/resources/css/shop-homepage.css" />" rel="stylesheet">
 </head>
-<img src="<c:url value="/resources/Grafica/logo3.png"/>">
+<img src="<c:url value="/resources/Grafica/logo3.jpg"/>">
 
 <body>
 

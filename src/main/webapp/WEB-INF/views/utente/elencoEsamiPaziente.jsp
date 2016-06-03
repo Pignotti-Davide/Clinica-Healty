@@ -15,6 +15,7 @@
     <!-- Custom CSS -->
     <link href="<c:url value="/resources/css/shop-homepage.css" />" rel="stylesheet">
 </head>
+<img src="<c:url value="/resources/Grafica/logo3.jpg"/>">
 <body>
 	<table>
 		<tr>
