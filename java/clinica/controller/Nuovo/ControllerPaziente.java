@@ -1,6 +1,9 @@
 package clinica.controller.Nuovo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -20,12 +23,13 @@ public class ControllerPaziente {
 	
    @RequestMapping(value="/nuovoPaziente", method=RequestMethod.GET)
    public String toNuovoPaziente(@ModelAttribute Paziente paziente){
+	   Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+	   if (!(auth instanceof AnonymousAuthenticationToken)) {
 	   return "protected/nuovoPaziente";
    }
-   @RequestMapping(value="/pazienteInserito")
-   public String toPazienteInserito(@ModelAttribute Paziente paziente){
-	   return "protected/pazienteInserito";
-   }
+	   else return"index";}
+
 
    @RequestMapping(value="/addPaziente", method=RequestMethod.POST)
    public String addPaziente(@ModelAttribute Paziente paziente,Model model){
@@ -42,7 +46,7 @@ public class ControllerPaziente {
 		}
 		if(erroriPresenti)
 			nextPage  = "nuovoPaziente";
-		else {nextPage="pazienteInserito";
+		else {nextPage="/protected/pazienteInserito";
 		facadePaziente.addPazziente(paziente);
 		}
 	return nextPage;   

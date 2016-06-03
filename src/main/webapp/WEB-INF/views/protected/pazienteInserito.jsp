@@ -18,8 +18,9 @@
 		<center>Inserimento Paziente</center>
 	</h4>
 	<center>
-		Hai inserito un nuovo Paziente <br> Nome:${paz.nome}; <br> Cognome:${paz.cognome}; <br>
-		Si prega di comunicare al paziente il suo identificatore: ${paz.idPaziente}; <br>
+		Hai inserito un nuovo Paziente <br> Nome:${paziente.nome}; <br> Cognome:${paziente.cognome}; <br>
+		Si prega di comunicare al paziente il suo identificatore: ${paziente.idPaziente}; <br>
+		<a href="index">Torna alla homepage</a>
 		</center>
 </body>
 </html>
