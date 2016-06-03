@@ -22,8 +22,8 @@ public class FacadeTipologiaEsame {
 		this.tipologiaEsameDao.insertTipologiaEsame(tipologiaEsame);
 	}
 
-	public void deleteTipologiaEsame(Integer employeeId) {
-		this.tipologiaEsameDao.deleteTipologiaEsame(employeeId);
+	public void deleteTipologiaEsame(long tipId) {
+		this.tipologiaEsameDao.deleteTipologiaEsame(tipId);
 	}
 
 }

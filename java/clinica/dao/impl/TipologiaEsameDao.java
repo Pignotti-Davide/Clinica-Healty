@@ -39,13 +39,13 @@ public class TipologiaEsameDao {
 		return empList;
 	}
 
-	public void deleteTipologiaEsame(Integer esameId) {
+	public void deleteTipologiaEsame(long esameId) {
 		System.out.println("hql Using Delete");
-		Session session = sessionFactory.openSession();
+		Session session = sessionFactory.openSession();		
 		String hql = "DELETE from TipologiaEsame T WHERE T.id = :tipologiaesame_id";
 		Query query = session.createQuery(hql);
 		query.setParameter("tipologiaesame_id", esameId);
-		int result = query.executeUpdate();
+		int result = query.executeUpdate();		
 		System.out.println("Row affected: " + result);
 	}
 }

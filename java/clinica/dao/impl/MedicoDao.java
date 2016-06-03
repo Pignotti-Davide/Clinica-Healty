@@ -17,8 +17,7 @@ import clinica.model.Medico;
 @Repository
 public class MedicoDao {
 
-	private static final Logger logger = LoggerFactory
-			.getLogger(MedicoDao.class);
+	private static final Logger logger = LoggerFactory.getLogger(MedicoDao.class);
 
 	@Autowired
 	private SessionFactory sessionFactory;

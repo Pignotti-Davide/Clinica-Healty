@@ -9,7 +9,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
 @Entity
+
 public class TipologiaEsame {
 	@Column(name="TIPOLOGIA_ID")
 	@Id
@@ -19,8 +23,10 @@ public class TipologiaEsame {
 	private String nome;
 	@Column(nullable=false)
 	private String descrizione;
+	@Autowired
 	@ElementCollection
-	private Map<String,String> nomeRequisiti;
+	private Map<String,String>requisiti;
+	@Autowired
 	@ElementCollection
 	private List<String> indicatoriRisultati;
 	public TipologiaEsame(){}
@@ -52,17 +58,17 @@ public class TipologiaEsame {
 	
 
 	public Map<String, String> getPrerequisiti() {
-		return nomeRequisiti;
+		return requisiti;
 	}
 
 	public void setPrerequisiti(Map<String, String> prerequisiti) {
-		this.nomeRequisiti = prerequisiti;
+		this.requisiti = prerequisiti;
 	}
 
 	@Override
 	public String toString() {
 		return "TipologiaEsame [idTipologiaEsame=" + idTipologiaEsame + ", nome=" + nome + ", descrizione="
-				+ descrizione + ", nomeRequisiti=" + nomeRequisiti + "]";
+				+ descrizione + ", nomeRequisiti=" + requisiti + "]";
 	}
 
 	public List<String> getIndicatoriRisultati() {

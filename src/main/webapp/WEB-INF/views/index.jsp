@@ -42,13 +42,11 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-<<<<<<< HEAD
+
                     <li>
                        <a class="navbar-brand" style="color:red"> ${pageContext.request.userPrincipal.name}</a>
                     </li>
-=======
-               
->>>>>>> refs/remotes/origin/master
+
                     <li>
                       
                     </li>
