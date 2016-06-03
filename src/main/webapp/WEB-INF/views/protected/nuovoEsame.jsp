@@ -19,19 +19,19 @@
 <form method="get" action="../controllerNuovoEsame" name="form">
 Seleziona Tipologia d'esame:
 <select name="tipologiaEsame">
-<% for(TipologiaEsame t:new FacadeDati().findAllTipologieEsami())
-	out.print( "<option value="+t.getIdTipologiaEsame()+">"+t.getNome()+"</option>");%>
-</select><br>
-Seleziona Paziente:
-<select name="paziente">
-<% for(Paziente p:new FacadeDati().findAllPazienti())
-	out.print( "<option value="+p.getIdPaziente()+">"+p.getNome()+" "+p.getCognome()+"</option>");%>
-</select><br>
-Seleziona Medico:
-<select name="medico">
-<% for(Medico m:new FacadeDati().findAllMedici())
-	out.print( "<option value="+m.getIdMedico()+">"+m.getNome()+" "+m.getCognome()+"</option>");%>
-</select><br>
+<%-- <% for(TipologiaEsame t:new FacadeDati().findAllTipologieEsami()) --%>
+<%-- 	out.print( "<option value="+t.getIdTipologiaEsame()+">"+t.getNome()+"</option>");%> --%>
+<!-- </select><br> -->
+<!-- Seleziona Paziente: -->
+<!-- <select name="paziente"> -->
+<%-- <% for(Paziente p:new FacadeDati().findAllPazienti()) --%>
+<%-- 	out.print( "<option value="+p.getIdPaziente()+">"+p.getNome()+" "+p.getCognome()+"</option>");%> --%>
+<!-- </select><br> -->
+<!-- Seleziona Medico: -->
+<!-- <select name="medico"> -->
+<%-- <% for(Medico m:new FacadeDati().findAllMedici()) --%>
+<%-- 	out.print( "<option value="+m.getIdMedico()+">"+m.getNome()+" "+m.getCognome()+"</option>");%> --%>
+<!-- </select><br> -->
 Seleziona la data dell'esame:
 <input name="dataPerL'esame" type="datetime" />
 	<input type="submit" value="invia" />
