@@ -1,9 +1,10 @@
-<%@page import="clinica.service.impl.*"%>
-<%@page import="clinica.model.*"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page session="true"%>
+<%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -49,23 +50,17 @@
         </div>
         <!-- /.container -->
     </nav>
-<img src="<c:url value="/resources/Grafica/logo3.jpg"/>">
-<center><h4>Clinica Healthy - Area amministrazione</h4>
+<center><img src="<c:url value="/resources/Grafica/logo3.jpg"/>">
+<h4>Clinica Healthy - Area amministrazione</h4>
 
 		<form:form method="post" action="addEsame"
 			modelAttribute="esame" name="form">
+				<label>Paziente:</label> <input path="paziente" type="text" /><br>
+<!-- 	<label>Tipologia:</label> -->
+<!-- <select name="tipologiaEsame"> -->
 
-			<div class="form-group">
-				
-				<label>Nome:</label> <form:input type="text" path="username" />
-			</div>
-			<div class="form-group">
- 
-	<label>Tipologia:</label>
-<select name="tipologiaEsame">
-
-<% for(TipologiaEsame t:new FacadeTipologiaEsame().listaTipologiaEsame()) 
-	out.print( "<option value="+t.getIdTipologiaEsame()+">"+t.getNome()+"</option>");%>
+<%-- <% for(TipologiaEsame t:new FacadeTipologiaEsame().listaTipologiaEsame())  --%>
+<%-- 	out.print( "<option value="+t.getIdTipologiaEsame()+">"+t.getNome()+"</option>");%> --%>
 <!--  </select><br>  -->
 <!-- 	<label>Paziente:</label> -->
 <!--  <select name="paziente">  -->
@@ -77,11 +72,9 @@
 <%--  <% for(Medico m:new FacadeMedico().findAllMedici()) --%>
 <%-- out.print( "<option value="+m.getIdMedico()+">"+m.getNome()+" "+m.getCognome()+"</option>");%>  --%>
 <!--  </select><br>  -->
-Seleziona la data dell'esame:
-<input name="dataEsame" type="datetime" />
-Seleziona la data di prenotazione dell'esame:
-<input name="dataPrenotazione" type="datetime" />
-	<input type="submit" value="invia" />
+<label>Seleziona la data:</label>
+<input path="prenotazione" type="datetime-local" /><br>
+	<input type="submit" value="Invia" />
 </form:form>
  <br><a href="index.html">Torna alla homepage</a></center>
 </body>

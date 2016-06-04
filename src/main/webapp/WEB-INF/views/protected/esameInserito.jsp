@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Area Amministrazione - Paziente inserito</title>
+<title>Area Amministrazione -Esame inserito</title>
  <!-- Bootstrap Core CSS -->
     <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 
@@ -51,8 +51,11 @@
 		<center>Inserimento Paziente</center>
 	</h4>
 	<center>
-		Hai inserito un nuovo Paziente <br> Nome:${paziente.nome}; <br> Cognome:${paziente.cognome}; <br>
-		Si prega di comunicare al paziente il suo identificatore: ${paziente.idPaziente}; <br><br> <br>
+		Hai inserito un nuovo Esame <br> Paziente:${esame.paziente.getCognome()} {esame.paziente.getNome()} <br>
+		 Tipologia:${esame.tipologia.nome}<br>
+		Medico: ${esame.medico.cognome} ${esame.medico.nome}<br>
+		Data di prenotazione:${esame.prenotazione}<br>
+		Data in cui si svolgerà l'esame:${esame.esecuzioneEsame}<br>
 		<a href="protected/homeAdmin">Torna alla Pagina d'amministrazione</a><br>
 		<a href="index">Torna alla HomePage</a>
 		</center>

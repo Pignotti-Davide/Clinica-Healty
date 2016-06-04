@@ -30,21 +30,13 @@ public class TipologiaEsameDao {
 		session.getTransaction().commit();
 	}
 
-	
+	@SuppressWarnings("unchecked")
 	public List<TipologiaEsame> listaTipologiaEsame() {
-		System.out.println("ok");
-		Session session=sessionFactory.getCurrentSession();
-		System.out.println("ok");
+		Session session=sessionFactory.openSession();
 		session.beginTransaction();
-		String hql = "FROM TipologiaEsame";
-		System.out.println("ok");
-		Query query = session.createQuery(hql);
-		System.out.println("ok");
+		Query query = session.createQuery("from TipologiaEsame ");
 		List<TipologiaEsame> empList = query.list();
-		System.out.println("ok2");
 		logger.info("TipologiaEsame List::" + empList);
-		System.out.println("ok3");
-		System.out.println(empList.get(1));
 		return empList;
 	}
 
