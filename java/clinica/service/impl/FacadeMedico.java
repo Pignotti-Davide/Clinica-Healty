@@ -18,4 +18,7 @@ public class FacadeMedico {
 	public List<Medico> findAllMedici(){
 		return this.medicoDao.listaMedico();
 	}
+	public Medico retrieveMedico(long id){
+		return medicoDao.findMedico(id);
+	}
 }

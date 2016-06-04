@@ -60,6 +60,9 @@ public class Medico {
 	public void setSpecializzazione(String specializzazione) {
 		this.specializzazione = specializzazione;
 	}
-	
+	@Override
+	public String toString(){
+		return cognome+" "+nome;
+	}
 	
 }

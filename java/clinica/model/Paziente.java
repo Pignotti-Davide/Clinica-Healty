@@ -1,7 +1,5 @@
 package clinica.model;
 
-import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,20 +19,13 @@ public class Paziente {
 	@Column(nullable=false)
 	private String cognome;
 	@OneToMany(mappedBy="paziente",cascade={CascadeType.MERGE, CascadeType.REMOVE})
-	
-	
-	
-	
+
 	public Long getIdPaziente() {
 		return idPaziente;
 	}
-
-
-
 	public void setIdPaziente(Long idPaziente) {
 		this.idPaziente = idPaziente;
 	}
-
 
 	public String getNome() {
 		return nome;
@@ -54,7 +45,10 @@ public class Paziente {
 	public void setCognome(String cognome) {
 		this.cognome = cognome;
 	}
-
-
+@Override
+public String toString(){
+	return cognome+" "+nome;
+	
+}
 	public Paziente(){}
 }

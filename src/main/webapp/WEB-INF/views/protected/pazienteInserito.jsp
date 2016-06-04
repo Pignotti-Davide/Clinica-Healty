@@ -53,7 +53,7 @@
 	<center>
 		Hai inserito un nuovo Paziente <br> Nome:${paziente.nome}; <br> Cognome:${paziente.cognome}; <br>
 		Si prega di comunicare al paziente il suo identificatore: ${paziente.idPaziente}; <br><br> <br>
-		<a href="protected/homeAdmin">Torna alla Pagina d'amministrazione</a><br>
+		<a href="admin">Torna alla Pagina d'amministrazione</a><br>
 		<a href="index">Torna alla HomePage</a>
 		</center>
 </body>

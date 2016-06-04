@@ -48,4 +48,11 @@ public class PazienteDao {
 		int result = query.executeUpdate();
 		System.out.println("Row affected: " + result);
 	}
+	public Paziente findPaziente(long id){
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		Paziente p=(Paziente) session.get(Paziente.class, id);
+		session.getTransaction().commit();
+		return p;
+	}
 }

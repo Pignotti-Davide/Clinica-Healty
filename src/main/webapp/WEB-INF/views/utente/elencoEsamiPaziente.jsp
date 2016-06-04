@@ -25,7 +25,7 @@
 				</h4> <%
  	Paziente p = (Paziente) session.getAttribute("paziente");
  	for (Esame e : new EsameDao().retrieveEsamiDelPaziente(p)) {
- 		out.print("Codice esame:" + e.getIdEsame() + "		Nome esame:" + e.getTipologiaEsame().getNome()
+ 		out.print("Codice esame:" + e.getIdEsame() + "		Nome esame:" + e.getTipologia().getNome()
  				+ "");
  	}
  %>

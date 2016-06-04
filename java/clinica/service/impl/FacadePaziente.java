@@ -18,4 +18,7 @@ public class FacadePaziente {
 	public List<Paziente> findAllPazienti(){
 		return this.pazienteDao.listaPaziente();
 	}
+	public Paziente retrievePaziente(long id){
+		return this.pazienteDao.findPaziente(id);
+	}
 }

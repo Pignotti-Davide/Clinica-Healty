@@ -11,10 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-
-import org.springframework.beans.factory.annotation.Autowired;
 @Entity
-
 public class TipologiaEsame {
 	@Column(name="TIPOLOGIA_ID")
 	@Id
@@ -64,8 +61,7 @@ public class TipologiaEsame {
 
 	@Override
 	public String toString() {
-		return "TipologiaEsame [idTipologiaEsame=" + idTipologiaEsame + ", nome=" + nome + ", descrizione="
-				+ descrizione + ", nomeRequisiti=" + requisiti + "]";
+		return nome;
 	}
 
 	public List<String> getIndicatoriRisultati() {
@@ -75,5 +71,6 @@ public class TipologiaEsame {
 	public void setIndicatoriRisultati(List<String> indicatoriRisultati) {
 		this.indicatoriRisultati = indicatoriRisultati;
 	}
+	
 
 }

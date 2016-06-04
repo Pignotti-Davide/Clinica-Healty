@@ -76,11 +76,11 @@ function visualizza(id){
 							%>
 							<div id="testo"><a href="#" onclick="visualizza('immagine<%out.print(lista.indexOf(tipo));%>'); return false">
 <%out.print(tipo.getNome()); %></a></div>
-							<%if(tipo.getPrerequisiti().isEmpty())
+							<%if(tipo.getRequisiti().isEmpty())
 								out.print("Nessuno requisito richiesto"); 
 							out.print("<br>"); %>
-								<div id="immagine<%out.print(lista.indexOf(tipo));%>" style="display:none"><%for(String s:tipo.getPrerequisiti().keySet()){
-									out.print(tipo.getPrerequisiti().get(s));out.print("<br>"); }%></div>
+								<div id="immagine<%out.print(lista.indexOf(tipo));%>" style="display:none"><%for(String s:tipo.getRequisiti().keySet()){
+									out.print(tipo.getRequisiti().get(s));out.print("<br>"); }%></div>
 								
 								
 								<%

@@ -48,5 +48,12 @@ public class MedicoDao {
 		int result = query.executeUpdate();
 		System.out.println("Row affected: " + result);
 	}
+	public Medico findMedico(long id){
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		Medico m=(Medico) session.get(Medico.class, id);
+		session.getTransaction().commit();
+		return m;
+	}
 }
 

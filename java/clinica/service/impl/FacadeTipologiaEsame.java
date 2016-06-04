@@ -15,15 +15,19 @@ public class FacadeTipologiaEsame {
 	private TipologiaEsameDao tipologiaEsameDao;
 
 	public List<TipologiaEsame> listaTipologiaEsame() {
-		return tipologiaEsameDao.listaTipologiaEsame();
+		return this.tipologiaEsameDao.listaTipologiaEsame();
 	}
 
 	public void addTipologiaEsame(TipologiaEsame tipologiaEsame) {
 		this.tipologiaEsameDao.insertTipologiaEsame(tipologiaEsame);
 	}
-//
-//	public void deleteTipologiaEsame(long tipId) {
-//		this.tipologiaEsameDao.deleteTipologiaEsame(tipId);
-//	}
+
+	public void deleteTipologiaEsame(long tipId) {
+		this.tipologiaEsameDao.deleteTipologiaEsame(tipId);
+	}
+	
+	public TipologiaEsame retrieveTipologiaEsame(long id){
+		return this.tipologiaEsameDao.findTipologiaEsame(id);
+	}
 
 }

@@ -44,7 +44,7 @@ public class ControllerPaziente {
 		if(erroriPresenti)
 			nextPage  = "nuovoPaziente";
 		else {
-			nextPage="/protected/pazienteInserito";
+			nextPage="protected/pazienteInserito";
 		}
 		facadePaziente.addPaziente(paziente);
 		return nextPage;   
