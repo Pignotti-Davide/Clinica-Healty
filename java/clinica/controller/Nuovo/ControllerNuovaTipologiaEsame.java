@@ -43,8 +43,8 @@ public class ControllerNuovaTipologiaEsame {
 		String nextPage=null;
 		Map<String, String> requisiti = new HashMap<>();
 		requisiti=creaMappaRequisiti(num2,request);
-		tipologiaEsame.setPrerequisiti(requisiti);
-		tipologiaEsame.setIndicatoriRisultati(creaListaRisultati( num,request));
+		tipologiaEsame.setRequisiti(requisiti);
+		tipologiaEsame.setIndicatoriRisultati(creaListaRisultati(num,request));
 		if(tipologiaEsame.getNome().equals("")){
 			erroriPresenti=true;
 			model.addAttribute("nomeError", "Campo obbligatorio");
@@ -58,8 +58,14 @@ public class ControllerNuovaTipologiaEsame {
 			nextPage  = "nuovaTipologiaEsame";
 		else {
 			nextPage="/protected/tipologiaEsameInserita";
+for(int i=0; i<tipologiaEsame.getRequisiti().size();i++){
 
-//			tipologiaEsameFacade.addTipologiaEsame(tipologiaEsame);
+	System.out.println(tipologiaEsame.getRequisiti().keySet().toArray()[i]);
+	System.out.println(tipologiaEsame.getRequisiti().get(i));}
+for(int i=0;i<tipologiaEsame.getIndicatoriRisultati().size();i++){
+	System.out.println(tipologiaEsame.getIndicatoriRisultati().get(i));
+}
+tipologiaEsameFacade.addTipologiaEsame(tipologiaEsame);
 		}
 		return nextPage;   
 	}

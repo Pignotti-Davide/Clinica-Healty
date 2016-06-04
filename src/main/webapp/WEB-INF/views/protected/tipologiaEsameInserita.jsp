@@ -61,17 +61,17 @@
 		  <c:forEach items="${tipologiaEsame.indicatoriRisultati}" var="indicatoriRisultati" 
            varStatus="status">
            <tr> 
-                <td>${indicatoriRisultati}<br></td>
+                <td>Tipi risultati: ${indicatoriRisultati}<br></td>
             </tr> 
          </c:forEach>
          <td>Lista Requisiti: </td><br>
-<%-- 		  <c:forEach items="${tipologiaEsame.nomeRequisiti}" var="nomeRequisiti"  --%>
-<%--            varStatus="status"> --%>
-<!--            <tr>  -->
-<%--                   <td>${nomeRequisiti.key}:</td><br> --%>
-<%--                <td>${nomeRequisiti.value}</td> --%>
-<!--             </tr>  -->
-<%--          </c:forEach> --%>
+	  <c:forEach items="${tipologiaEsame.requisiti}" var="requisiti" 
+        varStatus="status">
+           <tr>
+                 <td>Nome requisito: ${requisiti.key}:</td>
+               <td>Descrizione requisito:${requisiti.value}</td>
+            </tr> 
+          </c:forEach>
 		<a href="${pageContext.request.contextPath}/eliminaTipologiaEsame/${tipologiaEsame.idTipologiaEsame}">Cancella La Tipologia D'esame</a><br><br>
 		<a href="protected/homeAdmin">Torna alla Pagina d'amministrazione</a><br><br>
 		<a href="index">Torna alla HomePage</a>

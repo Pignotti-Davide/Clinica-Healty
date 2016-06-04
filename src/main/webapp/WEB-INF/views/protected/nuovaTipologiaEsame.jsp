@@ -46,7 +46,7 @@ function AggiungiRequisito(requisiti){
 			// Inserisco una riga ad ogni ciclo
 			for(i=1; i<=numero_requisiti; i++){
 				righe = righe + "Requisito n°"+i+
- 				" : Nome requisito: <input type='text' path='requisito"+i+"' size='10' />"+
+ 				" : Nome requisito: <input type='text' name='requisito"+i+"' size='10' />"+
 				"	Descrizione requisito: <input type='text' name='descrizione_requisito"+i+"' size='40'/>"+
 				"<br/>";
 			}

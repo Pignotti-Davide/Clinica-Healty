@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,11 +24,9 @@ public class TipologiaEsame {
 	private String nome;
 	@Column(nullable=false)
 	private String descrizione;
-	@Autowired
-	@ElementCollection
+	@ElementCollection(fetch=FetchType.EAGER)
 	private Map<String,String>requisiti;
-	@Autowired
-	@ElementCollection
+	@ElementCollection(fetch=FetchType.EAGER)
 	private List<String> indicatoriRisultati;
 	public TipologiaEsame(){}
 
@@ -55,14 +54,12 @@ public class TipologiaEsame {
 		this.descrizione = descrizione;
 	}
 
-	
-
-	public Map<String, String> getPrerequisiti() {
+	public Map<String, String> getRequisiti() {
 		return requisiti;
 	}
 
-	public void setPrerequisiti(Map<String, String> prerequisiti) {
-		this.requisiti = prerequisiti;
+	public void setRequisiti(Map<String, String> requisiti) {
+		this.requisiti = requisiti;
 	}
 
 	@Override
