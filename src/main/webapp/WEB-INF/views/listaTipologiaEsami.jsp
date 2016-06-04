@@ -1,16 +1,11 @@
 
-<%@ page import="clinica.model.TipologiaEsame"%>
-<<<<<<< HEAD
-=======
 
->>>>>>> refs/remotes/origin/master
+<%@ page import="clinica.model.TipologiaEsame"%>
+<%@ page import="clinica.service.impl.FacadeTipologiaEsame"%>
 <%@ page import="clinica.dao.impl.TipologiaEsameDao"%>
 <%@ page import="java.util.List"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<<<<<<< HEAD
 
-=======
->>>>>>> refs/remotes/origin/master
 
 <!doctype html>
 <html>
@@ -35,12 +30,23 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">LogIn:</a>
+                <a class="navbar-brand" href="admin">Area Amministrazione:</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
 
+                    <li>
+                       <a class="navbar-brand" style="color:red"> ${pageContext.request.userPrincipal.name}</a>
+                    </li>
+
+                    <li>
+                      
+                    </li>
+                    <li>
+               
+                    </li>
+                </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
@@ -63,8 +69,8 @@ function visualizza(id){
   }
 }
 </script>
-	<% 	
-		List<TipologiaEsame> lista =null;
+	<% 	FacadeTipologiaEsame facade=  new FacadeTipologiaEsame();
+		List<TipologiaEsame> lista =facade.listaTipologiaEsame();
 	
 						for(TipologiaEsame tipo: lista){
 							%>
@@ -84,13 +90,6 @@ function visualizza(id){
 							out.print("<br>"); 
 							}%>
 		<tr>
-<%-- 		  <c:forEach items="${contactForm.contactMap}" var="contactMap" --%>
-<%--             varStatus="status"> --%>
-<!--             <tr> -->
-<%--                 <td>${contactMap.key}</td> --%>
-<%--                 <td>${contactMap.value}</td> --%>
-<!--             </tr> -->
-<%--         </c:forEach> --%>
   <h4><a href="index.html">Torna alla homepage</a>
                                 </h4>
 		</tr>
@@ -99,4 +98,3 @@ function visualizza(id){
 		<center>
 </body>
 </html>
-
