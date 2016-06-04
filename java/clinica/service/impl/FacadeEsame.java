@@ -22,7 +22,7 @@ public class FacadeEsame {
 		this.esameDao.insertEsame(Esame);
 	}
 
-	public void deleteEsame(Integer esameId) {
+	public void deleteEsame(long esameId) {
 		this.esameDao.deleteEsame(esameId);
 	}
 

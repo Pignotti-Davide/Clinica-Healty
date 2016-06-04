@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import clinica.model.Esame;
+import clinica.model.TipologiaEsame;
 import clinica.service.impl.FacadeEsame;
 @Controller
 public class ControllerNuovoEsame {
@@ -69,7 +70,7 @@ public class ControllerNuovoEsame {
 		facadeEsame.addEsame(esame);
 		return nextPage;   
 	}
-	 public static boolean isValidDate(String inDate) {
+	 public  boolean isValidDate(String inDate) {
 		    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		    dateFormat.setLenient(false);
 		    try {
@@ -79,4 +80,9 @@ public class ControllerNuovoEsame {
 		    }
 		    return true;
 		  }
+		@RequestMapping(value="/eliminaEsame/{id}",method = RequestMethod.GET)
+		public String deleteEsame(@PathVariable("id")long Id,@ModelAttribute Esame Esame){
+			facadeEsame.deleteEsame(Id);
+			return "index";
+		}
 }

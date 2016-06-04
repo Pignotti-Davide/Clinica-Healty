@@ -39,7 +39,7 @@ public class EsameDao {
 		return empList;
 	}
 
-	public void deleteEsame(Integer esameId) {
+	public void deleteEsame(long esameId) {
 		System.out.println("hql Using Delete");
 		Session session = sessionFactory.openSession();
 		String hql = "DELETE from Esame E WHERE E.id = :esame_id";
