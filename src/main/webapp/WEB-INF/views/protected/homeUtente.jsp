@@ -19,9 +19,7 @@
 <body>
 
   <h4><center>Area dedicata agli utenti</center>    </h4>
-                             <center>Ciao, <%out.print(""); %>  , sei qui come <%out.print(""); %>!!!!!
-                               
-                               <br>Ecco ciò che puoi fare: 
+                         
                                  <br><a href="protected/risultatiPaziente.jsp">Consulta i risultati degli esami</a>
                                    <br><a href="index.html">Torna alla homepage</a>
                                   

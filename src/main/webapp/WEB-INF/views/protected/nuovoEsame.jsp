@@ -16,40 +16,73 @@
     <link href="<c:url value="/resources/css/shop-homepage.css" />" rel="stylesheet">
 </head>
 <body>
+<!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="admin">Area Amministrazione:</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+
+                    <li>
+                       <a class="navbar-brand" style="color:red"> ${pageContext.request.userPrincipal.name}</a>
+                    </li>
+
+                    <li>
+                      
+                    </li>
+                    <li>
+               
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
 <img src="<c:url value="/resources/Grafica/logo3.jpg"/>">
-<center><h4>Aggiungi un nuovo esame</h4>
-<	<form:form action="nuovoEsame" modelAttribute="esame" method="POST">
+<center><h4>Clinica Healthy - Area amministrazione</h4>
+
+		<form:form method="post" action="addEsame"
+			modelAttribute="esame" name="form">
 
 			<div class="form-group">
-				<p>${usernameError}</p>
+				
 				<label>Nome:</label> <form:input type="text" path="username" />
 			</div>
 			<div class="form-group">
-				<p>${passwordError}</p>
-				<label>Password</label><form:input type="password" path="password" />
-			</div>
-
-			<button type="submit" class="btn btn-default">Invia</button>
-		</form:form>
-Seleziona Tipologia d'esame:
+ 
+	<label>Tipologia:</label>
 <select name="tipologiaEsame">
-<%-- <% for(TipologiaEsame t:new FacadeDati().findAllTipologieEsami()) --%>
-<%-- 	out.print( "<option value="+t.getIdTipologiaEsame()+">"+t.getNome()+"</option>");%> --%>
-<!-- </select><br> -->
-<!-- Seleziona Paziente: -->
-<!-- <select name="paziente"> -->
-<%-- <% for(Paziente p:new FacadeDati().findAllPazienti()) --%>
-<%-- 	out.print( "<option value="+p.getIdPaziente()+">"+p.getNome()+" "+p.getCognome()+"</option>");%> --%>
-<!-- </select><br> -->
-<!-- Seleziona Medico: -->
-<!-- <select name="medico"> -->
-<%-- <% for(Medico m:new FacadeDati().findAllMedici()) --%>
-<%-- 	out.print( "<option value="+m.getIdMedico()+">"+m.getNome()+" "+m.getCognome()+"</option>");%> --%>
-<!-- </select><br> -->
+
+<% for(TipologiaEsame t:new FacadeTipologiaEsame().listaTipologiaEsame()) 
+	out.print( "<option value="+t.getIdTipologiaEsame()+">"+t.getNome()+"</option>");%>
+<!--  </select><br>  -->
+<!-- 	<label>Paziente:</label> -->
+<!--  <select name="paziente">  -->
+<%--  <% for(Paziente p:new FacadePaziente().findAllPazienti())  --%>
+<%--  	out.print( "<option value="+p.getIdPaziente()+">"+p.getNome()+" "+p.getCognome()+"</option>");%> --%>
+<!--  </select><br> -->
+<!-- 	<label>Medico:</label> -->
+<!--  <select name="medico">  -->
+<%--  <% for(Medico m:new FacadeMedico().findAllMedici()) --%>
+<%-- out.print( "<option value="+m.getIdMedico()+">"+m.getNome()+" "+m.getCognome()+"</option>");%>  --%>
+<!--  </select><br>  -->
 Seleziona la data dell'esame:
-<input name="dataPerL'esame" type="datetime" />
+<input name="dataEsame" type="datetime" />
+Seleziona la data di prenotazione dell'esame:
+<input name="dataPrenotazione" type="datetime" />
 	<input type="submit" value="invia" />
-	</form>
+</form:form>
  <br><a href="index.html">Torna alla homepage</a></center>
 </body>
 </html>

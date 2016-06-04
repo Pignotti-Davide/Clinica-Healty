@@ -8,7 +8,19 @@
     <meta name="author" content="">
 
     <title>Clinica Healthy</title>
+  <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="<c:url value="/resources/extra/css/bootstrap.min.css" />"type="text/css">
 
+    <!-- Custom Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="<c:url value="/resources/extra/font-awesome/css/font-awesome.min.css"/>" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="<c:url value="/resources/extra/css/magnific-popup.css" />"type="text/css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="<c:url value="/resources/extra/css/creative.css"/>" type="text/css">
     <!-- Bootstrap Core CSS -->
     <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 
@@ -26,6 +38,7 @@
 
 <body>
 
+  
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
@@ -122,19 +135,18 @@
 
                 <div class="row">
 
-                    <div class="col-sm-4 col-lg-4 col-md-4">
+                   <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="<c:url value="/resources/Grafica/offerte.jpg"/>" alt="">
+                          <img src="<c:url value="/resources/Grafica/offerte.jpg"/>" alt="">
                             <div class="caption">
-                  
-                                <h4><a href="#">Accedi all'area paziente</a>
+           
+                                <h4><a href="listaMedici.jsp">Accedi all'area paziente</a>
                                 </h4>
-                                <p>Avrai la possibilità di  consultare i risultati dei tuoi esami attraverso un'autentificazione</a>.</p>
+                                <p>Potrai consultare i risultati degli esami a tuo nome </p>
                             </div>
-                           
+                          
                         </div>
                     </div>
-
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
                           <img src="<c:url value="/resources/Grafica/offerte2.jpg"/>" alt="">
@@ -185,13 +197,44 @@
         </footer>
 
     </div>
+<!--    <div class="col-sm-4 col-lg-4 col-md-4"> -->
+<!--                         <div class="thumbnail"> -->
+<!--                     <a href="img/portfolio/fullsize/5.jpg" class="portfolio-box"> -->
+<%--                        <img src="<c:url value="/resources/Grafica/offerte.jpg"/>" alt="" class="img-responsive"> --%>
+<!--                         <div class="portfolio-box-caption"> -->
+<!--                             <div class="portfolio-box-caption-content"> -->
+<!--                                 <div class="project-category text-faded"> -->
+<!--                                     Category -->
+<!--                                 </div> -->
+<!--                                 <div class="project-name"> -->
+<!--                                     Project Name -->
+<!--                                 </div> -->
+<!--                             </div> -->
+<!--                         </div> -->
+<!--                     </a> -->
+<!--                 </div> -->
+
+    </div>
     <!-- /.container -->
 
     <!-- jQuery -->
     <script src="<c:url value="/resources/js/jquery.js" />"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
+<!-- jQuery -->
+    <script src="<c:url value="/resources/extra/js/jquery.js"/>"></script>
 
+    <!-- Bootstrap Core JavaScript -->
+    <script src="<c:url value="/resources/extra/js/bootstrap.min.js"/>"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="<c:url value="/resources/extra/js/scrollreveal.min.js"/>"></script>
+    <script src="<c:url value="/resources/extra/js/jquery.easing.min.js"/>"></script>
+    <script src="<c:url value="/resources/extra/js/jquery.fittext.js"/>"></script>
+    <script src="<c:url value="/resources/extra/js/jquery.magnific-popup.min.js"/>"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="<c:url value="/resources/extra/js/creative.js"/>"></script>
 </body>
 
 </html>

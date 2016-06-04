@@ -59,7 +59,7 @@ public class ControllerNuovaTipologiaEsame {
 		else {
 			nextPage="/protected/tipologiaEsameInserita";
 
-			tipologiaEsameFacade.addTipologiaEsame(tipologiaEsame);
+//			tipologiaEsameFacade.addTipologiaEsame(tipologiaEsame);
 		}
 		return nextPage;   
 	}
@@ -73,7 +73,7 @@ public class ControllerNuovaTipologiaEsame {
 	}
 	@RequestMapping(value="/eliminaTipologiaEsame/{id}",method = RequestMethod.GET)
 	public String deleteTipologiaEsame(@PathVariable("id")long Id,@ModelAttribute TipologiaEsame tipologiaEsame){
-		tipologiaEsameFacade.deleteTipologiaEsame(Id);
+//		tipologiaEsameFacade.deleteTipologiaEsame(Id);
 		return "index";
 	}
 	public List<String> creaListaRisultati(int numero,HttpServletRequest request){

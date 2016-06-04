@@ -1,5 +1,7 @@
 package clinica.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,5 +14,8 @@ public class FacadePaziente {
 	private PazienteDao pazienteDao;
 	public void addPaziente(Paziente p){
 		pazienteDao.insertPaziente(p);
+	}
+	public List<Paziente> findAllPazienti(){
+		return this.pazienteDao.listaPaziente();
 	}
 }

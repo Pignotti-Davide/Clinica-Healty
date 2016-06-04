@@ -8,16 +8,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<<<<<<< HEAD
 <title>Clinica Healthy - Area amministrazione</title>
  <!-- Bootstrap Core CSS -->
     <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
-=======
 <title>Aggiungi un nuovo Paziente</title>
 <!-- Bootstrap Core CSS -->
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet">
->>>>>>> refs/remotes/origin/master
 
 <!-- Custom CSS -->
 <link href="<c:url value="/resources/css/shop-homepage.css" />"

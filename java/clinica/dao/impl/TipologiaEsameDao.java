@@ -2,6 +2,7 @@ package clinica.dao.impl;
 
 import java.util.List;
 
+import javax.persistence.criteria.CriteriaQuery;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -29,13 +30,21 @@ public class TipologiaEsameDao {
 		session.getTransaction().commit();
 	}
 
-	@SuppressWarnings("unchecked")
+	
 	public List<TipologiaEsame> listaTipologiaEsame() {
-		Session session = sessionFactory.openSession();
+		System.out.println("ok");
+		Session session=sessionFactory.getCurrentSession();
+		System.out.println("ok");
+		session.beginTransaction();
 		String hql = "FROM TipologiaEsame";
+		System.out.println("ok");
 		Query query = session.createQuery(hql);
+		System.out.println("ok");
 		List<TipologiaEsame> empList = query.list();
+		System.out.println("ok2");
 		logger.info("TipologiaEsame List::" + empList);
+		System.out.println("ok3");
+		System.out.println(empList.get(1));
 		return empList;
 	}
 

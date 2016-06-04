@@ -18,7 +18,7 @@ public class FacadeEsame {
 		return this.esameDao.listaEsame();
 	}
 
-	public void insertEsame(Esame Esame) {
+	public void addEsame(Esame Esame) {
 		this.esameDao.insertEsame(Esame);
 	}
 

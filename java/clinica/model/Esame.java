@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 
 @Entity
 public class Esame {
@@ -27,8 +29,10 @@ public class Esame {
 	@OneToOne
 	private TipologiaEsame tipologiaEsame;
 	@Column(nullable=false)
+    @DateTimeFormat(pattern="dd/MM/yyyy")
 	private Date prenotazione;
 	@Column(nullable=false)
+	 @DateTimeFormat(pattern="dd/MM/yyyy")
 	private Date esecuzioneEsame;
 	@ElementCollection
 	private Map<String,String> risultati;
