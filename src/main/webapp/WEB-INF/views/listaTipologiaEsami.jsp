@@ -4,6 +4,8 @@
 <%@ page import="clinica.model.TipologiaEsame"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.Map"%>
+<%@ page import="java.util.HashMap"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
@@ -67,27 +69,19 @@ function visualizza(id){
   }
 }
 </script>
-
 <c:forEach items="${lista}" var="tipo" varStatus="status">
-      <div id="testo">
-			<a href="#"
-				onclick="visualizza('immagine${status.index}');">
+      <div id="testo">	
+			<a href="<c:url value="#" />" onclick="visualizza('immagine${status.index}');">
 				${tipo.nome}
+				
 			</a>
-		</div>
-		<%TipologiaEsame tipo=(TipologiaEsame) pageContext.getAttribute("tipo");
-		if(tipo.getRequisiti().isEmpty())
-			out.print("Nessuno requisito richiesto"); 
-			out.print("<br>"); %>
-		<div id="immagine${status.index}"
-			style="display: none"></div>
-			<%
-			for(String s:tipo.getRequisiti().keySet()){
-					out.print(tipo.getRequisiti().get(s));out.print("<br>");
-							out.print("<br>"); 
-							out.print("------------------------------");
-							out.print("<br>"); 
-							}%>
+		</div>		
+		<div id="immagine${status.index}" style="display: none"></div>
+	<c:forEach items="${requisiti}${status.index}" var="requisiti" varStatus="status">
+						  <td>Nome requisito: ${requisiti}:</td>
+               <td>Descrizione requisito:${requisiti}</td>
+							<tr>
+							</c:forEach>
 </c:forEach>
 		
 		

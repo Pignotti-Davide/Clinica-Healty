@@ -46,6 +46,15 @@ public class TipologiaEsameDaoImpl implements TipologiaEsameDao{
 		return t;
 		
 	}
+
+	public TipologiaEsame findMappaRequisiti(long id){
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		TipologiaEsame t=(TipologiaEsame) session.get(TipologiaEsame.class, id);
+		session.getTransaction().commit();
+		return t;
+		
+	}
 	@Override
 	public void deleteTipologiaEsame(long id) {
 		System.out.println("hql Using Delete");

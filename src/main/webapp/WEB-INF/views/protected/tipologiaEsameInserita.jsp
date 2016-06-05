@@ -56,7 +56,6 @@
 		Nome:${tipologiaEsame.nome}; <br>
 		<tr>
 		<td>Decrizione: ${tipologiaEsame.descrizione}</td><br>
-		<td>Id: ${tipologiaEsame.idTipologiaEsame}</td><br>
 		<td>Lista Tipologia Risultati: </td><br>
 		  <c:forEach items="${tipologiaEsame.indicatoriRisultati}" var="indicatoriRisultati" 
            varStatus="status">

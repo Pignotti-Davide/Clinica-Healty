@@ -57,8 +57,8 @@ public class ControllerTipologiaEsame {
 			nextPage  = "nuovaTipologiaEsame";
 		else {
 			nextPage="/protected/tipologiaEsameInserita";
-		tipologiaEsameFacade.addTipologiaEsame(tipologiaEsame);
-			}
+			tipologiaEsameFacade.addTipologiaEsame(tipologiaEsame);
+		}
 		return nextPage;   
 	}
 
@@ -75,23 +75,33 @@ public class ControllerTipologiaEsame {
 		return "index";
 	}
 	@RequestMapping(value="/listaTipologiaEsami", method=RequestMethod.GET)
-	public String toListaTipologiaEsami(@ModelAttribute("lista") ArrayList<TipologiaEsame> lista){
-		lista=(ArrayList<TipologiaEsame>) tipologiaEsameFacade.findAll();
+	public String toListaTipologiaEsami(Model model){
+		List<TipologiaEsame>lista=(ArrayList<TipologiaEsame>) tipologiaEsameFacade.findAll();
 		for (TipologiaEsame tipologiaEsame : lista) {
 			System.out.println(tipologiaEsame.getNome());
 		}
+		List<Long> listaId = new ArrayList<>();
+		for(TipologiaEsame tipologiaEsame : lista){
+			listaId.add(tipologiaEsame.getIdTipologiaEsame());
+		}
+		TipologiaEsame app = new TipologiaEsame();
+			for(long i:listaId){
+				app = tipologiaEsameFacade.retrieveTipologiaEsame(i);
+				model.addAttribute("requisiti"+i,app.getRequisiti());
+			}
+		model.addAttribute("lista", lista);
 		return "listaTipologiaEsami";
-		
+
 	}
-	
+
 	public List<String> creaListaRisultati(int numero,HttpServletRequest request){
 		List<String> listaRisultati=new ArrayList<String>();
 		for(int i=1; i<=numero; i++)
 			listaRisultati.add(request.getParameter("risultato"+i));
 		return listaRisultati;
 	}
-	
-	
+
+
 
 }
 

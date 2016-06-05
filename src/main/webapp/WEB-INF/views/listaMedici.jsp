@@ -1,7 +1,7 @@
 
 <%@page import="java.util.ArrayList"%>
 <%@ page import="clinica.model.Medico"%>
-<%@ page import="clinica.dao.impl.MedicoDao"%>
+<%@ page import="clinica.dao.impl.MedicoDaoImpl"%>
 <%@ page import="java.util.List"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
