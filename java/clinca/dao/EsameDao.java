@@ -11,4 +11,5 @@ public interface EsameDao {
 	public List<Esame> findAll();
 	public void deleteEsame(long esameId);
 	public List<Esame> findEsamiDelPaziente(Paziente p);
+	public Esame findEsame(long id);
 }

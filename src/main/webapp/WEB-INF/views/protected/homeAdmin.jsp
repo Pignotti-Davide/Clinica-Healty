@@ -84,7 +84,11 @@
 					href="nuovaTipologiaEsame" alt="click">
 			</map>
 			<br>
+<<<<<<< HEAD
+			<a href="inserisciRisultati">Inserisci risultati</a>
+=======
 			<br>
+>>>>>>> refs/remotes/origin/master
 			<a href="index">Torna alla homepage</a>
 		</center>
 </body>

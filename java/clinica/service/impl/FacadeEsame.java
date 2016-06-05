@@ -25,5 +25,7 @@ public class FacadeEsame {
 	public void deleteEsame(long esameId) {
 		this.esameDaoImpl.deleteEsame(esameId);
 	}
-
+	public Esame findEsame(long id){
+		return this.esameDaoImpl.findEsame(id);
+	}
 }
