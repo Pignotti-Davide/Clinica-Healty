@@ -34,7 +34,7 @@
 	
 	<%
 		{	int i = 0;
-			Esame e = (Esame) application.getAttribute("esame");
+		Esame e = (Esame) application.getAttribute("esame");
 			if (e != null)
 				for (String s : e.getRisultati().keySet()) {
 					out.print(s + ": <input type='text' name='risultato" + i + "' size='10' /> <br>");
