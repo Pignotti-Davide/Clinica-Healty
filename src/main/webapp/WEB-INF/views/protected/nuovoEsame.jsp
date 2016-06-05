@@ -22,6 +22,18 @@
 	rel="stylesheet">
 </head>
 <body>
+<script>
+function processData(f1,f2,f3,f4,f5,f6){
+	var v1 = document.getElementById(f1).value;
+	var v2 = document.getElementById(f2).value;
+	var v3 = document.getElementById(f3).value;
+	var v4 = document.getElementById(f4).value;
+	var v5 = document.getElementById(f5).value;
+	var v6 = document.getElementById(f6).value;
+	alert(v1+"\n"+v2+"\n"+v3+"\n"+v4+"\n"+v5+"\n"+v6);
+
+}
+</script>
 	<!-- Navigation -->
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<div class="container">
@@ -52,7 +64,7 @@
 	<!-- /.container --> </nav>
 	<center>
 		<img src="<c:url value="/resources/Grafica/logo3.jpg"/>">
-		<h4>Clinica Healthy - Area amministrazione</h4>
+		<h4>Inserisci un nuovo esame</h4>
 
 		<form:form method="post" action="addEsame" modelAttribute="esame"
 			name="form">
@@ -71,9 +83,10 @@
 				<form:options items="${pazienti}" itemLabel="nome"
 					itemValue="idPaziente" />
 			</form:select><br>
-			Inserisci la data e l'ora: (Importante: inserisci la data nel seguente formato: dd/MM/yyyy HH:mm)
-<form:input path="esecuzioneEsame" type="datetime-local" /><br>
-	<input type="submit" value="Invia" />
+			Inserisci la data e l'ora:  
+<input type="date" name="field2" id="field2" /><br /><br />
+
+	<input  type="submit" value="Invia" />
 		</form:form>
 		<br> <a href="index">Torna alla homepage</a>
 	</center>

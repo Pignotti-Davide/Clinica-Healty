@@ -4,8 +4,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.Date;
+import java.util.TimeZone;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import clinica.model.Esame;
 import clinica.model.Medico;
@@ -48,6 +51,9 @@ public class ControllerEsame {
         binder.registerCustomEditor(Paziente.class, this.editorPaziente);
         binder.registerCustomEditor(TipologiaEsame.class, this.editorTipologiaEsame);
         binder.registerCustomEditor(Medico.class, this.editorMedico);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        sdf.setTimeZone(TimeZone.getDefault());
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
     }
 	
 	@RequestMapping(value="/nuovoEsame", method=RequestMethod.GET)
@@ -67,7 +73,7 @@ public class ControllerEsame {
 
 
 	@RequestMapping(value="/addEsame", method=RequestMethod.POST)
-	public String addEsame(@ModelAttribute Esame esame, Model model){
+	public String addEsame(@RequestParam("field2")Date data, @ModelAttribute Esame esame, Model model){
 
 		String nextPage=null;
 		boolean erroriPresenti = false;
@@ -76,9 +82,9 @@ public class ControllerEsame {
 			erroriPresenti=true;
 			model.addAttribute("medicoError", "Campo obbligatorio");
 		}
-		if(!(isValidDate(esame.getEsecuzioneEsame().toString()))){
-			model.addAttribute("dataError", "Data non valida");
-		}
+//		if(!(isValidDate(esame.getEsecuzioneEsame().toString()))){
+//			model.addAttribute("dataError", "Data non valida");
+//		}
 		if(esame.getPaziente()==null){
 			erroriPresenti=true;
 			model.addAttribute("pazienteError", "Campo obbligatorio");
@@ -90,16 +96,19 @@ public class ControllerEsame {
 
 		if(erroriPresenti)
 			nextPage  = "/nuovoEsame";
-		else {esame.setPrenotazione(Date.from(Instant.now()));
-			facadeEsame.addEsame(esame);
+		else {
+			esame.setPrenotazione(Date.from(Instant.now()));
+			
 			nextPage="/protected/esameInserito";
 		}
+		esame.setEsecuzioneEsame(data);
+		facadeEsame.addEsame(esame);
 		model.addAttribute("esame", esame);
 		return nextPage;
 		
 	}
 	 public  boolean isValidDate(String inDate) {
-		    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		    dateFormat.setLenient(false);
 		    try {
 		      dateFormat.parse(inDate.trim());
@@ -113,4 +122,5 @@ public class ControllerEsame {
 		facadeEsame.deleteEsame(Id);
 		return "index";
 	}
+	
 }

@@ -47,15 +47,18 @@
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
+        </nav>
 <h4>
-		<center>Inserimento Paziente</center>
+		<center>Inserimento Esame</center>
 	</h4>
 	<center>
-		Hai inserito un nuovo Esame <br> Paziente:${esame.paziente.getCognome()} {esame.paziente.getNome()} <br>
+		Hai inserito un nuovo Esame <br> Paziente:${esame.paziente.cognome} ${esame.paziente.nome} <br>
 		 Tipologia:${esame.tipologia.nome}<br>
 		Medico: ${esame.medico.cognome} ${esame.medico.nome}<br>
 		Data di prenotazione:${esame.prenotazione}<br>
 		Data in cui si svolgerà l'esame:${esame.esecuzioneEsame}<br>
+		<br>
+		<a href="${pageContext.request.contextPath}/eliminaEsame/${esame.idEsame}">Cancella il nuovo esame</a><br>
 		<a href="protected/homeAdmin">Torna alla Pagina d'amministrazione</a><br>
 		<a href="index">Torna alla HomePage</a>
 		</center>

@@ -71,7 +71,7 @@ public class ControllerTipologiaEsame {
 	}
 	@RequestMapping(value="/eliminaTipologiaEsame/{id}",method = RequestMethod.GET)
 	public String deleteTipologiaEsame(@PathVariable("id")long Id,@ModelAttribute TipologiaEsame tipologiaEsame){
-		//		tipologiaEsameFacade.deleteTipologiaEsame(Id);
+				tipologiaEsameFacade.deleteTipologiaEsame(Id);
 		return "index";
 	}
 	@RequestMapping(value="/listaTipologiaEsami", method=RequestMethod.GET)
