@@ -18,7 +18,7 @@
 <link href="<c:url value="/resources/css/shop-homepage.css" />"
 	rel="stylesheet">
 </head>
-<img src="<c:url value="/resources/Grafica/logo3.jpg"/>">
+<center><img src="<c:url value="/resources/Grafica/logo3.jpg"/>"></center>
 
 <body>
  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -83,6 +83,7 @@
 				<area shape="rect" coords="180, 100, 80, 200"
 					href="nuovaTipologiaEsame" alt="click">
 			</map>
+			<br>
 			<br>
 			<a href="index">Torna alla homepage</a>
 		</center>

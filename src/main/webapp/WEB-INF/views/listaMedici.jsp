@@ -18,26 +18,47 @@
 </head>
 
 <body>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="admin">Area Amministrazione:</a>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+
+					<li><a class="navbar-brand" style="color: red">
+							${pageContext.request.userPrincipal.name}</a></li>
+
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container -->
+	</nav>
 	<img src="<c:url value="/resources/Grafica/logo3.jpg"/>">
 
 	<h4>
 		<center>Consulta l'elenco dei nostri medici</center>
 	</h4>
 	<center>
-		<% 	
-						for(Medico tipo: new ArrayList<Medico>()){
-							out.print("Nome:"); 
-							out.print(tipo.getNome());
-							out.print("<br>");
-							out.print("Cognome:"); 
-							out.print(tipo.getCognome());
-							out.print("<br>"); 
-							out.print("Specializzazione:"); 
-							out.print(tipo.getSpecializzazione());
-							out.print("<br>"); 
-							out.print("------------------------------");
-							out.print("<br>"); 
-							}%>
+	<c:forEach items="${lista}" var="med" varStatus="status">
+      <div id="testo">	
+      	Nome : ${med.nome}<br>
+      	Cognome: ${med.cognome}<br>
+      	Specializzazione: ${med.specializzazione}
+      	<hr  size=”1″ width=”200″ color=”green” noshade>
+      </c:forEach>
 							  <h4><a href="index.html">Torna alla homepage</a>
                                 </h4>
 		<tr>

@@ -21,4 +21,7 @@ public class FacadeMedico {
 	public Medico retrieveMedico(long id){
 		return medicoDaoImpl.findMedico(id);
 	}
+	public void deleteMedico(long esameId) {
+		this.medicoDaoImpl.deleteMedico(esameId);
+	}
 }

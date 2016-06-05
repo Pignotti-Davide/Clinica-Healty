@@ -131,7 +131,8 @@
 
                    <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                          <img src="<c:url value="/resources/Grafica/offerte.jpg"/>" alt="">
+                          <img src="<c:url value="/resources/Grafica/offerte.jpg"/>" class="img-responsive" alt="">
+                       
                             <div class="caption">
            
                                 <h4><a href="listaMedici.jsp">Accedi all'area paziente</a>
@@ -146,7 +147,7 @@
                           <img src="<c:url value="/resources/Grafica/offerte2.jpg"/>" alt="">
                             <div class="caption">
            
-                                <h4><a href="listaMedici.jsp">Conosci i nostri medici</a>
+                                <h4><a href="listaMedici">Conosci i nostri medici</a>
                                 </h4>
                                 <p>Potrai conoscere la lista dei nostri medici e gli esami da loro svolti.</p>
                             </div>
@@ -191,22 +192,7 @@
         </footer>
 
     </div>
-<!--    <div class="col-sm-4 col-lg-4 col-md-4"> -->
-<!--                         <div class="thumbnail"> -->
-<!--                     <a href="img/portfolio/fullsize/5.jpg" class="portfolio-box"> -->
-<%--                        <img src="<c:url value="/resources/Grafica/offerte.jpg"/>" alt="" class="img-responsive"> --%>
-<!--                         <div class="portfolio-box-caption"> -->
-<!--                             <div class="portfolio-box-caption-content"> -->
-<!--                                 <div class="project-category text-faded"> -->
-<!--                                     Category -->
-<!--                                 </div> -->
-<!--                                 <div class="project-name"> -->
-<!--                                     Project Name -->
-<!--                                 </div> -->
-<!--                             </div> -->
-<!--                         </div> -->
-<!--                     </a> -->
-<!--                 </div> -->
+
 
     </div>
     <!-- /.container -->
