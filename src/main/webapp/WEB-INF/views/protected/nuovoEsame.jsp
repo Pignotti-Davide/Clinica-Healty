@@ -74,7 +74,6 @@
 			Inserisci la data e l'ora: (Importante: inserisci la data nel seguente formato: dd/MM/yyyy HH:mm)
 <form:input path="esecuzioneEsame" type="datetime-local" /><br>
 	<input type="submit" value="Invia" />
-			<input type="submit" value="Invia" />
 		</form:form>
 		<br> <a href="index">Torna alla homepage</a>
 	</center>

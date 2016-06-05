@@ -53,7 +53,6 @@
 		<!-- /.container -->
 	</nav>
 	<img src="<c:url value="/resources/Grafica/logo3.jpg"/>">
-
 	<h4>
 		<center>Consulta il nostro catalogo</center>
 	</h4>
@@ -71,17 +70,23 @@ function visualizza(id){
 </script>
 <c:forEach items="${lista}" var="tipo" varStatus="status">
       <div id="testo">	
+			Nome:
 			<a href="<c:url value="#" />" onclick="visualizza('immagine${status.index}');">
-				${tipo.nome}
-				
+				${tipo.nome}				
 			</a>
+			Descrizione ${tipo.descrizione}
 		</div>		
-		<div id="immagine${status.index}" style="display: none"></div>
-	<c:forEach items="${requisiti}${status.index}" var="requisiti" varStatus="status">
-						  <td>Nome requisito: ${requisiti}:</td>
-               <td>Descrizione requisito:${requisiti}</td>
+		<div id="immagine${status.index}" style="display: none">
+	<c:forEach items="${tipo.requisiti}" var="requisito" varStatus="status">
+						  <td>Nome requisito: ${requisito.key}:</td>
+               <td>Descrizione requisito:${requisito.value}</td>
 							<tr>
 							</c:forEach>
+							<c:forEach items="${tipo.indicatoriRisultati}" var="risultato" varStatus="status">
+						  <td>Tipo risultato: ${risultato}:</td>
+  
+							<tr>
+							</c:forEach></div>
 </c:forEach>
 		
 		
