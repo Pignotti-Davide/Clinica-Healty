@@ -6,17 +6,55 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="clinica.model.Esame"%>
 <%@ page import="java.util.List"%>
-
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-
-
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Inserimento Risultati</title>
+<title>Area Amministrazione - Tipologia Esame inserita</title>
+ <!-- Bootstrap Core CSS -->
+    <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="<c:url value="/resources/css/shop-homepage.css" />" rel="stylesheet">
 </head>
+ <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="admin">Area Amministrazione:</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+
+                    <li>
+                       <a class="navbar-brand" style="color:red"> ${pageContext.request.userPrincipal.name}</a>
+                    </li>
+
+                    <li>
+                      
+                    </li>
+                    <li>
+               
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
 <body>
-	Seleziona l'esame di cui inserire i risultati tramite il suo codice:
+<center><img src="<c:url value="/resources/Grafica/logo3.jpg"/>"><br>
+	<h4>Seleziona l'esame di cui inserire i risultati tramite il suo codice:</h4><br>
 
 	<form:form method="post" action="mostraEsame" name="form">
 		<select name="esame">
@@ -26,25 +64,20 @@
 		</select>
 		<input type="submit" value="Mostra esame" />
 	</form:form>
-
-	Tipologia esame: ${esame.tipologia}
-	<br> "Medico: ${esame.medico.nome} ${esame.medico.cognome}
-	<br> "Paziente: ${esame.paziente.nome} ${esame.paziente.cognome}
+<br>
+	Tipologia esame: ${esame.tipologia.nome}
+	<br> Medico: ${esame.medico.nome} ${esame.medico.cognome}
+	<br> Paziente: ${esame.paziente.nome} ${esame.paziente.cognome}
 	<br>
+	<form:form method="post" action="addRisultati" name="form">
+	<c:forEach items="${esame.tipologia.indicatoriRisultati}" var="risultato">
+	Elenco dei risultati:<br>
+			${risultato}: 	
+	<input type="text" name='risultato"+${risultato}"' size='10' /> 
 	
-	<%
-		{	int i = 0;
-		Esame e = (Esame) application.getAttribute("esame");
-			if (e != null)
-				for (String s : e.getRisultati().keySet()) {
-					out.print(s + ": <input type='text' name='risultato" + i + "' size='10' /> <br>");
-					i++;
-				}
-		}
-	%>
+			</c:forEach>
+			<input type="submit" value="Invia" />
+			</form:form><br>
 
-
-
-	<span id='box_esame'> </span>
 </body>
 </html>

@@ -6,6 +6,7 @@ import java.time.Instant;
 import java.util.Date;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -153,6 +154,16 @@ public class ControllerEsame {
 			model.addAttribute("esame", esame);
 			model.addAttribute("esami", facadeEsame.findAll());
 			return "/protected/inserimentoRisultati";
-
+		}
+		
+		@RequestMapping(value="/addRisultati", method=RequestMethod.POST)
+		public String addRisultati(@PathVariable("id")long id,Model model,HttpServletRequest request){
+			Esame esame = facadeEsame.findEsame(id);
+			List<String> nomiRisultati = esame.getTipologia().getIndicatoriRisultati();
+			for(String s:nomiRisultati){
+				esame.getRisultati().put(s, request.getParameter("risultato"+s));
+			}
+			facadeEsame.updateEsame(esame);
+			return "/protected/risultatiInseriti";
 		}
 	}

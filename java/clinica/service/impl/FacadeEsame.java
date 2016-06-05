@@ -28,4 +28,7 @@ public class FacadeEsame {
 	public Esame findEsame(long id){
 		return this.esameDaoImpl.findEsame(id);
 	}
+	public void updateEsame(Esame e){
+		this.esameDaoImpl.updateEsame(e);
+	}
 }
