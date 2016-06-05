@@ -1,4 +1,4 @@
-package clinica.controller.Nuovo;
+package clinica.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -10,47 +10,43 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import clinica.model.Medico;
-import clinica.service.impl.FacadeMedico;
-
+import clinica.model.Paziente;
+import clinica.service.impl.FacadePaziente;
 @Controller
-public class ControllerMedico {
-
+public class ControllerPaziente {
 	@Autowired
-	private FacadeMedico facadeMedico;
-	
-	@RequestMapping(value="/nuovoMedico",method=RequestMethod.GET)
-	public String toNuovoMedico(@ModelAttribute Medico medico){
+	private FacadePaziente facadePaziente;
+
+	@RequestMapping(value="/nuovoPaziente", method=RequestMethod.GET)
+	public String toNuovoPaziente(@ModelAttribute Paziente paziente){
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
 		if (!(auth instanceof AnonymousAuthenticationToken)) {
-			return "protected/nuovoMedico";
+			return "protected/nuovoPaziente";
 		}
-		else return"index";}
+		else return"index";
+	}
 
-	@RequestMapping(value="/addMedico", method=RequestMethod.POST)
-	public String addMedico(@ModelAttribute Medico medico,Model model){
+
+	@RequestMapping(value="/addPaziente", method=RequestMethod.POST)
+	public String addPaziente(@ModelAttribute Paziente paziente,Model model){
 		boolean erroriPresenti = false;
 		String nextPage=null;
 
-		if(medico.getNome().isEmpty()){
+		if(paziente.getNome().equals("")){
 			erroriPresenti=true;
 			model.addAttribute("nomeError", "Campo obbligatorio");
 		}
-		if(medico.getSpecializzazione().equals("")){
+		if(paziente.getCognome().equals("")){
 			erroriPresenti=true;
 			model.addAttribute("cognomeError", "Campo obbligatorio");
 		}
-		if(medico.getCognome().equals("")){
-			erroriPresenti=true;
-			model.addAttribute("specializzazioneError", "Campo obbligatorio");
+		if(erroriPresenti)
+			nextPage  = "nuovoPaziente";
+		else {
+			nextPage="protected/pazienteInserito";
 		}
-		if(erroriPresenti){
-			nextPage  = "protected/nuovoMedico";
-		}
-		else {nextPage="protected/medicoinserito";
-		facadeMedico.addMedico(medico);
-		}
-		return nextPage;
+		facadePaziente.addPaziente(paziente);
+		return nextPage;   
 	}
 }

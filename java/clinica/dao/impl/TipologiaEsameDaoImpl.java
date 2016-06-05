@@ -10,32 +10,34 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import clinca.dao.TipologiaEsameDao;
 import clinica.model.TipologiaEsame;
 
 
 @Repository
-public class TipologiaEsameDao {
+public class TipologiaEsameDaoImpl implements TipologiaEsameDao{
 
 	private static final Logger logger = LoggerFactory
-			.getLogger(TipologiaEsameDao.class);
+			.getLogger(TipologiaEsameDaoImpl.class);
 
 	@Autowired
 	private SessionFactory sessionFactory;
-
+	@Override
 	public void insertTipologiaEsame(TipologiaEsame tipologia) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		session.save(tipologia);
 		session.getTransaction().commit();
 	}
-
-	public List<TipologiaEsame> listaTipologiaEsame() {
+	@Override
+	public List<TipologiaEsame> findAll() {
 		Session session=sessionFactory.openSession();
 		session.beginTransaction();
 		List<TipologiaEsame> list = (List<TipologiaEsame>) session.createQuery("select t from TipologiaEsame t").list();
 		session.getTransaction().commit();
 		return list;
 	}
+	@Override
 	public TipologiaEsame findTipologiaEsame(long id){
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -44,12 +46,13 @@ public class TipologiaEsameDao {
 		return t;
 		
 	}
-	public void deleteTipologiaEsame(long esameId) {
+	@Override
+	public void deleteTipologiaEsame(long id) {
 		System.out.println("hql Using Delete");
 		Session session = sessionFactory.openSession();		
 		String hql = "DELETE from TipologiaEsame T WHERE T.id = :tipologiaesame_id";
 		Query query = session.createQuery(hql);
-		query.setParameter("tipologiaesame_id", esameId);
+		query.setParameter("tipologiaesame_id", id);
 		int result = query.executeUpdate();		
 		System.out.println("Row affected: " + result);
 	}

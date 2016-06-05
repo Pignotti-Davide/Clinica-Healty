@@ -1,17 +1,11 @@
-package clinica.controller.Nuovo;
+package clinica.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.Date;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.omg.CosNaming.IstringHelper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -23,20 +17,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import java.text.DateFormat;
-import java.util.function.Supplier;
 
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import clinica.model.Esame;
-import clinica.model.TipologiaEsame;
-import clinica.service.impl.FacadeEsame;
 import clinica.model.Medico;
 import clinica.model.Paziente;
+import clinica.model.TipologiaEsame;
 import clinica.service.editors.EditorMedico;
 import clinica.service.editors.EditorPaziente;
 import clinica.service.editors.EditorTipologiaEsame;
+import clinica.service.impl.FacadeEsame;
 import clinica.service.impl.FacadeMedico;
 import clinica.service.impl.FacadePaziente;
 import clinica.service.impl.FacadeTipologiaEsame;

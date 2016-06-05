@@ -5,29 +5,29 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import clinica.dao.impl.TipologiaEsameDao;
+import clinica.dao.impl.TipologiaEsameDaoImpl;
 import clinica.model.TipologiaEsame;
 
 @Service
 public class FacadeTipologiaEsame {
 
 	@Autowired
-	private TipologiaEsameDao tipologiaEsameDao;
+	private TipologiaEsameDaoImpl tipologiaEsameDaoImpl;
 
 	public List<TipologiaEsame> listaTipologiaEsame() {
-		return this.tipologiaEsameDao.listaTipologiaEsame();
+		return this.tipologiaEsameDaoImpl.findAll();
 	}
 
 	public void addTipologiaEsame(TipologiaEsame tipologiaEsame) {
-		this.tipologiaEsameDao.insertTipologiaEsame(tipologiaEsame);
+		this.tipologiaEsameDaoImpl.insertTipologiaEsame(tipologiaEsame);
 	}
 
 	public void deleteTipologiaEsame(long tipId) {
-		this.tipologiaEsameDao.deleteTipologiaEsame(tipId);
+		this.tipologiaEsameDaoImpl.deleteTipologiaEsame(tipId);
 	}
 	
 	public TipologiaEsame retrieveTipologiaEsame(long id){
-		return this.tipologiaEsameDao.findTipologiaEsame(id);
+		return this.tipologiaEsameDaoImpl.findTipologiaEsame(id);
 	}
 
 }

@@ -1,4 +1,5 @@
 package clinica.dao.impl;
+
 import java.util.List;
 
 import org.hibernate.Query;
@@ -9,50 +10,52 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import clinica.model.Paziente;
+import clinca.dao.MedicoDao;
+import clinica.model.Medico;
 
 
 
 @Repository
-public class PazienteDao {
+public class MedicoDaoImpl implements MedicoDao{
 
-	private static final Logger logger = LoggerFactory
-			.getLogger(PazienteDao.class);
+	private static final Logger logger = LoggerFactory.getLogger(MedicoDaoImpl.class);
 
 	@Autowired
 	private SessionFactory sessionFactory;
-
-	public void insertPaziente(Paziente u) {
+	@Override
+	public void insertMedico(Medico m) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		session.save(u);
+		session.save(m);
 		session.getTransaction().commit();
 	}
-
+	@Override
 	@SuppressWarnings("unchecked")
-	public List<Paziente> listaPaziente() {
+	public List<Medico> findAll() {
 		Session session = sessionFactory.openSession();
-		String hql = "FROM Paziente";
+		String hql = "FROM Medico";
 		Query query = session.createQuery(hql);
-		List<Paziente> uList = query.list();
-		logger.info("Paziente List::" + uList);
+		List<Medico> uList = query.list();
+		logger.info("Medico List::" + uList);
 		return uList;
 	}
-
-	public void deletePaziente(Integer pazienteId) {
+	@Override
+	public void deleteMedico(long id) {
 		System.out.println("hql Using Delete");
 		Session session = sessionFactory.openSession();
-		String hql = "DELETE from Paziente P WHERE P.id = :paziente_id";
+		String hql = "DELETE from Medico M WHERE M.id = :medico_id";
 		Query query = session.createQuery(hql);
-		query.setParameter("paziente_id", pazienteId);
+		query.setParameter("medico_id", id);
 		int result = query.executeUpdate();
 		System.out.println("Row affected: " + result);
 	}
-	public Paziente findPaziente(long id){
+	@Override
+	public Medico findMedico(long id){
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		Paziente p=(Paziente) session.get(Paziente.class, id);
+		Medico m=(Medico) session.get(Medico.class, id);
 		session.getTransaction().commit();
-		return p;
+		return m;
 	}
 }
+

@@ -9,50 +9,55 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import clinica.model.Esame;
+import clinca.dao.PazienteDao;
 import clinica.model.Paziente;
 
 
+
 @Repository
-public class EsameDao {
+public class PazienteDaoImpl implements PazienteDao {
 
 	private static final Logger logger = LoggerFactory
-			.getLogger(EsameDao.class);
+			.getLogger(PazienteDaoImpl.class);
 
 	@Autowired
 	private SessionFactory sessionFactory;
-
-	public void insertEsame(Esame esame) {
+	
+	@Override
+	public void insertPaziente(Paziente u) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		session.save(esame);
+		session.save(u);
 		session.getTransaction().commit();
 	}
-
+	@Override
 	@SuppressWarnings("unchecked")
-	public List<Esame> listaEsame() {
+	public List<Paziente> findAll() {
 		Session session = sessionFactory.openSession();
-		String hql = "FROM Esame";
+		String hql = "FROM Paziente";
 		Query query = session.createQuery(hql);
-		List<Esame> empList = query.list();
-		logger.info("Esame List::" + empList);
-		return empList;
+		List<Paziente> uList = query.list();
+		logger.info("Paziente List::" + uList);
+		return uList;
 	}
-
-	public void deleteEsame(long esameId) {
+	@Override
+	public void deletePaziente(long id) {
 		System.out.println("hql Using Delete");
 		Session session = sessionFactory.openSession();
-		String hql = "DELETE from Esame E WHERE E.id = :esame_id";
+		String hql = "DELETE from Paziente P WHERE P.id = :paziente_id";
 		Query query = session.createQuery(hql);
-		query.setParameter("esame_id", esameId);
+		query.setParameter("paziente_id", id);
 		int result = query.executeUpdate();
 		System.out.println("Row affected: " + result);
 	}
-	public List<Esame> retrieveEsamiDelPaziente(Paziente p){
-		Session session=sessionFactory.openSession();
+
+	@Override
+	public Paziente findPaziente(long id){
+		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		List<Esame> list=session.createQuery("select e from Esame e where e.paziente.idPaziente="+p.getIdPaziente()).list();
+		Paziente p=(Paziente) session.get(Paziente.class, id);
 		session.getTransaction().commit();
-		return list;
+		return p;
 	}
+	
 }

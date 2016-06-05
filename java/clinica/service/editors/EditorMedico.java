@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import clinica.model.Medico;
-import clinica.model.Paziente;
 import clinica.service.impl.FacadeMedico;
-import clinica.service.impl.FacadePaziente;
 @Component
 public class EditorMedico extends PropertyEditorSupport{
 	private @Autowired FacadeMedico facadeMedico;
