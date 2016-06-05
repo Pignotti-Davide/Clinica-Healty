@@ -31,19 +31,11 @@
 	<br> "Medico: ${esame.medico.nome} ${esame.medico.cognome}
 	<br> "Paziente: ${esame.paziente.nome} ${esame.paziente.cognome}
 	<br>
+	<c:forEach items="${esame.risultati}" var="risultato">
+			<div> ${risultato.key}: <input type='text' name='risultato" + i + "' size='10' /></div> <br>
+			</c:forEach>
 	
-	<%
-		{	int i = 0;
-		Esame e = (Esame) application.getAttribute("esame");
-			if (e != null)
-				for (String s : e.getRisultati().keySet()) {
-					out.print(s + ": <input type='text' name='risultato" + i + "' size='10' /> <br>");
-					i++;
-				}
-		}
-	%>
-
-
+		
 
 	<span id='box_esame'> </span>
 </body>

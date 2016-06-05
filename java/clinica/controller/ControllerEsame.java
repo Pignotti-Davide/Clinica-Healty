@@ -153,6 +153,10 @@ public class ControllerEsame {
 			model.addAttribute("esame", esame);
 			model.addAttribute("esami", facadeEsame.findAll());
 			return "/protected/inserimentoRisultati";
-
+		}
+		
+		@RequestMapping(value="/addRisultati", method=RequestMethod.POST)
+		public String addRisultati(){
+			return "risultatiInseriti";
 		}
 	}
