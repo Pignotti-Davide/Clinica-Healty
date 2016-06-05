@@ -11,10 +11,5 @@ public class IndexController {
 	public String toIndex() {
 		return "index";
 	}
-	
-	@RequestMapping(value="/listaTipologiaEsami", method=RequestMethod.GET)
-	public String toListaTipologiaEsami(){
-		return "listaTipologiaEsami";
-	}
 
 }

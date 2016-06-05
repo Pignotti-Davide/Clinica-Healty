@@ -56,9 +56,9 @@ public class ControllerEsame {
 
 		if (!(auth instanceof AnonymousAuthenticationToken)) {
 			
-			model.addAttribute("pazienti", facadePaziente.findAllPazienti());
-			model.addAttribute("medici", facadeMedico.findAllMedici());
-			model.addAttribute("tipologieEsami", facadeTipologiaEsame.listaTipologiaEsame());
+			model.addAttribute("pazienti", facadePaziente.findAll());
+			model.addAttribute("medici", facadeMedico.findAll());
+			model.addAttribute("tipologieEsami", facadeTipologiaEsame.findAll());
 
 			return "protected/nuovoEsame";
 		}

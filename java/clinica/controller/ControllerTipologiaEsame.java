@@ -53,20 +53,12 @@ public class ControllerTipologiaEsame {
 			erroriPresenti=true;
 			model.addAttribute("descrizioneError", "Campo obbligatorio");
 		}
-
 		if(erroriPresenti)
 			nextPage  = "nuovaTipologiaEsame";
 		else {
 			nextPage="/protected/tipologiaEsameInserita";
-			for(int i=0; i<tipologiaEsame.getRequisiti().size();i++){
-
-				System.out.println(tipologiaEsame.getRequisiti().keySet().toArray()[i]);
-				System.out.println(tipologiaEsame.getRequisiti().get(i));}
-			for(int i=0;i<tipologiaEsame.getIndicatoriRisultati().size();i++){
-				System.out.println(tipologiaEsame.getIndicatoriRisultati().get(i));
+		tipologiaEsameFacade.addTipologiaEsame(tipologiaEsame);
 			}
-			tipologiaEsameFacade.addTipologiaEsame(tipologiaEsame);
-		}
 		return nextPage;   
 	}
 
@@ -82,12 +74,24 @@ public class ControllerTipologiaEsame {
 		//		tipologiaEsameFacade.deleteTipologiaEsame(Id);
 		return "index";
 	}
+	@RequestMapping(value="/listaTipologiaEsami", method=RequestMethod.GET)
+	public String toListaTipologiaEsami(@ModelAttribute("lista") ArrayList<TipologiaEsame> lista){
+		lista=(ArrayList<TipologiaEsame>) tipologiaEsameFacade.findAll();
+		for (TipologiaEsame tipologiaEsame : lista) {
+			System.out.println(tipologiaEsame.getNome());
+		}
+		return "listaTipologiaEsami";
+		
+	}
+	
 	public List<String> creaListaRisultati(int numero,HttpServletRequest request){
 		List<String> listaRisultati=new ArrayList<String>();
 		for(int i=1; i<=numero; i++)
 			listaRisultati.add(request.getParameter("risultato"+i));
 		return listaRisultati;
 	}
+	
+	
 
 }
 

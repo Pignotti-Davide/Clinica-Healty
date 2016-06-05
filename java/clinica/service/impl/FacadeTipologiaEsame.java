@@ -14,7 +14,7 @@ public class FacadeTipologiaEsame {
 	@Autowired
 	private TipologiaEsameDaoImpl tipologiaEsameDaoImpl;
 
-	public List<TipologiaEsame> listaTipologiaEsame() {
+	public List<TipologiaEsame> findAll() {
 		return this.tipologiaEsameDaoImpl.findAll();
 	}
 

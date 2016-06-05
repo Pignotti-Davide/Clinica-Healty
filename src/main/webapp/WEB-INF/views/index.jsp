@@ -60,12 +60,6 @@
                        <a class="navbar-brand" style="color:red"> ${pageContext.request.userPrincipal.name}</a>
                     </li>
 
-                    <li>
-                      
-                    </li>
-                    <li>
-               
-                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -165,7 +159,7 @@
                         <img src="<c:url value="/resources/Grafica/offerte3.jpg"/>" alt="">
                         <div class="caption">
                   
-                                <h4><a href="listaTipologiaEsami.jsp">Lista tipologie esami</a>
+                                <h4><a href="listaTipologiaEsami">Lista tipologie esami</a>
                                 </h4>
                                 <p>Troverai la lista di tutti gli esami svolti dalla clinica e tutte le informazioni relative ad essi</p>
                           </div>

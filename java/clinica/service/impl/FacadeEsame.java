@@ -14,7 +14,7 @@ public class FacadeEsame {
 	@Autowired
 	private EsameDaoImpl esameDaoImpl;
 
-	public List<Esame> listaEsame() {
+	public List<Esame> findAll() {
 		return this.esameDaoImpl.findAll();
 	}
 

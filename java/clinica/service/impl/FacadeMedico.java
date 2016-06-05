@@ -15,7 +15,7 @@ public class FacadeMedico {
 	public void addMedico(Medico m){
 		medicoDaoImpl.insertMedico(m);
 	}
-	public List<Medico> findAllMedici(){
+	public List<Medico> findAll(){
 		return this.medicoDaoImpl.findAll();
 	}
 	public Medico retrieveMedico(long id){

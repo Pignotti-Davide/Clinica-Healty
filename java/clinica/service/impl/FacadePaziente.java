@@ -15,7 +15,7 @@ public class FacadePaziente {
 	public void addPaziente(Paziente p){
 		pazienteDaoImpl.insertPaziente(p);
 	}
-	public List<Paziente> findAllPazienti(){
+	public List<Paziente> findAll(){
 		return this.pazienteDaoImpl.findAll();
 	}
 	public Paziente retrievePaziente(long id){
