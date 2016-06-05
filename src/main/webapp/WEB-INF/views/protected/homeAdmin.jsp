@@ -84,6 +84,7 @@
 					href="nuovaTipologiaEsame" alt="click">
 			</map>
 			<br>
+			<a href="inserisciRisultati">Inserisci risultati</a>
 			<a href="index">Torna alla homepage</a>
 		</center>
 </body>

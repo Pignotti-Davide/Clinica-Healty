@@ -57,4 +57,12 @@ public class EsameDaoImpl implements EsameDao{
 		session.getTransaction().commit();
 		return list;
 	}
+@Override
+	public Esame findEsame(long id){
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		Esame e= (Esame) session.get(Esame.class, id);
+		session.getTransaction().commit();
+		return e;
+	}
 }
