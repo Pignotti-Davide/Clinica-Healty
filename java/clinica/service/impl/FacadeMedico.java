@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import clinica.dao.impl.MedicoDaoImpl;
+import clinica.model.Esame;
 import clinica.model.Medico;
 @Service
 public class FacadeMedico {
@@ -23,5 +24,8 @@ public class FacadeMedico {
 	}
 	public void deleteMedico(long esameId) {
 		this.medicoDaoImpl.deleteMedico(esameId);
+	}
+	public List<Esame> listaEsami(long id) {
+		return this.medicoDaoImpl.findListaEsame(id);
 	}
 }

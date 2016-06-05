@@ -1,4 +1,3 @@
-
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page session="true"%>
 
@@ -84,11 +83,11 @@
 					href="nuovaTipologiaEsame" alt="click">
 			</map>
 			<br>
-<<<<<<< HEAD
+
 			<a href="inserisciRisultati">Inserisci risultati</a>
-=======
+
 			<br>
->>>>>>> refs/remotes/origin/master
+
 			<a href="index">Torna alla homepage</a>
 		</center>
 </body>

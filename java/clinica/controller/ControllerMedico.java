@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import clinica.model.Esame;
 import clinica.model.Medico;
@@ -65,6 +66,23 @@ public class ControllerMedico {
 		
 		model.addAttribute("lista", lista);
 		return "listaMedici";
+
+	}
+	@RequestMapping(value="/ricercaMedico",method=RequestMethod.POST)
+	public String toRicercaMedico(@ModelAttribute Medico medico){
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+		if (!(auth instanceof AnonymousAuthenticationToken)) {
+			return "protected/ricercaMedico";
+		}
+		else return"index";}
+	@RequestMapping(value="/ricercaEsami", method=RequestMethod.GET)
+	public String toEsamiMedico(@RequestParam("idMedico") long id,Model model){
+		List<Esame>lista=(ArrayList<Esame>)facadeMedico.listaEsami(id);
+		model.addAttribute("lista", lista);
+		Medico medico = facadeMedico.retrieveMedico(id);
+		model.addAttribute("medico",medico);
+		return "esamiMedico";
 
 	}
 	@RequestMapping(value="/eliminaMedico/{id}",method = RequestMethod.GET)

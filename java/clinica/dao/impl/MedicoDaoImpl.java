@@ -1,5 +1,6 @@
 package clinica.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import clinca.dao.MedicoDao;
+import clinica.model.Esame;
 import clinica.model.Medico;
 
 
@@ -56,6 +58,17 @@ public class MedicoDaoImpl implements MedicoDao{
 		Medico m=(Medico) session.get(Medico.class, id);
 		session.getTransaction().commit();
 		return m;
+	}
+	@SuppressWarnings("unchecked")
+	public List<Esame>  findListaEsame(long id){
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		List<Esame> lista = new ArrayList<>();
+		String hql = "SELECT from Esame E WHERE E.medico = :medico_id";
+		Query query = session.createQuery(hql);
+		lista = (List<Esame>)query.list();
+		query.setParameter("medico_id", id);
+		return lista;
 	}
 }
 
