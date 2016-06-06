@@ -72,7 +72,7 @@
             </tr> 
           </c:forEach>
 		<a href="${pageContext.request.contextPath}/eliminaTipologiaEsame/${tipologiaEsame.idTipologiaEsame}">Cancella La Tipologia D'esame</a><br><br>
-		<a href="protected/homeAdmin">Torna alla Pagina d'amministrazione</a><br><br>
+		<a href="admin">Torna alla Pagina d'amministrazione</a><br><br>
 		<a href="index">Torna alla HomePage</a>
 							
 		<center>

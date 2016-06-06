@@ -28,7 +28,6 @@ public class Esame {
 	@ManyToOne
 	private Paziente paziente;
 	@OneToOne
-	
 	private TipologiaEsame tipologia;
 	@Column(nullable=false)
 	@Temporal(TemporalType.DATE)

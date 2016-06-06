@@ -54,7 +54,7 @@ public class ControllerTipologiaEsame {
 			model.addAttribute("descrizioneError", "Campo obbligatorio");
 		}
 		if(erroriPresenti)
-			nextPage  = "nuovaTipologiaEsame";
+			nextPage  = "protected/nuovaTipologiaEsame";
 		else {
 			nextPage="/protected/tipologiaEsameInserita";
 			tipologiaEsameFacade.addTipologiaEsame(tipologiaEsame);
@@ -64,29 +64,29 @@ public class ControllerTipologiaEsame {
 
 	public Map<String, String> creaMappaRequisiti(int numero,HttpServletRequest request){
 		Map<String, String> creaMappaRequisiti = new HashMap<>();
-		for(int i=1; i<=numero; i++)
-			creaMappaRequisiti.put(request.getParameter("requisito"+i), request.getParameter("descrizione_requisito"+i));
-
+		for(int i=1; i<=numero; i++){
+			if(request.getParameter("requisito"+i)!="")
+				creaMappaRequisiti.put(request.getParameter("requisito"+i), request.getParameter("descrizione_requisito"+i));
+		}
 		return creaMappaRequisiti;
 	}
 	@RequestMapping(value="/eliminaTipologiaEsame/{id}",method = RequestMethod.GET)
 	public String deleteTipologiaEsame(@PathVariable("id")long Id,@ModelAttribute TipologiaEsame tipologiaEsame){
-				tipologiaEsameFacade.deleteTipologiaEsame(Id);
+		tipologiaEsameFacade.deleteTipologiaEsame(Id);
 		return "index";
 	}
 	@RequestMapping(value="/listaTipologiaEsami", method=RequestMethod.GET)
 	public String toListaTipologiaEsami(Model model){
 		List<TipologiaEsame>lista=(ArrayList<TipologiaEsame>) tipologiaEsameFacade.findAll();
-		
 		List<Long> listaId = new ArrayList<>();
 		for(TipologiaEsame tipologiaEsame : lista){
 			listaId.add(tipologiaEsame.getIdTipologiaEsame());
 		}
 		TipologiaEsame app = new TipologiaEsame();
-			for(long i:listaId){
-				app = tipologiaEsameFacade.retrieveTipologiaEsame(i);
-				model.addAttribute("requisiti"+i,app.getRequisiti());
-			}
+		for(long i:listaId){
+			app = tipologiaEsameFacade.retrieveTipologiaEsame(i);
+			model.addAttribute("requisiti"+i,app.getRequisiti());
+		}
 		model.addAttribute("lista", lista);
 		return "listaTipologiaEsami";
 
@@ -94,12 +94,15 @@ public class ControllerTipologiaEsame {
 
 	public List<String> creaListaRisultati(int numero,HttpServletRequest request){
 		List<String> listaRisultati=new ArrayList<String>();
-		for(int i=1; i<=numero; i++)
-			listaRisultati.add(request.getParameter("risultato"+i));
+		for(int i=1; i<=numero; i++){
+			if(request.getParameter("risultato"+i)!="")
+				listaRisultati.add(request.getParameter("risultato"+i));}
 		return listaRisultati;
 	}
 
 
-
 }
+
+
+
 

@@ -56,7 +56,7 @@
 		Cognome:${medico.cognome}; <br>
 		Specializzazione:${medico.specializzazione}; <br> <br> 
 			<a href="${pageContext.request.contextPath}/eliminaMedico/${medico.idMedico}">Cancella il Medico</a><br><br>
-		<a href="protected/homeAdmin">Torna alla Pagina d'amministrazione</a><br>
+		<a href="admin">Torna alla Pagina d'amministrazione</a><br>
 		<a href="index">Torna alla HomePage</a>
 		<center>
 </body>

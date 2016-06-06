@@ -107,7 +107,7 @@ public class ControllerEsame {
 		}
 
 		if(erroriPresenti)
-			nextPage  = "/nuovoEsame";
+			nextPage  = "protected/nuovoEsame";
 
 		else {
 			esame.setPrenotazione(Date.from(Instant.now()));

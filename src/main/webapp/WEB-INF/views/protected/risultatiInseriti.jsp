@@ -64,7 +64,7 @@
                	<hr  size=”500″ width=”10″ color=”green” noshade>
           </c:forEach>
 		
-		<a href="protected/homeAdmin">Torna alla Pagina d'amministrazione</a><br><br>
+		<a href="admin">Torna alla Pagina d'amministrazione</a><br><br>
 		<a href="index">Torna alla HomePage</a>
 							
 		<center>

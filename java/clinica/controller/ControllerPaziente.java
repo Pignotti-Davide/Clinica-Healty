@@ -42,7 +42,7 @@ public class ControllerPaziente {
 			model.addAttribute("cognomeError", "Campo obbligatorio");
 		}
 		if(erroriPresenti)
-			nextPage  = "nuovoPaziente";
+			nextPage  = "protected/nuovoPaziente";
 		else {
 			nextPage="protected/pazienteInserito";
 		}
