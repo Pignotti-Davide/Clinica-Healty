@@ -1,5 +1,6 @@
 package clinica.dao.impl;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -63,11 +64,21 @@ public class EsameDaoImpl implements EsameDao{
 		session.beginTransaction();
 		Esame e= (Esame) session.get(Esame.class, id);
 		session.getTransaction().commit();
+
 		return e;
 	}
 	public void updateEsame(Esame e){
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		session.merge(e);
+		session.getTransaction().commit();
+
 	}
+	public void insertRisultati(Map<String, String> result ){
+		Session session = sessionFactory.openSession();
+		String hql = "insert into esame_risultati E WHERE E.id = :esame_id";
+		Query query = session.createQuery(hql);
+
+	}
+	
 }

@@ -28,6 +28,7 @@ public class Esame {
 	@ManyToOne
 	private Paziente paziente;
 	@OneToOne
+	
 	private TipologiaEsame tipologia;
 	@Column(nullable=false)
 	@Temporal(TemporalType.DATE)
@@ -80,6 +81,12 @@ public class Esame {
 	}
 	public void setRisultati(Map<String, String> risultati) {
 		this.risultati = risultati;
+	}
+	@Override
+	public String toString() {
+		return "Esame [idEsame=" + idEsame + ", medico=" + medico + ", paziente=" + paziente + ", tipologia="
+				+ tipologia + ", prenotazione=" + prenotazione + ", esecuzioneEsame=" + esecuzioneEsame + ", risultati="
+				+ risultati + "]";
 	}
 	
 	

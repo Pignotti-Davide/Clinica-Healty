@@ -77,9 +77,7 @@ public class ControllerTipologiaEsame {
 	@RequestMapping(value="/listaTipologiaEsami", method=RequestMethod.GET)
 	public String toListaTipologiaEsami(Model model){
 		List<TipologiaEsame>lista=(ArrayList<TipologiaEsame>) tipologiaEsameFacade.findAll();
-		for (TipologiaEsame tipologiaEsame : lista) {
-			System.out.println(tipologiaEsame.getNome());
-		}
+		
 		List<Long> listaId = new ArrayList<>();
 		for(TipologiaEsame tipologiaEsame : lista){
 			listaId.add(tipologiaEsame.getIdTipologiaEsame());

@@ -156,14 +156,29 @@ public class ControllerEsame {
 			return "/protected/inserimentoRisultati";
 		}
 		
-		@RequestMapping(value="/addRisultati", method=RequestMethod.POST)
-		public String addRisultati(@PathVariable("id")long id,Model model,HttpServletRequest request){
-			Esame esame = facadeEsame.findEsame(id);
-			List<String> nomiRisultati = esame.getTipologia().getIndicatoriRisultati();
-			for(String s:nomiRisultati){
-				esame.getRisultati().put(s, request.getParameter("risultato"+s));
-			}
-			facadeEsame.updateEsame(esame);
+		@RequestMapping(value="/addRisultati/{esame.idEsame}", method=RequestMethod.POST)
+		public String addRisultati(@PathVariable("esame.idEsame")long Id,HttpServletRequest request,Model model){
+			Esame e = facadeEsame.findEsame(Id);
+			System.out.print(e);
+			List<String> nomiRisultati = e.getTipologia().getIndicatoriRisultati();
+		for(String s:nomiRisultati){
+			e.getRisultati().put(s, request.getParameter("risultato"+s));
+		}
+			facadeEsame.updateEsame(e);
+			model.addAttribute("risultati",e.getRisultati());
+			System.out.println(e.getRisultati());
+			model.addAttribute("id", e.getIdEsame());
+		
 			return "/protected/risultatiInseriti";
+		}
+		public Map<String,String> creaMappaRisultati(Esame e,HttpServletRequest request){
+			Map<String,String> mappaRisultati = new HashMap<>();
+			List<String> nomi= e.getTipologia().getIndicatoriRisultati();
+			for(String s:nomi){
+				if(request.getAttribute("risultato"+s)!=null){
+					mappaRisultati.put(s, (String)request.getAttribute("risultato"+s));
+				}
+			}
+			return mappaRisultati;
 		}
 	}

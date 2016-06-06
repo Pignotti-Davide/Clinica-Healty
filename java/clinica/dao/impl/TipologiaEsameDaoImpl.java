@@ -55,6 +55,14 @@ public class TipologiaEsameDaoImpl implements TipologiaEsameDao{
 		return t;
 		
 	}
+	public List<String> listaRisultati(long id){
+		Session session=sessionFactory.openSession();
+		session.beginTransaction();
+		@SuppressWarnings("unchecked")
+		List<String> list = (List<String>) session.createQuery("select t from TipologiaEsame t").list();
+		session.getTransaction().commit();
+		return list;
+	}
 	@Override
 	public void deleteTipologiaEsame(long id) {
 		System.out.println("hql Using Delete");

@@ -18,6 +18,29 @@
     <!-- Custom CSS -->
     <link href="<c:url value="/resources/css/shop-homepage.css" />" rel="stylesheet">
 </head>
+<script>function AggiungiRequisito(requisiti){
+ 	var numero_requisiti = requisiti.value;
+ 	var box = document.getElementById('box_risultati');
+	if(numero_requisiti==""){
+		box.innerHTML='';
+ 	}else{
+		if(isNaN(numero_requisiti)==true){
+			box.innerHTML='';
+ 		}else{
+			var righe = "";
+			
+			// Inserisco una riga ad ogni ciclo
+			for(i=1; i<=numero_requisiti; i++){
+				righe = righe + "Requisito n°"+i+${risultato}+
+ 				": <input type='text' name='requisito"+i+"' size='10' />"
+				+
+				"<br/>";
+			}
+			box.innerHTML=righe;
+		}
+	}
+ }
+ </script>
  <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
@@ -69,11 +92,11 @@
 	<br> Medico: ${esame.medico.nome} ${esame.medico.cognome}
 	<br> Paziente: ${esame.paziente.nome} ${esame.paziente.cognome}
 	<br>
-	<form:form method="post" action="addRisultati" name="form">
-	<c:forEach items="${esame.tipologia.indicatoriRisultati}" var="risultato">
-	Elenco dei risultati:<br>
+	<form:form method="post" action="addRisultati/${esame.idEsame}" name="form">
+	Elenco dei risultati:
+	<c:forEach items="${esame.tipologia.indicatoriRisultati}" var="risultato"><br>
 			${risultato}: 	
-	<input type="text" name='risultato"+${risultato}"' size='10' /> 
+	<input type="text" name='risultato${risultato}' size='10' /> 
 	
 			</c:forEach>
 			<input type="submit" value="Invia" />
