@@ -68,7 +68,7 @@ public class ControllerMedico {
 		return "listaMedici";
 
 	}
-	@RequestMapping(value="/ricercaMedico",method=RequestMethod.POST)
+	@RequestMapping(value="/ricercaMedico",method=RequestMethod.GET)
 	public String toRicercaMedico(@ModelAttribute Medico medico){
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
@@ -76,13 +76,13 @@ public class ControllerMedico {
 			return "protected/ricercaMedico";
 		}
 		else return"index";}
-	@RequestMapping(value="/ricercaEsami", method=RequestMethod.GET)
+	@RequestMapping(value="/ricercaEsamiMedico", method=RequestMethod.POST)
 	public String toEsamiMedico(@RequestParam("idMedico") long id,Model model){
 		List<Esame>lista=(ArrayList<Esame>)facadeMedico.listaEsami(id);
 		model.addAttribute("lista", lista);
 		Medico medico = facadeMedico.retrieveMedico(id);
 		model.addAttribute("medico",medico);
-		return "esamiMedico";
+		return "protected/ricercaEsamiMedico";
 
 	}
 	@RequestMapping(value="/eliminaMedico/{id}",method = RequestMethod.GET)

@@ -64,10 +64,10 @@ public class MedicoDaoImpl implements MedicoDao{
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		List<Esame> lista = new ArrayList<>();
-		String hql = "SELECT from Esame E WHERE E.medico = :medico_id";
+		String hql = "FROM Esame c WHERE c.medico.idMedico = :medico_id";
 		Query query = session.createQuery(hql);
-		lista = (List<Esame>)query.list();
 		query.setParameter("medico_id", id);
+		lista = (List<Esame>)query.list();
 		return lista;
 	}
 }

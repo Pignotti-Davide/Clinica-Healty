@@ -58,18 +58,10 @@
                 <td> Id : ${esame.Id}<br>
                 	Tipologia: ${esame.tipologia} </td><br></br>
                 	Paziente: ${esame.paziente }<br></br>
-                	  <c:forEach items="${esame.risultati}" var="risultati" 
-           varStatus="status">
-           <tr> 		Lista dei risultati: <br></br>
-                <td>${risultati}<br></td>
-            </tr> 
-         </c:forEach>
-            </tr> 
+
             	<hr  size=”4″ width=”200″ color=”green” noshade>
          </c:forEach>
-			
-                  
-		<input type="submit" value="invia" />
+		
 		 </td></tr></table>
 	</form:form>
  <br><a href="index">Torna alla homepage</a></center>

@@ -47,7 +47,7 @@
           
 	<center><h4>Ricerca informazioni di un medico</h4>
 
-	<form:form method="post" action="ricercaEsami" modelAttribute="medico" name="form">
+	<form:form method="post" action="ricercaEsamiMedico" modelAttribute="medico" name="form">
 		      <table>
 		      <tr><td>
 				<td>Inserire l'Id del medico :</td><br></br>

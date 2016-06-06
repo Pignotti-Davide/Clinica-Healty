@@ -55,7 +55,7 @@
 	</h4>
 	<center>
 		Ciao, ${pageContext.request.userPrincipal.name} <a
-			href="<c:url value="/j_spring_security_logout" />"> Logout</a> <br>Ecco
+			href="<c:url value="/j_spring_security_logout" />" style="color:red"><b>(Logout)</b></a>.Ecco
 		ciò che puoi fare: <br>
 			<img src="<c:url value="/resources/Grafica/inseriscipaziente.png"/>"
 				usemap="#link1">
@@ -69,7 +69,25 @@
 				<area shape="rect" coords="180, 100, 80, 200" href="nuovoMedico"
 					alt="click">
 			</map>
-			<br> <img
+			
+		
+			</map>
+			<img src="<c:url value="/resources/Grafica/inseriscirisultati2.png"/>"
+				usemap="#link33">
+			<map name="link33" id="link2">
+				<area shape="rect" coords="180, 100, 80, 200" href="inserisciRisultati"
+					alt="click">
+			</map>
+			
+		
+			<img src="<c:url value="/resources/Grafica/consultamedico3.png"/>"
+				usemap="#link22">
+			<map name="link22" id="link2">
+				<area shape="rect" coords="180, 100, 80, 200" href="ricercaMedico"
+					alt="click">
+			</map>
+			
+			<br><img
 				src="<c:url value="/resources/Grafica/inserisciesame.png"/>"
 				usemap="#link3">
 			<map name="link3" id="link3">
@@ -84,8 +102,7 @@
 			</map>
 			<br>
 
-			<a href="inserisciRisultati">Inserisci risultati</a>
-
+		
 			<br>
 
 			<a href="index">Torna alla homepage</a>
