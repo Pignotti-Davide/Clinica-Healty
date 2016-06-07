@@ -87,8 +87,9 @@ public class ControllerMedico {
 
 	}
 	@RequestMapping(value="/eliminaMedico/{id}",method = RequestMethod.GET)
-	public String deleteMedico(@PathVariable("id")long Id,@ModelAttribute Medico medico){
+	public String deleteMedico(@PathVariable("id")long Id,@ModelAttribute Medico medico, Model model){
 		facadeMedico.deleteMedico(Id);
-		return "homeAdmin";
+		model.addAttribute("elemento","Medico");
+		return "protected/eliminazione";
 	}
 }

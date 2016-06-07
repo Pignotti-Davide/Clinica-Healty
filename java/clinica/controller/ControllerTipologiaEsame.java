@@ -71,9 +71,11 @@ public class ControllerTipologiaEsame {
 		return creaMappaRequisiti;
 	}
 	@RequestMapping(value="/eliminaTipologiaEsame/{id}",method = RequestMethod.GET)
-	public String deleteTipologiaEsame(@PathVariable("id")long Id,@ModelAttribute TipologiaEsame tipologiaEsame){
+	public String deleteTipologiaEsame(Model model,@PathVariable("id")long Id,@ModelAttribute TipologiaEsame tipologiaEsame){
 		tipologiaEsameFacade.deleteTipologiaEsame(Id);
-		return "index";
+		model.addAttribute("elemento","Tipologia");
+		return "protected/eliminazione";
+	
 	}
 	@RequestMapping(value="/listaTipologiaEsami", method=RequestMethod.GET)
 	public String toListaTipologiaEsami(Model model){

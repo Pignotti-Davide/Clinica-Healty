@@ -136,9 +136,10 @@ public class ControllerEsame {
 			return true;
 		}
 		@RequestMapping(value="/eliminaEsame/{id}",method = RequestMethod.GET)
-		public String deleteEsame(@PathVariable("id")long Id,@ModelAttribute Esame Esame){
+		public String deleteEsame(Model model,@PathVariable("id")long Id,@ModelAttribute Esame Esame){
 			facadeEsame.deleteEsame(Id);
-			return "index";
+			model.addAttribute("elemento","Esame");
+			return "protected/eliminazione";
 		}
 
 		@RequestMapping(value="/inserisciRisultati", method=RequestMethod.GET)
