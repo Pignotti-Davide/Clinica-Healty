@@ -1,30 +1,62 @@
 package clinica.model;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
+
 @Entity
 public class Paziente {
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cognome == null) ? 0 : cognome.hashCode());
+		result = prime * result + ((idPaziente == null) ? 0 : idPaziente.hashCode());
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Paziente other = (Paziente) obj;
+		if (cognome == null) {
+			if (other.cognome != null)
+				return false;
+		} else if (!cognome.equals(other.cognome))
+			return false;
+		if (idPaziente == null) {
+			if (other.idPaziente != null)
+				return false;
+		} else if (!idPaziente.equals(other.idPaziente))
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		return true;
+	}
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	   @NotNull
 	private Long idPaziente;
 	@Column(nullable=false)
 	private String nome;
 	@Column(nullable=false)
 	private String cognome;
-	@OneToMany(mappedBy="paziente",cascade={CascadeType.MERGE, CascadeType.REMOVE})
 
-	public Long getIdPaziente() {
+	public Long getidPaziente() {
 		return idPaziente;
 	}
-	public void setIdPaziente(Long idPaziente) {
+	public void setidPaziente(Long idPaziente) {
 		this.idPaziente = idPaziente;
 	}
 

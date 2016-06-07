@@ -27,6 +27,51 @@ public class Medico {
 	}
 
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cognome == null) ? 0 : cognome.hashCode());
+		result = prime * result + ((idMedico == null) ? 0 : idMedico.hashCode());
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((specializzazione == null) ? 0 : specializzazione.hashCode());
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Medico other = (Medico) obj;
+		if (cognome == null) {
+			if (other.cognome != null)
+				return false;
+		} else if (!cognome.equals(other.cognome))
+			return false;
+		if (idMedico == null) {
+			if (other.idMedico != null)
+				return false;
+		} else if (!idMedico.equals(other.idMedico))
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		if (specializzazione == null) {
+			if (other.specializzazione != null)
+				return false;
+		} else if (!specializzazione.equals(other.specializzazione))
+			return false;
+		return true;
+	}
+
+
 	public void setIdMedico(Long idMedico) {
 		this.idMedico = idMedico;
 	}

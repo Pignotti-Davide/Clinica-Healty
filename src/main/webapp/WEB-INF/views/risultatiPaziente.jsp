@@ -1,4 +1,3 @@
-
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
@@ -15,7 +14,6 @@
     <link href="<c:url value="/resources/css/shop-homepage.css" />" rel="stylesheet">
 </head>
 
-          
 <body>
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -45,17 +43,21 @@
 <!-- /.container --> </nav>
 <center>          <img src="<c:url value="/resources/Grafica/logo3.jpg"/>">
   <h4><center>Area dedicata agli utenti</center>    </h4>
+
  <br>Per consultare i risultati degli esami inserisci il codice personale:
-<form method="get" action="mostraRisultatiPaziente" name="form">
-				<td><input type='text' path='idPaziente' placeholder="codice"/></td><br>
-			</tr>
-		<input type="submit" value="invia" />
-	</form>
-	<% if (request.getAttribute("paziente")!=null) 
+<form method="post" action="mostraRisultatiPaziente" name="form">
+				<td><input type='text' name="code" placeholder="codice"/></td>
+		<td><font size="3" color="red">${idError}</font></td><br>
+		<input type="submit" value="invia" />	
+</form>
+
+	<% if (request.getAttribute("pazienteNome")!=null) 
 	out.print("Stai consultando le informazioni di ");%>
 	${paziente.nome} ${paziente.cognome}<br/>
+	<font size="3" color="red">${pazienteError}</font>
+	
 	<c:forEach items="${listaEsamiPaziente}" var="esame" varStatus="status">
-		Tipologia d'esame: ${esame.tipologia}<br/>
+		<b><u>Tipologia d'esame</u></b>: ${esame.tipologia}<br/>
 		<c:if test="${empty esame.risultati}">
 				 	
    <p><c:out value="Nessun Risultato"/><p>
@@ -63,8 +65,8 @@
    </c:if>
 	<c:forEach items="${esame.risultati}" var="risultati" varStatus="status">
 	
-						 Tipo risultato: ${risultati.key}<br/>
-						  Valore risultato: ${risultati.value}<br/>
+						 <b><u>Tipo risultato</u></b>: ${risultati.key}<br/>
+						  <b><u>Valore risultato</u></b>: ${risultati.value}<br/>
 						 	<hr  size=”60″ width=”200″ color=”green” noshade>
 							</c:forEach>
 								</c:forEach>

@@ -54,7 +54,7 @@ public class EsameDaoImpl implements EsameDao{
 	public List<Esame> findEsamiDelPaziente(Paziente p){
 		Session session=sessionFactory.openSession();
 		session.beginTransaction();
-		List<Esame> list=session.createQuery("select e from Esame e where e.paziente.idPaziente="+p.getIdPaziente()).list();
+		List<Esame> list=session.createQuery("select e from Esame e where e.paziente.idPaziente="+p.getidPaziente()).list();
 		session.getTransaction().commit();
 		return list;
 	}

@@ -25,4 +25,8 @@ public class FacadePaziente {
 	public List<Esame> listaEsami(long id){
 		return this.pazienteDaoImpl.listaEsami(id);
 	}
+	public void deletePaziente(long id) {
+		this.pazienteDaoImpl.deletePaziente(id);
+		
+	}
 }

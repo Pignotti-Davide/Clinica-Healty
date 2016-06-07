@@ -66,6 +66,65 @@ public class Esame {
 	public Date getPrenotazione() {
 		return prenotazione;
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((esecuzioneEsame == null) ? 0 : esecuzioneEsame.hashCode());
+		result = prime * result + ((idEsame == null) ? 0 : idEsame.hashCode());
+		result = prime * result + ((medico == null) ? 0 : medico.hashCode());
+		result = prime * result + ((paziente == null) ? 0 : paziente.hashCode());
+		result = prime * result + ((prenotazione == null) ? 0 : prenotazione.hashCode());
+		result = prime * result + ((risultati == null) ? 0 : risultati.hashCode());
+		result = prime * result + ((tipologia == null) ? 0 : tipologia.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Esame other = (Esame) obj;
+		if (esecuzioneEsame == null) {
+			if (other.esecuzioneEsame != null)
+				return false;
+		} else if (!esecuzioneEsame.equals(other.esecuzioneEsame))
+			return false;
+		if (idEsame == null) {
+			if (other.idEsame != null)
+				return false;
+		} else if (!idEsame.equals(other.idEsame))
+			return false;
+		if (medico == null) {
+			if (other.medico != null)
+				return false;
+		} else if (!medico.equals(other.medico))
+			return false;
+		if (paziente == null) {
+			if (other.paziente != null)
+				return false;
+		} else if (!paziente.equals(other.paziente))
+			return false;
+		if (prenotazione == null) {
+			if (other.prenotazione != null)
+				return false;
+		} else if (!prenotazione.equals(other.prenotazione))
+			return false;
+		if (risultati == null) {
+			if (other.risultati != null)
+				return false;
+		} else if (!risultati.equals(other.risultati))
+			return false;
+		if (tipologia == null) {
+			if (other.tipologia != null)
+				return false;
+		} else if (!tipologia.equals(other.tipologia))
+			return false;
+		return true;
+	}
 	public void setPrenotazione(Date prenotazione) {
 		this.prenotazione = prenotazione;
 	}

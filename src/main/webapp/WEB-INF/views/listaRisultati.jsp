@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Area Amministrazione - Paziente inserito</title>
+<title>Area Utenti</title>
  <!-- Bootstrap Core CSS -->
     <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 
@@ -47,17 +47,26 @@
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
-        </nav>
 <h4>
-		<center>Inserimento Paziente</center>
+		<center>Consultazione risultati</center>
 	</h4>
 	<center>
-		Hai inserito un nuovo Paziente <br> 
-		<b><u>Nome:</u></b></b>${paziente.nome} <br>
-		 <b><u>Cognome:</b></u>${paziente.cognome} <br>
-		Si prega di comunicare al paziente il suo identificatore: ${paziente.idPaziente}; <br><br> <br>
-		<a href="${pageContext.request.contextPath}/eliminaPaziente/${paziente.idPaziente}">Elimina il paziente</a><br>
-		<a href="admin">Torna alla Pagina d'amministrazione</a><br>
+		Stai consultando i seguenti risultati: <br> Nome:${paziente.nome}; <br> Cognome:${paziente.cognome}; <br>
+		
+		<c:forEach items="${listaEsamiPaziente}" var="esame" varStatus="status">
+		Tipologia d'esame: ${esame.tipologia}<br/>
+		<c:if test="${empty esame.risultati}">
+				 	
+   <p><c:out value="Nessun Risultato"/><p>
+   <hr  size=”60″ width=”200″ color=”green” noshade>
+   </c:if>
+	<c:forEach items="${esame.risultati}" var="risultati" varStatus="status">
+	
+						 Tipo risultato: ${risultati.key}<br/>
+						  Valore risultato: ${risultati.value}<br/>
+						 	<hr  size=”60″ width=”200″ color=”green” noshade>
+							</c:forEach>
+								</c:forEach>
 		<a href="index">Torna alla HomePage</a>
 		</center>
 </body>

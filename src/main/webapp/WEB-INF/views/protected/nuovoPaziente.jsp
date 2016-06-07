@@ -80,6 +80,7 @@
 				</tr>
 			</table>
 		</form:form>
+			<h4><a href="admin">Torna alla Pagina d'amministrazione</a>
 		<br><h4><a href="index">Torna alla homepage</a></h4> 
 	</center>
 </body>

@@ -10,14 +10,15 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
+
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import clinica.model.Esame;
 import clinica.model.Paziente;
+
 import clinica.service.impl.FacadePaziente;
 @Controller
 public class ControllerPaziente {
@@ -35,25 +36,35 @@ public class ControllerPaziente {
 	}
 	@RequestMapping(value="/risultatiPaziente", method=RequestMethod.GET)
 	public String toPaginaPaziente(){
+		
 		return "risultatiPaziente";
 	}
 	
-	@RequestMapping(value="/mostraRisultatiPaziente", method=RequestMethod.GET)
-	public String RisultatiPaziente(@Validated Paziente paziente, BindingResult result,
+	@RequestMapping(value="/mostraRisultatiPaziente", method=RequestMethod.POST)
+	public String RisultatiPaziente(@ModelAttribute Paziente paziente,
 			HttpServletRequest request, Model model){
-		  if(result.hasErrors()){
-	            return "risultatiPaziente";
-	        }
-		  else{
-			  long id=Long.parseLong(request.getParameter("idPaziente"));
+		if(request.getParameter("code").equals("")){
+			model.addAttribute("idError", "Inserire il codice");
+		
+			return "risultatiPaziente";
+		}
+		else{
+			  long id=Long.parseLong(request.getParameter("code"));
 			 paziente = facadePaziente.retrievePaziente(id);
+			 if(paziente==null)
+				 model.addAttribute("pazienteError","Nessun paziente associato a questo codice");
+			 else{
+			model.addAttribute("idError","");
+			model.addAttribute("pazienteNome",paziente.getNome());
+			
 			 List<Esame> listaEsamiPaziente=facadePaziente.listaEsami(id);
 			 model.addAttribute("paziente",paziente);
 			 model.addAttribute("listaEsamiPaziente",listaEsamiPaziente);
-			 
+			 }
+		}
 		return "risultatiPaziente";
 		  }
-	}
+
 	
 
 	@RequestMapping(value="/addPaziente", method=RequestMethod.POST)
@@ -76,5 +87,13 @@ public class ControllerPaziente {
 		}
 		facadePaziente.addPaziente(paziente);
 		return nextPage;   
+	}
+	@RequestMapping(value="/eliminaPaziente/{id}",method = RequestMethod.GET)
+	public String deleteTipologiaEsame(@PathVariable("id")long Id,@ModelAttribute Paziente paziente,
+			Model model){
+		facadePaziente.deletePaziente(Id);
+
+		model.addAttribute("elemento","Paziente");
+		return "protected/eliminazione";
 	}
 }
