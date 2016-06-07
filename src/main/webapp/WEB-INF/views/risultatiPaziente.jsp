@@ -47,7 +47,7 @@
   <h4><center>Area dedicata agli utenti</center>    </h4>
  <br>Per consultare i risultati degli esami inserisci il codice personale:
 <form method="get" action="mostraRisultatiPaziente" name="form">
-				<td><input type='text' name='code' placeholder="codice"/></td><br>
+				<td><input type='text' path='idPaziente' placeholder="codice"/></td><br>
 			</tr>
 		<input type="submit" value="invia" />
 	</form>

@@ -45,7 +45,7 @@ public class ControllerPaziente {
 	            return "risultatiPaziente";
 	        }
 		  else{
-			  long id=Long.parseLong(request.getParameter("code"));
+			  long id=Long.parseLong(request.getParameter("idPaziente"));
 			 paziente = facadePaziente.retrievePaziente(id);
 			 List<Esame> listaEsamiPaziente=facadePaziente.listaEsami(id);
 			 model.addAttribute("paziente",paziente);
