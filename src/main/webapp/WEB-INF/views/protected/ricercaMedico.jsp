@@ -46,12 +46,10 @@
  <center><img src="<c:url value="/resources/Grafica/logo3.jpg"/>">
           
 	<center><h4>Ricerca informazioni di un medico</h4>
-
 	<form:form method="post" action="ricercaEsamiMedico" modelAttribute="medico" name="form">
-		      <table>
-		      <tr><td>
-				<td>Inserire l'Id del medico :</td><br></br>
-				<td><form:input type="text" path="idMedico" placeholder="idMedico" /></td>
+				<td>Inserire Cognome e Nome  del medico :</td><br/>
+				<td>Cognome:<form:input type="text" path="cognome" placeholder="cognome" /></td><br></br>
+					<td>Nome:<form:input type="text" path="nome" placeholder="nome" /></td><br></br>
 			</tr><tr><td>
                   
 		<input type="submit" value="invia" />

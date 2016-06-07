@@ -77,10 +77,11 @@ public class ControllerMedico {
 		}
 		else return"index";}
 	@RequestMapping(value="/ricercaEsamiMedico", method=RequestMethod.POST)
-	public String toEsamiMedico(@RequestParam("idMedico") long id,Model model){
-		List<Esame>lista=(ArrayList<Esame>)facadeMedico.listaEsami(id);
+	public String toEsamiMedico(@RequestParam("nome") String nome,
+			@RequestParam("cognome") String cognome,Model model){
+		Medico medico = facadeMedico.retrieveMedicoNomeCognome(nome, cognome);
+		List<Esame>lista=(ArrayList<Esame>)facadeMedico.listaEsami(medico.getIdMedico());
 		model.addAttribute("lista", lista);
-		Medico medico = facadeMedico.retrieveMedico(id);
 		model.addAttribute("medico",medico);
 		return "protected/ricercaEsamiMedico";
 

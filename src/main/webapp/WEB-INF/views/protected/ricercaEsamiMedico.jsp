@@ -47,23 +47,18 @@
           
 	<center><h4>Informazioni relative al medico</h4>
 
-	<form:form method="post" action="searchMedico" modelAttribute="medico" name="form">
-		      <table>
-		      <tr><td>
-		        
-				<td>Hai richiesto informazioni su ${medico.nome} ${medico.cognome}</td><br></br>
+				Hai richiesto informazioni su ${medico.nome} ${medico.cognome}<br/>
 				Lista dei suoi esami <br>
 				  <c:forEach items="${lista}" var="esame"  varStatus="status">
-           <tr> 
-                <td> Id : ${esame.Id}<br>
-                	Tipologia: ${esame.tipologia} </td><br></br>
-                	Paziente: ${esame.paziente }<br></br>
+                Id Esame: ${esame.idEsame}<br>
+                	Tipologia Esame: ${esame.tipologia} <br>
+                	Paziente Esame: ${esame.paziente }<br/>
 
             	<hr  size=”4″ width=”200″ color=”green” noshade>
          </c:forEach>
 		
 		 </td></tr></table>
-	</form:form>
+	
  <br><a href="index">Torna alla homepage</a></center>
 </body>
 </html>

@@ -59,6 +59,17 @@ public class MedicoDaoImpl implements MedicoDao{
 		session.getTransaction().commit();
 		return m;
 	}
+	public Medico findMedicoPerNomeECognome(String nome, String cognome){
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		String hql = "FROM Medico m WHERE m.nome = :medico_nome and m.cognome=:medico_cognome";
+		Query query = session.createQuery(hql);
+		query.setParameter("medico_nome", nome);
+		query.setParameter("medico_cognome", cognome);
+		Medico medico = (Medico)query.uniqueResult();
+		return medico;
+
+	}
 	@SuppressWarnings("unchecked")
 	public List<Esame>  findListaEsame(long id){
 		Session session = sessionFactory.openSession();
