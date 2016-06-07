@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import clinca.dao.PazienteDao;
+import clinica.model.Esame;
 import clinica.model.Paziente;
 
 
@@ -58,6 +59,16 @@ public class PazienteDaoImpl implements PazienteDao {
 		Paziente p=(Paziente) session.get(Paziente.class, id);
 		session.getTransaction().commit();
 		return p;
+	}
+	@SuppressWarnings("unchecked")
+	public List<Esame> listaEsami(long id) {
+		Session session = sessionFactory.openSession();
+		String hql = "FROM Esame e WHERE e.paziente.idPaziente = :paziente_id";
+		Query query = session.createQuery(hql);
+		query.setParameter("paziente_id", id);
+		List<Esame> uList = query.list();
+		logger.info("Paziente List::" + uList);
+		return uList;
 	}
 	
 }

@@ -135,7 +135,7 @@
                        
                             <div class="caption">
            
-                                <h4><a href="listaMedici.jsp">Accedi all'area paziente</a>
+                                <h4><a href="<c:url value="risultatiPaziente"/>">Accedi all'area paziente</a>
                                 </h4>
                                 <p>Potrai consultare i risultati degli esami a tuo nome </p>
                             </div>

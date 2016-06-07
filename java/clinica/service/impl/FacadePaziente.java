@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import clinica.dao.impl.PazienteDaoImpl;
+import clinica.model.Esame;
 import clinica.model.Paziente;
 @Service
 public class FacadePaziente {
@@ -20,5 +21,8 @@ public class FacadePaziente {
 	}
 	public Paziente retrievePaziente(long id){
 		return this.pazienteDaoImpl.findPaziente(id);
+	}
+	public List<Esame> listaEsami(long id){
+		return this.pazienteDaoImpl.listaEsami(id);
 	}
 }
