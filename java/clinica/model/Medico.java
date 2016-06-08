@@ -6,8 +6,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
+import org.springframework.validation.Validator;
+
 @Entity
-public class Medico {
+public class Medico  {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long idMedico;
@@ -109,5 +113,8 @@ public class Medico {
 	public String toString(){
 		return cognome+" "+nome;
 	}
+
+		
+	}
 	
-}
+

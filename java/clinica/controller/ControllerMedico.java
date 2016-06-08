@@ -4,11 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
+import org.springframework.validation.Validator;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,12 +28,19 @@ import clinica.model.Medico;
 import clinica.model.TipologiaEsame;
 import clinica.service.impl.FacadeMedico;
 
+
 @Controller
-public class ControllerMedico {
+public class ControllerMedico{
 
 	@Autowired
 	private FacadeMedico facadeMedico;
-	
+	@Autowired
+	@Qualifier("medicoValidator")
+	private Validator validator;
+	@InitBinder
+	private void initBinder(WebDataBinder binder) {
+		binder.setValidator(validator);
+	}
 	@RequestMapping(value="/nuovoMedico",method=RequestMethod.GET)
 	public String toNuovoMedico(@ModelAttribute Medico medico){
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -34,31 +49,32 @@ public class ControllerMedico {
 			return "protected/nuovoMedico";
 		}
 		else return"index";}
-
 	@RequestMapping(value="/addMedico", method=RequestMethod.POST)
-	public String addMedico(@ModelAttribute Medico medico,Model model){
+	public String addMedico(@ModelAttribute Medico medico,Model model,
+			@Validated Medico m,BindingResult bindingResult){
 		boolean erroriPresenti = false;
 		String nextPage=null;
-
-		if(medico.getNome().isEmpty()){
-			erroriPresenti=true;
-			model.addAttribute("nomeError", "Campo obbligatorio");
-		}
-		if(medico.getSpecializzazione().equals("")){
-			erroriPresenti=true;
-			model.addAttribute("cognomeError", "Campo obbligatorio");
-		}
-		if(medico.getCognome().equals("")){
-			erroriPresenti=true;
-			model.addAttribute("specializzazioneError", "Campo obbligatorio");
-		}
-		if(erroriPresenti){
-			nextPage  = "protected/nuovoMedico";
-		}
-		else {nextPage="protected/medicoinserito";
+		if (bindingResult.hasErrors()) 
+			return "protected/nuovoMedico";
+//		if(medico.getNome().isEmpty()){
+//			erroriPresenti=true;
+//			model.addAttribute("nomeError", "Campo obbligatorio");
+//		}
+//		if(medico.getSpecializzazione().equals("")){
+//			erroriPresenti=true;
+//			model.addAttribute("cognomeError", "Campo obbligatorio");
+//		}
+//		if(medico.getCognome().equals("")){
+//			erroriPresenti=true;
+//			model.addAttribute("specializzazioneError", "Campo obbligatorio");
+//		}
+//		if(erroriPresenti){
+//			nextPage  = "protected/nuovoMedico";
+//	}
+//		else {nextPage="protected/medicoinserito";
 		facadeMedico.addMedico(medico);
-		}
-		return nextPage;
+		
+		return "protected/medicoinserito";
 	}
 	@RequestMapping(value="/listaMedici", method=RequestMethod.GET)
 	public String toListaMedici(Model model){
@@ -75,10 +91,14 @@ public class ControllerMedico {
 		if (!(auth instanceof AnonymousAuthenticationToken)) {
 			return "protected/ricercaMedico";
 		}
-		else return"index";}
+		else
+			return"index";
+		}
 	@RequestMapping(value="/ricercaEsamiMedico", method=RequestMethod.POST)
-	public String toEsamiMedico(@RequestParam("nome") String nome,
+	public String toEsamiMedico(@Validated Medico m,BindingResult bindingResult,@RequestParam("nome") String nome,
 			@RequestParam("cognome") String cognome,Model model){
+		if (bindingResult.hasErrors()) 
+			return "protected/ricercaMedico";
 		Medico medico = facadeMedico.retrieveMedicoNomeCognome(nome, cognome);
 		List<Esame>lista=(ArrayList<Esame>)facadeMedico.listaEsami(medico.getIdMedico());
 		model.addAttribute("lista", lista);
@@ -92,4 +112,7 @@ public class ControllerMedico {
 		model.addAttribute("elemento","Medico");
 		return "protected/eliminazione";
 	}
+
+
+
 }

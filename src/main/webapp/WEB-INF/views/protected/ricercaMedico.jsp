@@ -1,5 +1,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/tags/form"
+	prefix="springForm"%>
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -13,7 +15,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>	Area amministrazione </title>
 </head>
-
+	 <style type="text/css">
+	 body { 
+    background-image: url('./resources/Grafica/background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: right;
+}
+	   </style>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="container">
@@ -46,8 +55,12 @@
  <center><img src="<c:url value="/resources/Grafica/logo3.jpg"/>">
           
 	<center><h4>Ricerca informazioni di un medico</h4>
+
 	<form:form method="post" action="ricercaEsamiMedico" modelAttribute="medico" name="form">
+	<font size="3" color="red"><springForm:errors path="nome" cssClass="error" /></font><br/>
+	<font size="3" color="red"><springForm:errors path="cognome" cssClass="error" /></font><br/>
 				<td>Inserire Cognome e Nome  del medico :</td><br/>
+				
 				<td>Cognome:<form:input type="text" path="cognome" placeholder="cognome" /></td><br></br>
 					<td>Nome:<form:input type="text" path="nome" placeholder="nome" /></td><br></br>
 			</tr><tr><td>
@@ -55,6 +68,7 @@
 		<input type="submit" value="invia" />
 		 </td></tr></table>
 	</form:form>
- <br><a href="index">Torna alla homepage</a></center>
+<a href="admin">Torna alla Pagina d'amministrazione</a><br><br>
+		<a href="index">Torna alla HomePage</a>
 </body>
 </html>

@@ -13,8 +13,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>	Area amministrazione </title>
 </head>
-
+ <style type="text/css">
+	 body { 
+    background-image: url('./resources/Grafica/background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: right;
+}
+	   </style>
 <body>
+
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -59,6 +67,7 @@
 		
 		 </td></tr></table>
 	
- <br><a href="index">Torna alla homepage</a></center>
+<a href="admin">Torna alla Pagina d'amministrazione</a><br><br>
+		<a href="index">Torna alla HomePage</a></center>
 </body>
 </html>
