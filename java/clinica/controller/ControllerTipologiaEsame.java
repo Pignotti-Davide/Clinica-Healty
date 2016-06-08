@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import clinica.model.Paziente;
 import clinica.model.TipologiaEsame;
 import clinica.service.impl.FacadeTipologiaEsame;
 
@@ -70,12 +71,12 @@ public class ControllerTipologiaEsame {
 		}
 		return creaMappaRequisiti;
 	}
-	@RequestMapping(value="/eliminaTipologiaEsame/{id}",method = RequestMethod.GET)
-	public String deleteTipologiaEsame(Model model,@PathVariable("id")long Id,@ModelAttribute TipologiaEsame tipologiaEsame){
-		tipologiaEsameFacade.deleteTipologiaEsame(Id);
-		model.addAttribute("elemento","Tipologia");
+	@RequestMapping(value="/eliminaTipologiaEsame", method=RequestMethod.POST)
+	public String deleteTipologiaEsame(@ModelAttribute TipologiaEsame tipologiaEsame,Model model){
+		long id =tipologiaEsame.getIdTipologiaEsame();
+		tipologiaEsameFacade.deleteTipologiaEsame(id);
+		model.addAttribute("elemento","Tipologia Esame");
 		return "protected/eliminazione";
-	
 	}
 	@RequestMapping(value="/listaTipologiaEsami", method=RequestMethod.GET)
 	public String toListaTipologiaEsami(Model model){

@@ -1,8 +1,10 @@
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-
-<%@ page import="clinica.model.TipologiaEsame"%>
+<%@page session="true"%>
+<%@ taglib uri="http://www.springframework.org/tags/form"
+	prefix="springForm"%>
 <!doctype html>
 <html>
 <head>
@@ -11,7 +13,14 @@
 <!-- Bootstrap Core CSS -->
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet">
-
+    	 <style type="text/css">
+	 body { 
+    background-image: url('./resources/Grafica/background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: right;
+}
+	   </style>
 <!-- Custom CSS -->
 <link href="<c:url value="/resources/css/shop-homepage.css" />"
 	rel="stylesheet">
@@ -52,11 +61,15 @@
 		<center>Inserimento medico</center>
 	</h4>
 	<center>
-		Hai inserito un nuovo medico <br> Nome:${medico.nome}; <br>
-		Cognome:${medico.cognome}; <br>
-		Specializzazione:${medico.specializzazione}; <br> <br> 
-			<a href="${pageContext.request.contextPath}/eliminaMedico/${medico.idMedico}">Cancella il Medico</a><br><br>
-		<a href="admin">Torna alla Pagina d'amministrazione</a><br>
+		Hai inserito un nuovo medico <br> <b>Nome</b>:${medico.nome}; <br>
+		<b>Cognome</b>:${medico.cognome}; <br>
+		<b>Specializzazione</b>:${medico.specializzazione}; <br> <br> 
+			<form:form method="post" action="eliminaMedico" name="form" modelAttribute="medico">
+			<form:input type="hidden" path='idMedico'
+							placeholder="id" /><br/>
+		<input type="submit" value="Elimina" />	
+		</form:form>
+		<h4><a href="admin">Torna alla Pagina d'amministrazione</a><br>
 		<a href="index">Torna alla HomePage</a>
 		<center>
 </body>

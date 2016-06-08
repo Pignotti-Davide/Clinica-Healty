@@ -20,14 +20,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import clinica.model.Esame;
-import clinica.model.Medico;
+
 import clinica.model.Paziente;
 
 import clinica.service.impl.FacadePaziente;
+
 @Controller
-public class ControllerPaziente {
+public class ControllerPaziente extends WebMvcConfigurerAdapter{
 	@Autowired
 	private FacadePaziente facadePaziente;
 	@Autowired
@@ -85,12 +87,12 @@ public class ControllerPaziente {
 		facadePaziente.addPaziente(paziente);
 		return "protected/pazienteInserito";   
 	}
-	@RequestMapping(value="/eliminaPaziente/{id}",method = RequestMethod.GET)
-	public String deleteTipologiaEsame(@PathVariable("id")long Id,@ModelAttribute Paziente paziente,
-			Model model){
-		facadePaziente.deletePaziente(Id);
-
+	@RequestMapping(value="/eliminaPaziente", method=RequestMethod.POST)
+	public String deleteTipologiaEsame(@ModelAttribute Paziente paziente,Model model){
+		long id = paziente.getIdPaziente();
+		facadePaziente.deletePaziente(id);
 		model.addAttribute("elemento","Paziente");
 		return "protected/eliminazione";
 	}
+
 }

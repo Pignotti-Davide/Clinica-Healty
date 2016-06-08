@@ -34,6 +34,14 @@ function processData(f1,f2,f3,f4,f5,f6){
 
 }
 </script>
+    	 <style type="text/css">
+	 body { 
+    background-image: url('./resources/Grafica/background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: right;
+}
+	   </style>
 	<!-- Navigation -->
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<div class="container">
@@ -84,11 +92,11 @@ function processData(f1,f2,f3,f4,f5,f6){
 					itemValue="idPaziente" />
 			</form:select><br>
 			Inserisci la data e l'ora:  
-<input type="date" name="field2" id="field2" /><br /><br />
-
-	<input  type="submit" value="Invia" />
+<input type="date" name="esecuzioneEsame" /><br/>
+	<input  type="submit" value="Invia" /><br>
 		</form:form>
-		<br> <a href="index">Torna alla homepage</a>
+	<h4><a href="admin">Torna alla Pagina d'amministrazione</a><br>
+		<a href="index">Torna alla HomePage</a>
 	</center>
 </body>
 </html>

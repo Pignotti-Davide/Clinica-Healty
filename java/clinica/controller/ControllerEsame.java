@@ -84,7 +84,7 @@ public class ControllerEsame {
 
 
 
-	public String addEsame(@RequestParam("field2")Date data, @ModelAttribute Esame esame, Model model){
+	public String addEsame(@RequestParam("esecuzioneEsame")Date data, @ModelAttribute Esame esame, Model model){
 
 
 		String nextPage=null;
@@ -135,9 +135,10 @@ public class ControllerEsame {
 			}
 			return true;
 		}
-		@RequestMapping(value="/eliminaEsame/{id}",method = RequestMethod.GET)
-		public String deleteEsame(Model model,@PathVariable("id")long Id,@ModelAttribute Esame Esame){
-			facadeEsame.deleteEsame(Id);
+		@RequestMapping(value="/eliminaEsame", method=RequestMethod.POST)
+		public String deleteTipologiaEsame(@ModelAttribute Esame esame,Model model){
+			long id = esame.getIdEsame();
+			facadeEsame.deleteEsame(id);
 			model.addAttribute("elemento","Esame");
 			return "protected/eliminazione";
 		}

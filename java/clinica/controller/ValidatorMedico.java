@@ -19,4 +19,5 @@ public class ValidatorMedico implements Validator{
 	        ValidationUtils.rejectIfEmptyOrWhitespace(e, "specializzazione", "specializzazione.required");
 	      
 	}
+	
 }

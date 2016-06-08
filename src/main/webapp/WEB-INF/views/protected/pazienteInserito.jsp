@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page session="true"%>
+<%@ taglib uri="http://www.springframework.org/tags/form"
+	prefix="springForm"%>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -12,8 +16,16 @@
 
     <!-- Custom CSS -->
     <link href="<c:url value="/resources/css/shop-homepage.css" />" rel="stylesheet">
+	 <style type="text/css">
+	 body { 
+    background-image: url('./resources/Grafica/background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: right;
+}
+	   </style>
 </head>
-<center><img src="<c:url value="/resources/Grafica/logo3.jpg"/>">
+<center>
 <body>
 <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -48,6 +60,7 @@
         </div>
         <!-- /.container -->
         </nav>
+        <center><img src="<c:url value="/resources/Grafica/logo3.jpg"/>">
 <h4>
 		<center>Inserimento Paziente</center>
 	</h4>
@@ -56,7 +69,13 @@
 		<b><u>Nome:</u></b></b>${paziente.nome} <br>
 		 <b><u>Cognome:</b></u>${paziente.cognome} <br>
 		Si prega di comunicare al paziente il suo identificatore: <b>${paziente.idPaziente}</b><br><br> <br>
-		<h4><a href="${pageContext.request.contextPath}/eliminaPaziente/${paziente.idPaziente}">Elimina il paziente</a><br>
+		<form:form method="post" action="eliminaPaziente" name="form" modelAttribute="paziente">
+			<form:input type="hidden" path='idPaziente'
+							placeholder="id" /><br/>
+						
+		<input type="submit" value="Elimina" />	
+</form:form>
+
 		<a href="admin">Torna alla Pagina d'amministrazione</a><br>
 		<a href="index">Torna alla HomePage</a>
 		</center>

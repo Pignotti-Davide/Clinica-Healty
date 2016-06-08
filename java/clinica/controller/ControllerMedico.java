@@ -30,7 +30,7 @@ import clinica.service.impl.FacadeMedico;
 
 
 @Controller
-public class ControllerMedico{
+public class ControllerMedico {
 
 	@Autowired
 	private FacadeMedico facadeMedico;
@@ -91,9 +91,10 @@ public class ControllerMedico{
 		return "protected/ricercaEsamiMedico";
 
 	}
-	@RequestMapping(value="/eliminaMedico/{id}",method = RequestMethod.GET)
-	public String deleteMedico(@PathVariable("id")long Id,@ModelAttribute Medico medico, Model model){
-		facadeMedico.deleteMedico(Id);
+	@RequestMapping(value="/eliminaMedico", method=RequestMethod.POST)
+	public String deleteTipologiaEsame(@ModelAttribute Medico medico,Model model){
+		long id = medico.getIdMedico();
+		facadeMedico.deleteMedico(id);
 		model.addAttribute("elemento","Medico");
 		return "protected/eliminazione";
 	}

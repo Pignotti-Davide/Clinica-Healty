@@ -15,7 +15,14 @@
 <!-- Bootstrap Core CSS -->
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet">
-
+    	 <style type="text/css">
+	 body { 
+    background-image: url('./resources/Grafica/background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: right;
+}
+	   </style>
 <!-- Custom CSS -->
 <link href="<c:url value="/resources/css/shop-homepage.css" />"
 	rel="stylesheet">
@@ -54,7 +61,7 @@
 
 	<center>
 		<img src="<c:url value="/resources/Grafica/logo3.jpg"/>"><br>
-		Elemento  <b>${elemento}</b> eliminato
+		Elemento  <b>${elemento}</b> eliminato<br><br>
 
 			<h4><a href="admin">Torna alla Pagina d'amministrazione</a>
 		<br><h4><a href="index">Torna alla homepage</a></h4> 

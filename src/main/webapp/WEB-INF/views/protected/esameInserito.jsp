@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page session="true"%>
+<%@ taglib uri="http://www.springframework.org/tags/form"
+	prefix="springForm"%>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -9,7 +13,14 @@
 <title>Area Amministrazione -Esame inserito</title>
  <!-- Bootstrap Core CSS -->
     <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
-
+    	 <style type="text/css">
+	 body { 
+    background-image: url('./resources/Grafica/background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: right;
+}
+	   </style>
     <!-- Custom CSS -->
     <link href="<c:url value="/resources/css/shop-homepage.css" />" rel="stylesheet">
 </head>
@@ -58,8 +69,12 @@
 		Data di prenotazione:${esame.prenotazione}<br>
 		Data in cui si svolgerà l'esame:${esame.esecuzioneEsame}<br>
 		<br>
-		<a href="${pageContext.request.contextPath}/eliminaEsame/${esame.idEsame}">Cancella il nuovo esame</a><br>
-		<a href="protected/homeAdmin">Torna alla Pagina d'amministrazione</a><br>
+			<form:form method="post" action="eliminaEsame" name="form" modelAttribute="esame">
+			<form:input type="hidden" path='idEsame'
+							placeholder="id" /><br/>
+		<input type="submit" value="Elimina" />	
+			</form:form>
+			<h4><a href="admin">Torna alla Pagina d'amministrazione</a><br>
 		<a href="index">Torna alla HomePage</a>
 		</center>
 </body>

@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page session="true"%>
+<%@ taglib uri="http://www.springframework.org/tags/form"
+	prefix="springForm"%>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -12,6 +16,14 @@
 
     <!-- Custom CSS -->
     <link href="<c:url value="/resources/css/shop-homepage.css" />" rel="stylesheet">
+    	 <style type="text/css">
+	 body { 
+    background-image: url('./resources/Grafica/background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: right;
+}
+	   </style>
 </head>
  <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -53,26 +65,31 @@
 	</h4>
 	<center>
 		Hai inserito una nuova tipologia d'esame <br>
-		Nome:${tipologiaEsame.nome}; <br>
+		<b>Id</b>: ${tipologiaEsame.idTipologiaEsame}<br>
+		<b>Nome</b>:${tipologiaEsame.nome}<br>
 		<tr>
-		<td>Decrizione: ${tipologiaEsame.descrizione}</td><br>
-		<td>Lista Tipologia Risultati: </td><br>
+		<td><b>Decrizione</b>: ${tipologiaEsame.descrizione}</td><br>
+		<td><b>Lista Tipologia Risultati</b>: </td><br>
 		  <c:forEach items="${tipologiaEsame.indicatoriRisultati}" var="indicatoriRisultati" 
            varStatus="status">
            <tr> 
-                <td>Tipi risultati: ${indicatoriRisultati}<br></td>
+                <td><b>Tipi risultati</b>: ${indicatoriRisultati}<br></td>
             </tr> 
          </c:forEach>
-         <td>Lista Requisiti: </td><br>
+         <td><b>Lista Requisiti</b>: </td><br>
 	  <c:forEach items="${tipologiaEsame.requisiti}" var="requisiti" 
         varStatus="status">
            <tr>
-                 <td>Nome requisito: ${requisiti.key}:</td>
-               <td>Descrizione requisito:${requisiti.value}</td>
+                 <td><b>Nome requisito</b>: ${requisiti.key}:</td>
+               <td><b>Descrizione requisito</b>:${requisiti.value}</td>
             </tr> 
           </c:forEach>
-		<a href="${pageContext.request.contextPath}/eliminaTipologiaEsame/${tipologiaEsame.idTipologiaEsame}">Cancella La Tipologia D'esame</a><br><br>
-		<a href="admin">Torna alla Pagina d'amministrazione</a><br><br>
+		<form:form method="post" action="eliminaTipologiaEsame" name="form" modelAttribute="tipologiaEsame">
+		<form:input type="hidden" path='idTipologiaEsame'/><br/>
+
+		<input type="submit" value="Elimina" />	
+</form:form>
+		<h4><a href="admin">Torna alla Pagina d'amministrazione</a><br>
 		<a href="index">Torna alla HomePage</a>
 							
 		<center>

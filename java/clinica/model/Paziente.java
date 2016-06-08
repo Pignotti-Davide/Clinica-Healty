@@ -19,10 +19,10 @@ public class Paziente {
 	@Column(nullable=false)
 	private String cognome;
 
-	public Long getidPaziente() {
+	public Long getIdPaziente() {
 		return idPaziente;
 	}
-	public void setidPaziente(Long idPaziente) {
+	public void setIdPaziente(Long idPaziente) {
 		this.idPaziente = idPaziente;
 	}
 
