@@ -9,11 +9,28 @@
 <title>Clinica Healthy - Area utente</title>
     <!-- Bootstrap Core CSS -->
     <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
-
+ <style type="text/css">
+	 body { 
+    background-image: url('./resources/Grafica/background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: right;
+}
+	   </style>
     <!-- Custom CSS -->
     <link href="<c:url value="/resources/css/shop-homepage.css" />" rel="stylesheet">
 </head>
-
+<script type="text/javascript" language="javascript">
+function visualizza(id){
+  if (document.getElementById){
+    if(document.getElementById(id).style.display == 'none'){
+      document.getElementById(id).style.display = 'block';
+    }else{
+      document.getElementById(id).style.display = 'none';
+    }
+  }
+}
+</script>
 <body>
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -57,7 +74,11 @@
 	<font size="3" color="red">${pazienteError}</font>
 	
 	<c:forEach items="${listaEsamiPaziente}" var="esame" varStatus="status">
-		<b><u>Tipologia d'esame</u></b>: ${esame.tipologia}<br/>
+		<a href="<c:url value="#" />" onclick="visualizza('immagine${status.index}');">
+		
+				Tipologia d'esame${esame.tipologia}		<br/>		
+			</a>
+			<div id="immagine${status.index}" style="display: none">
 		<c:if test="${empty esame.risultati}">
 				 	
    <p><c:out value="Nessun Risultato"/><p>
@@ -68,8 +89,13 @@
 						 <b><u>Tipo risultato</u></b>: ${risultati.key}<br/>
 						  <b><u>Valore risultato</u></b>: ${risultati.value}<br/>
 						 	<hr  size=”60″ width=”200″ color=”green” noshade>
-							</c:forEach>
+						 	</p>
+							</c:forEach></div>
 								</c:forEach>
+										
+		
+		<table>
+				<tr>
                                    <br><a href="index.html">Torna alla homepage</a>
                                   
                                 

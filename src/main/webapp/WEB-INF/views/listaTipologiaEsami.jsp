@@ -13,6 +13,7 @@
 <html>
 <head>
 <meta charset="utf-8">
+
 <title>Clinica Healthy - lista esami</title>
 <!-- Bootstrap Core CSS -->
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
@@ -21,9 +22,17 @@
 <!-- Custom CSS -->
 <link href="<c:url value="/resources/css/shop-homepage.css" />"
 	rel="stylesheet">
+	 <style type="text/css">
+	 body { 
+    background-image: url('./resources/Grafica/background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: right;
+}
+	   </style>
 </head>
-
 <body>
+<%-- <body background="<c:url value="/resources/Grafica/sfondo2.jpg"/>"> --%>
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -52,7 +61,7 @@
 		</div>
 		<!-- /.container -->
 	</nav>
-	<img src="<c:url value="/resources/Grafica/logo3.jpg"/>">
+	<center><img src="<c:url value="/resources/Grafica/logo3.jpg"/>"></center>
 	<h4>
 		<center>Consulta il nostro catalogo</center>
 	</h4>
@@ -70,31 +79,35 @@ function visualizza(id){
 </script>
 <c:forEach items="${lista}" var="tipo" varStatus="status">
       <div id="testo">	
-			Nome:
+		<b><u></u></b>
 			<a href="<c:url value="#" />" onclick="visualizza('immagine${status.index}');">
-				${tipo.nome}				
+				<b><u>Nome </u></b>:${tipo.nome}	<b><u>Descrizione</u></b> ${tipo.descrizione}<br>			
 			</a>
-			Descrizione ${tipo.descrizione}
+			
 		</div>		
 		<div id="immagine${status.index}" style="display: none">
+		<c:if test="${empty requisito}">
+   <p><c:out value="Nessun Requisito"/><p>
+   </c:if>
 	<c:forEach items="${tipo.requisiti}" var="requisito" varStatus="status">
-						  <td>Nome requisito: ${requisito.key}:</td>
-               <td>Descrizione requisito:${requisito.value}</td>
+	
+						  <td><u>Nome requisito</u>: ${requisito.key}:</td>
+               <td><u>Descrizione requisito</u>${requisito.value}</td>
 							<tr>
 							</c:forEach>
 							<c:forEach items="${tipo.indicatoriRisultati}" var="risultato" varStatus="status">
-						  <td>Tipo risultato: ${risultato}:</td>
+						  <td><u>Tipo di risultato</u>: ${risultato}</td>
   
 							<tr>
 							</c:forEach></div>
+							   <hr  size=”60″ width=”100″ color=”green” noshade>
 </c:forEach>
-		
-		
+		  
+		<h4><a href="index.html">Torna alla homepage</a>
+			</h4>
 		<table>
 				<tr>
-			<h4>
-				<a href="index.html">Torna alla homepage</a>
-			</h4>
+			
 		</tr>
 		</table>
 		

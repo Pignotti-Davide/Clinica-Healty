@@ -12,7 +12,14 @@
 <title>Clinica Healthy - lista medici</title>
  <!-- Bootstrap Core CSS -->
     <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
-
+ <style type="text/css">
+	 body { 
+    background-image: url('./resources/Grafica/background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: right;
+}
+	   </style>
     <!-- Custom CSS -->
     <link href="<c:url value="/resources/css/shop-homepage.css" />" rel="stylesheet">
 </head>
@@ -46,7 +53,7 @@
 		</div>
 		<!-- /.container -->
 	</nav>
-	<img src="<c:url value="/resources/Grafica/logo3.jpg"/>">
+	<center><img src="<c:url value="/resources/Grafica/logo3.jpg"/>">
 
 	<h4>
 		<center>Consulta l'elenco dei nostri medici</center>
@@ -54,10 +61,10 @@
 	<center>
 	<c:forEach items="${lista}" var="med" varStatus="status">
       <div id="testo">	
-      	Nome : ${med.nome}<br>
-      	Cognome: ${med.cognome}<br>
-      	Specializzazione: ${med.specializzazione}
-      	<hr  size=”1″ width=”200″ color=”green” noshade>
+      	<b>Nome </b>: ${med.nome}<br>
+      	<b>Cognome</b>: ${med.cognome}<br>
+      	<b>Specializzazione</b>: ${med.specializzazione}
+      	<hr   color=”green” noshade>
       </c:forEach>
 							  <h4><a href="index.html">Torna alla homepage</a>
                                 </h4>

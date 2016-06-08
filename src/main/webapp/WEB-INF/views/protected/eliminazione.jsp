@@ -54,9 +54,9 @@
 
 	<center>
 		<img src="<c:url value="/resources/Grafica/logo3.jpg"/>"><br>
-		Elemento  ${elemento} eliminato
+		Elemento  <b>${elemento}</b> eliminato
 
-			<h4><a href="admin">Torna alla Pagina d'amministrazione</a><br>
+			<h4><a href="admin">Torna alla Pagina d'amministrazione</a>
 		<br><h4><a href="index">Torna alla homepage</a></h4> 
 	</center>
 </body>

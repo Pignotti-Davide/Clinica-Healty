@@ -13,7 +13,7 @@
     <!-- Custom CSS -->
     <link href="<c:url value="/resources/css/shop-homepage.css" />" rel="stylesheet">
 </head>
-<img src="<c:url value="/resources/Grafica/logo3.jpg"/>">
+<center><img src="<c:url value="/resources/Grafica/logo3.jpg"/>">
 <body>
 <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -55,8 +55,8 @@
 		Hai inserito un nuovo Paziente <br> 
 		<b><u>Nome:</u></b></b>${paziente.nome} <br>
 		 <b><u>Cognome:</b></u>${paziente.cognome} <br>
-		Si prega di comunicare al paziente il suo identificatore: ${paziente.idPaziente}; <br><br> <br>
-		<a href="${pageContext.request.contextPath}/eliminaPaziente/${paziente.idPaziente}">Elimina il paziente</a><br>
+		Si prega di comunicare al paziente il suo identificatore: <b>${paziente.idPaziente}</b><br><br> <br>
+		<h4><a href="${pageContext.request.contextPath}/eliminaPaziente/${paziente.idPaziente}">Elimina il paziente</a><br>
 		<a href="admin">Torna alla Pagina d'amministrazione</a><br>
 		<a href="index">Torna alla HomePage</a>
 		</center>

@@ -25,7 +25,11 @@ body {
     height: 130px;
     overflow: hidden;
 }
-
+.tag {
+    background: transparent url(../Grafica/sfondo2.jpg) no-repeat;
+    background-position: 0 50%;
+    padding-left: 50px
+}
 .caption h4 {
     white-space: nowrap;
 }
