@@ -16,7 +16,7 @@ public class ValidatorMedico implements Validator{
 	public void validate(Object target, Errors e) {
 		   ValidationUtils.rejectIfEmptyOrWhitespace(e, "nome", "nome.required");
 		   ValidationUtils.rejectIfEmptyOrWhitespace(e, "cognome", "cognome.required");
-//	        ValidationUtils.rejectIfEmptyOrWhitespace(e, "specializzazione", "specializzazione.required");
+	        ValidationUtils.rejectIfEmptyOrWhitespace(e, "specializzazione", "specializzazione.required");
 	      
 	}
 }

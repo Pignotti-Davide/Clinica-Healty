@@ -10,6 +10,40 @@ import javax.persistence.Id;
 @Entity
 public class Paziente {
 
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long idPaziente;
+	@Column(nullable=false)
+	private String nome;
+	@Column(nullable=false)
+	private String cognome;
+
+	public Long getidPaziente() {
+		return idPaziente;
+	}
+	public void setidPaziente(Long idPaziente) {
+		this.idPaziente = idPaziente;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+
+	public String getCognome() {
+		return cognome;
+	}
+
+
+	public void setCognome(String cognome) {
+		this.cognome = cognome;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -45,43 +79,5 @@ public class Paziente {
 			return false;
 		return true;
 	}
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long idPaziente;
-	@Column(nullable=false)
-	private String nome;
-	@Column(nullable=false)
-	private String cognome;
-
-	public Long getidPaziente() {
-		return idPaziente;
-	}
-	public void setidPaziente(Long idPaziente) {
-		this.idPaziente = idPaziente;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-
-	public String getCognome() {
-		return cognome;
-	}
-
-
-	public void setCognome(String cognome) {
-		this.cognome = cognome;
-	}
-@Override
-public String toString(){
-	return cognome+" "+nome;
-	
-}
 	public Paziente(){}
 }

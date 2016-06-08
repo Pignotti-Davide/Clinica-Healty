@@ -58,9 +58,9 @@
 				Hai richiesto informazioni su ${medico.nome} ${medico.cognome}<br/>
 				Lista dei suoi esami <br>
 				  <c:forEach items="${lista}" var="esame"  varStatus="status">
-                Id Esame: ${esame.idEsame}<br>
-                	Tipologia Esame: ${esame.tipologia} <br>
-                	Paziente Esame: ${esame.paziente }<br/>
+                <b>Id Esame</b>: ${esame.idEsame}<br>
+                	<b>TipologiaEsame</b> : ${esame.tipologia} <br>
+                	<b>Paziente Esame<b>: ${esame.paziente }<br/>
 
             	<hr  size=”4″ width=”200″ color=”green” noshade>
          </c:forEach>

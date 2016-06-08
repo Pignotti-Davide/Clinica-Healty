@@ -56,22 +56,7 @@ public class ControllerMedico{
 		String nextPage=null;
 		if (bindingResult.hasErrors()) 
 			return "protected/nuovoMedico";
-//		if(medico.getNome().isEmpty()){
-//			erroriPresenti=true;
-//			model.addAttribute("nomeError", "Campo obbligatorio");
-//		}
-//		if(medico.getSpecializzazione().equals("")){
-//			erroriPresenti=true;
-//			model.addAttribute("cognomeError", "Campo obbligatorio");
-//		}
-//		if(medico.getCognome().equals("")){
-//			erroriPresenti=true;
-//			model.addAttribute("specializzazioneError", "Campo obbligatorio");
-//		}
-//		if(erroriPresenti){
-//			nextPage  = "protected/nuovoMedico";
-//	}
-//		else {nextPage="protected/medicoinserito";
+
 		facadeMedico.addMedico(medico);
 		
 		return "protected/medicoinserito";

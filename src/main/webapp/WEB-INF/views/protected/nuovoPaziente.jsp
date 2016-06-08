@@ -3,7 +3,8 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page session="true"%>
-
+<%@ taglib uri="http://www.springframework.org/tags/form"
+	prefix="springForm"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,7 +20,16 @@
 <!-- Custom CSS -->
 <link href="<c:url value="/resources/css/shop-homepage.css" />"
 	rel="stylesheet">
+	
 </head>
+	 <style type="text/css">
+	 body { 
+    background-image: url('./resources/Grafica/background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: right;
+}
+	   </style>
 <body><nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -56,25 +66,27 @@
 		<img src="<c:url value="/resources/Grafica/logo3.jpg"/>">
 		<h4>Aggiungi un nuovo paziente</h4>
 
-		<form:form method="post" action="addPaziente"
-			modelAttribute="paziente" name="form">
+		<form:form method="post" action="addPaziente" modelAttribute="paziente" name="form">
+			
 			<table>
 				<tr>
-					<td><font size="3" color="red">${nomeError}</font></td>
+	
 				</tr>
 				<tr>
 					<td>Nome Paziente :</td>
-					<td><form:input type="text" path="nome" placeholder="nome" /></td>
+					<td><form:input type="text" path='nome' placeholder="nome" /></td>
 				</tr>
 				<tr>
-					<td><font size="3" color="red">${cognomeError}</font></td>
 				</tr>
 
 				<tr>
 					<td>Cognome Paziente :</td>
-					<td><form:input type="text" path="cognome"
+					<td><form:input type="text" path='cognome'
 							placeholder="cognome" /></td>
-				</tr>
+
+							<font size="3" color="red"><springForm:errors path="nome" cssClass="error" /></font><br/>
+			<font size="3" color="red"><springForm:errors path="cognome" cssClass="error" /></font><br/>
+
 				<tr>
 					<td><input type="submit" value="invia" /></td>
 				</tr>

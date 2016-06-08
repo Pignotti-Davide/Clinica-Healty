@@ -96,7 +96,7 @@ function visualizza(id){
 		
 		<table>
 				<tr>
-                                   <br><a href="index.html">Torna alla homepage</a>
+                                   <h4><br><a href="index.html">Torna alla homepage</a>
                                   
                                 
 				
