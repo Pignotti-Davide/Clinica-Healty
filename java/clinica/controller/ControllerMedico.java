@@ -52,10 +52,11 @@ public class ControllerMedico {
 	@RequestMapping(value="/addMedico", method=RequestMethod.POST)
 	public String addMedico(@ModelAttribute Medico medico,Model model,
 			@Validated Medico m,BindingResult bindingResult){
-		boolean erroriPresenti = false;
-		String nextPage=null;
-		if (bindingResult.hasErrors()) 
+		if (bindingResult.hasErrors()) {
+			System.out.println("ciao");
 			return "protected/nuovoMedico";
+			
+		}
 
 		facadeMedico.addMedico(medico);
 		

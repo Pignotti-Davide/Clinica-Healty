@@ -1,9 +1,7 @@
-
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@page session="true"%>
+<%@ taglib uri="http://www.springframework.org/tags/form"
+	prefix="springForm"%>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -51,15 +49,22 @@
 					righe = righe
 							+ "Requisito n°"
 							+ i
-							+ " : Nome requisito: <input type='text' name='requisito"+i+"' size='10' />"
-							+ "	Descrizione requisito: <input type='text' name='descrizione_requisito"+i+"' size='40'/>"
+							+ " : Nome requisito: <input type='text' name='requisito"+i+"' size='10' /><br>"
+							+ "	Descrizione requisito: <input type='text' name='descrizione_requisito"+i+"' size='40'/><br>"
 							+ "<br/>";
 				}
 				box.innerHTML = righe;
 			}
 		}
 	}
-</script>
+</script>	 <style type="text/css">
+	 body { 
+    background-image: url('./resources/Grafica/background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: right;
+}
+	   </style>
 <!-- Bootstrap Core CSS -->
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet">
@@ -95,7 +100,7 @@
 </div>
 <!-- /.container --> </nav>
 <body>
-	<img src="<c:url value="/resources/Grafica/logo3.jpg"/>">
+	<center><img src="<c:url value="/resources/Grafica/logo3.jpg"/>">
 
 	<center>
 
@@ -105,18 +110,18 @@
 			modelAttribute="tipologiaEsame" name="form">
 			<table>
 				<tr>
-					<td><font size="3" color="red">${nomeError}</font></td>
 				</tr>
 
 				<tr>
-					<td>Nome Tipologia Esame :</td>
+				<font size="3" color="red"><springForm:errors path="nome" cssClass="error" /></font><br>
+					<td>Nome Tipologia Esame :<br>
 					<td><form:input type="text" path="nome" placeholder="nome" /></td>
 				</tr>
 				<tr>
-					<td><font size="3" color="red">${descrizioneError}</font></td>
+				
 				</tr>
-				<tr>
-					<td>Descrizione Tipologia Esame:</td>
+				<tr><font size="3" color="red"><springForm:errors path="descrizione" cssClass="error" /></font><br>
+					<td>Descrizione Tipologia Esame:<br>
 					<td><form:input type="text" path="descrizione"
 							placeholder="descrizione" /></td>
 				</tr>
@@ -133,8 +138,8 @@
 				</tr>
 			</table>
 			<table>
-				<tr>
-					<td>Numero Risultati:</td>
+				<tr><font size="3" color="red">${risultatiError}</font><br>
+					<td>Numero Risultati:<br>
 			
 					<td><input type="text" name="num_risultati" value="0"
 						maxlength="2" onkeyup="AggiungiRisultato(this)"></input></td>
@@ -146,5 +151,7 @@
 				</table>
 					<input type="submit" value="Invia" />
 		</form:form>
+					<h4><a href="admin">Torna alla Pagina d'amministrazione</a>
+		<br><h4><a href="index">Torna alla homepage</a></h4> 
 </body>
 </html>

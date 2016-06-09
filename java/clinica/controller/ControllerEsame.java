@@ -15,12 +15,16 @@ import java.util.TimeZone;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -53,9 +57,12 @@ public class ControllerEsame {
 	private FacadeMedico facadeMedico;
 	@Autowired
 	private FacadeTipologiaEsame facadeTipologiaEsame;
-
+	@Autowired
+	@Qualifier("esameValidator")
+	private Validator validator;
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
+		binder.setValidator(validator);
 		binder.registerCustomEditor(Paziente.class, this.editorPaziente);
 		binder.registerCustomEditor(TipologiaEsame.class, this.editorTipologiaEsame);
 		binder.registerCustomEditor(Medico.class, this.editorMedico);
@@ -85,102 +92,78 @@ public class ControllerEsame {
 
 
 	public String addEsame(@RequestParam("esecuzioneEsame")Date data, @ModelAttribute Esame esame, Model model){
-
-
-		String nextPage=null;
-		boolean erroriPresenti = false;
-
-		if(esame.getMedico()==null){
-			erroriPresenti=true;
-			model.addAttribute("medicoError", "Campo obbligatorio");
+		if(data==null){
+			model.addAttribute("dataError","Campo Obbligatorio");
+			return "protected/nuovoEsame";
 		}
-		//		if(!(isValidDate(esame.getEsecuzioneEsame().toString()))){
-		//			model.addAttribute("dataError", "Data non valida");
-		//		}
-		if(esame.getPaziente()==null){
-			erroriPresenti=true;
-			model.addAttribute("pazienteError", "Campo obbligatorio");
-		}
-		if(esame.getTipologia()==null){
-			erroriPresenti=true;
-			model.addAttribute("tipologiaEsameError", "Campo obbligatorio");
-		}
-
-		if(erroriPresenti)
-			nextPage  = "protected/nuovoEsame";
-
-		else {
-			esame.setPrenotazione(Date.from(Instant.now()));
-		
+		esame.setPrenotazione(Date.from(Instant.now()));
 		Map<String,String> risultati=new HashMap<String, String>();
 		for(String s:esame.getTipologia().getIndicatoriRisultati())
 			risultati.put(s, "");
 		esame.setRisultati(risultati);
 		facadeEsame.addEsame(esame);
-		nextPage="/protected/esameInserito";
+		return "protected/esameInserito";
+	}
+	public  boolean isValidDate(String inDate) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		dateFormat.setLenient(false);
+		try {
+			dateFormat.parse(inDate.trim());
+		} catch (ParseException pe) {
+			return false;
 		}
-		
-		return nextPage;
-		}
-	
+		return true;
+	}
+	@RequestMapping(value="/eliminaEsame", method=RequestMethod.POST)
+	public String deleteTipologiaEsame(@ModelAttribute Esame esame,Model model){
+		long id = esame.getIdEsame();
+		facadeEsame.deleteEsame(id);
+		model.addAttribute("elemento","Esame");
+		return "protected/eliminazione";
+	}
 
+	@RequestMapping(value="/inserisciRisultati", method=RequestMethod.GET)
+	public String toInserisciRisultati(Model model){
+		model.addAttribute("esami", facadeEsame.findAll());
+		return "/protected/inserimentoRisultati";
+	}
 
-		public  boolean isValidDate(String inDate) {
-			SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-			dateFormat.setLenient(false);
-			try {
-				dateFormat.parse(inDate.trim());
-			} catch (ParseException pe) {
-				return false;
-			}
-			return true;
-		}
-		@RequestMapping(value="/eliminaEsame", method=RequestMethod.POST)
-		public String deleteTipologiaEsame(@ModelAttribute Esame esame,Model model){
-			long id = esame.getIdEsame();
-			facadeEsame.deleteEsame(id);
-			model.addAttribute("elemento","Esame");
-			return "protected/eliminazione";
-		}
+	@RequestMapping(value="/mostraEsame", method=RequestMethod.POST)
+	public String mostraEsame(HttpServletRequest request, Model model){
+		long id=Long.parseLong(request.getParameter("esame"));
+		Esame esame=facadeEsame.findEsame(id);
+		model.addAttribute("esame", esame);
+		model.addAttribute("esami", facadeEsame.findAll());
+		return "/protected/inserimentoRisultati";
+	}
 
-		@RequestMapping(value="/inserisciRisultati", method=RequestMethod.GET)
-		public String toInserisciRisultati(Model model){
-			model.addAttribute("esami", facadeEsame.findAll());
-			return "/protected/inserimentoRisultati";
-		}
-
-		@RequestMapping(value="/mostraEsame", method=RequestMethod.POST)
-		public String mostraEsame(HttpServletRequest request, Model model){
-			long id=Long.parseLong(request.getParameter("esame"));
-			Esame esame=facadeEsame.findEsame(id);
-			model.addAttribute("esame", esame);
-			model.addAttribute("esami", facadeEsame.findAll());
-			return "/protected/inserimentoRisultati";
-		}
-		
-		@RequestMapping(value="/addRisultati/{esame.idEsame}", method=RequestMethod.POST)
-		public String addRisultati(@PathVariable("esame.idEsame")long Id,HttpServletRequest request,Model model){
-			Esame e = facadeEsame.findEsame(Id);
-			System.out.print(e);
-			List<String> nomiRisultati = e.getTipologia().getIndicatoriRisultati();
+	@RequestMapping(value="/addRisultati", method=RequestMethod.POST)
+	public String addRisultati(@ModelAttribute Esame esame,HttpServletRequest request,Model model,
+			@Validated Esame m,BindingResult bindingResult){
+		if(bindingResult.hasErrors())
+			return "protected/inserimentoRisultati";
+		long id= esame.getIdEsame();
+		Esame e = facadeEsame.findEsame(id);
+		System.out.print(e);
+		List<String> nomiRisultati = e.getTipologia().getIndicatoriRisultati();
 		for(String s:nomiRisultati){
 			e.getRisultati().put(s, request.getParameter("risultato"+s));
 		}
-			facadeEsame.updateEsame(e);
-			model.addAttribute("risultati",e.getRisultati());
-			System.out.println(e.getRisultati());
-			model.addAttribute("id", e.getIdEsame());
-		
-			return "/protected/risultatiInseriti";
-		}
-		public Map<String,String> creaMappaRisultati(Esame e,HttpServletRequest request){
-			Map<String,String> mappaRisultati = new HashMap<>();
-			List<String> nomi= e.getTipologia().getIndicatoriRisultati();
-			for(String s:nomi){
-				if(request.getAttribute("risultato"+s)!=null){
-					mappaRisultati.put(s, (String)request.getAttribute("risultato"+s));
-				}
-			}
-			return mappaRisultati;
-		}
+		facadeEsame.updateEsame(e);
+		model.addAttribute("risultati",e.getRisultati());
+		System.out.println(e.getRisultati());
+		model.addAttribute("id", e.getIdEsame());
+
+		return "/protected/risultatiInseriti";
 	}
+	public Map<String,String> creaMappaRisultati(Esame e,HttpServletRequest request){
+		Map<String,String> mappaRisultati = new HashMap<>();
+		List<String> nomi= e.getTipologia().getIndicatoriRisultati();
+		for(String s:nomi){
+			if(request.getAttribute("risultato"+s)!=null){
+				mappaRisultati.put(s, (String)request.getAttribute("risultato"+s));
+			}
+		}
+		return mappaRisultati;
+	}
+}

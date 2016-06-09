@@ -24,7 +24,6 @@
     <!-- Custom CSS -->
     <link href="<c:url value="/resources/css/shop-homepage.css" />" rel="stylesheet">
 </head>
-<img src="<c:url value="/resources/Grafica/logo3.jpg"/>">
 <body>
 <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -59,15 +58,16 @@
         </div>
         <!-- /.container -->
         </nav>
-<h4>
+<h4><center><img src="<c:url value="/resources/Grafica/logo3.jpg"/>">
 		<center>Inserimento Esame</center>
 	</h4>
 	<center>
-		Hai inserito un nuovo Esame <br> Paziente:${esame.paziente.cognome} ${esame.paziente.nome} <br>
-		 Tipologia:${esame.tipologia.nome}<br>
-		Medico: ${esame.medico.cognome} ${esame.medico.nome}<br>
-		Data di prenotazione:${esame.prenotazione}<br>
-		Data in cui si svolgerà l'esame:${esame.esecuzioneEsame}<br>
+		Hai inserito un nuovo Esame<br> 
+		<b>Paziente</b>:${esame.paziente.cognome} ${esame.paziente.nome} <br>
+		 <b>Tipologia</b>:${esame.tipologia.nome}<br>
+		<b>Medico</b>: ${esame.medico.cognome} ${esame.medico.nome}<br>
+		<b>Data di prenotazione</b>:${esame.prenotazione}<br>
+		<b>Data in cui si svolgerà l'esame</b>:${esame.esecuzioneEsame}<br>
 		<br>
 			<form:form method="post" action="eliminaEsame" name="form" modelAttribute="esame">
 			<form:input type="hidden" path='idEsame'

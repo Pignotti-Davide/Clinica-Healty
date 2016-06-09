@@ -16,7 +16,14 @@
 <!-- Custom CSS -->
 <link href="<c:url value="/resources/css/shop-homepage.css" />"
 	rel="stylesheet">
-</head>
+</head>	 <style type="text/css">
+	 body { 
+    background-image: url('./resources/Grafica/background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: right;
+}
+	   </style>
 <center><img src="<c:url value="/resources/Grafica/logo3.jpg"/>"></center>
 
 <body>
@@ -51,10 +58,9 @@
         <!-- /.container -->
     </nav>
 	<h4>
-		<center>Area riservata all'amministrazione</center>
+		<center>Area riservata all'amministrazione
 	</h4>
-	<center>
-		Ciao, ${pageContext.request.userPrincipal.name} <a
+		<center>Ciao, ${pageContext.request.userPrincipal.name} <a
 			href="<c:url value="/j_spring_security_logout" />" style="color:red"><b>(Logout)</b></a>.Ecco
 		ciò che puoi fare: <br>
 			<img src="<c:url value="/resources/Grafica/inseriscipaziente.png"/>"
@@ -105,7 +111,7 @@
 		
 			<br>
 
-			<a href="index">Torna alla homepage</a>
+			<h4><a href="index">Torna alla homepage</a>
 		</center>
 </body>
 </html>

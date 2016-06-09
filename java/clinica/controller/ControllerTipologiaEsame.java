@@ -7,17 +7,24 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import clinica.model.Medico;
 import clinica.model.Paziente;
 import clinica.model.TipologiaEsame;
 import clinica.service.impl.FacadeTipologiaEsame;
@@ -26,7 +33,13 @@ import clinica.service.impl.FacadeTipologiaEsame;
 public class ControllerTipologiaEsame {
 	@Autowired
 	private FacadeTipologiaEsame tipologiaEsameFacade;
-
+	@Autowired
+	@Qualifier("tipologiaEsameValidator")
+	private Validator validator;
+	@InitBinder
+	private void initBinder(WebDataBinder binder) {
+		binder.setValidator(validator);
+	}	
 	@RequestMapping(value="/nuovaTipologiaEsame",method = RequestMethod.GET)
 	public String toNuovaTipologiaEsame(@ModelAttribute TipologiaEsame tipologiaEsame){
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -38,29 +51,17 @@ public class ControllerTipologiaEsame {
 	}
 	@RequestMapping(value="/addTipologiaEsame", method=RequestMethod.POST)
 	public String addTipologiaEsame(@RequestParam("num_risultati") int num,@RequestParam("num_requisiti") int num2,@ModelAttribute TipologiaEsame tipologiaEsame,Model model,
-			HttpServletRequest request){
-
-		boolean erroriPresenti = false;
-		String nextPage=null;
+			HttpServletRequest request,@Validated TipologiaEsame t,BindingResult bindingResult){
+	if(bindingResult.hasFieldErrors() || num<=0){
+		model.addAttribute("risultatiError","Inserire almeno un risultato");
+		return "protected/nuovaTipologiaEsame";
+	}
 		Map<String, String> requisiti = new HashMap<>();
 		requisiti=creaMappaRequisiti(num2,request);
 		tipologiaEsame.setRequisiti(requisiti);
 		tipologiaEsame.setIndicatoriRisultati(creaListaRisultati(num,request));
-		if(tipologiaEsame.getNome().equals("")){
-			erroriPresenti=true;
-			model.addAttribute("nomeError", "Campo obbligatorio");
-		}
-		if(tipologiaEsame.getDescrizione().equals("")){
-			erroriPresenti=true;
-			model.addAttribute("descrizioneError", "Campo obbligatorio");
-		}
-		if(erroriPresenti)
-			nextPage  = "protected/nuovaTipologiaEsame";
-		else {
-			nextPage="/protected/tipologiaEsameInserita";
-			tipologiaEsameFacade.addTipologiaEsame(tipologiaEsame);
-		}
-		return nextPage;   
+		tipologiaEsameFacade.addTipologiaEsame(tipologiaEsame);
+		return "/protected/tipologiaEsameInserita";   
 	}
 
 	public Map<String, String> creaMappaRequisiti(int numero,HttpServletRequest request){

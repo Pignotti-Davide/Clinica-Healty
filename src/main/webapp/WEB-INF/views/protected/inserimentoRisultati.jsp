@@ -14,7 +14,14 @@
 <title>Area Amministrazione - Tipologia Esame inserita</title>
  <!-- Bootstrap Core CSS -->
     <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
-
+ <style type="text/css">
+	 body { 
+    background-image: url('./resources/Grafica/background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: right;
+}
+	   </style>
     <!-- Custom CSS -->
     <link href="<c:url value="/resources/css/shop-homepage.css" />" rel="stylesheet">
 </head>
@@ -88,19 +95,21 @@
 		<input type="submit" value="Mostra esame" />
 	</form:form>
 <br>
-	Tipologia esame: ${esame.tipologia.nome}
-	<br> Medico: ${esame.medico.nome} ${esame.medico.cognome}
-	<br> Paziente: ${esame.paziente.nome} ${esame.paziente.cognome}
+	<b>Tipologia esame</b>: ${esame.tipologia.nome}
+	<br> <b>Medico</b>: ${esame.medico.nome} ${esame.medico.cognome}
+	<br> <b>Paziente</b>: ${esame.paziente.nome} ${esame.paziente.cognome}
 	<br>
-	<form:form method="post" action="addRisultati/${esame.idEsame}" name="form">
-	Elenco dei risultati:
+	<form:form method="post" action="addRisultati" name="form" modelAttribute="esame">
+<%-- 		<form:input type="hidden" path='idEsame' placeholder="id" /><br/> --%>
+	<b>Elenco dei risultati</b>:<br>
 	<c:forEach items="${esame.tipologia.indicatoriRisultati}" var="risultato"><br>
-			${risultato}: 	
-	<input type="text" name='risultato${risultato}' size='10' /> 
+			<b>${risultato}</b>: 	
+	<input type="text" name='risultato${risultato}' size='10' /> <br>
 	
 			</c:forEach>
 			<input type="submit" value="Invia" />
 			</form:form><br>
-
+			<h4><a href="admin">Torna alla Pagina d'amministrazione</a><br>
+		<a href="index">Torna alla HomePage</a>
 </body>
 </html>

@@ -91,8 +91,8 @@ function processData(f1,f2,f3,f4,f5,f6){
 				<form:options items="${pazienti}" itemLabel="nome"
 					itemValue="idPaziente" />
 			</form:select><br>
-			Inserisci la data e l'ora:  
-<input type="date" name="esecuzioneEsame" /><br/>
+			Inserisci la data:  
+<input type="date" name="esecuzioneEsame" />	<td><font size="3" color="red">${dataError}</font></td><br>
 	<input  type="submit" value="Invia" /><br>
 		</form:form>
 	<h4><a href="admin">Torna alla Pagina d'amministrazione</a><br>

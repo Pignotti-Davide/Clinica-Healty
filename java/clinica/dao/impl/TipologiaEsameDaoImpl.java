@@ -17,8 +17,7 @@ import clinica.model.TipologiaEsame;
 @Repository
 public class TipologiaEsameDaoImpl implements TipologiaEsameDao{
 
-	private static final Logger logger = LoggerFactory
-			.getLogger(TipologiaEsameDaoImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(TipologiaEsameDaoImpl.class);
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -29,6 +28,7 @@ public class TipologiaEsameDaoImpl implements TipologiaEsameDao{
 		session.save(tipologia);
 		session.getTransaction().commit();
 	}
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<TipologiaEsame> findAll() {
 		Session session=sessionFactory.openSession();
@@ -65,12 +65,15 @@ public class TipologiaEsameDaoImpl implements TipologiaEsameDao{
 	}
 	@Override
 	public void deleteTipologiaEsame(long id) {
-		System.out.println("hql Using Delete");
 		Session session = sessionFactory.openSession();		
-		String hql = "DELETE from TipologiaEsame T WHERE T.id = :tipologiaesame_id";
-		Query query = session.createQuery(hql);
+		Query query = session.createSQLQuery("DELETE from tipologiaesame_indicatoriRisultati T WHERE T.tipologiaesame_tipologia_id = :tipologiaesame_id");
 		query.setParameter("tipologiaesame_id", id);
-		int result = query.executeUpdate();		
+		Query query3 = session.createSQLQuery("DELETE from tipologiaesame_requisiti T WHERE T.tipologiaesame_tipologia_id = :tipologiaesame_id");
+		query3.setParameter("tipologiaesame_id", id);
+		int result = query.executeUpdate();	
+		String hql2 = "DELETE from TipologiaEsame T WHERE T.id = :tipologiaesame_id";
+		Query query2 = session.createQuery(hql2);
+		query2.setParameter("tipologiaesame_id", id);
 		System.out.println("Row affected: " + result);
 	}
 }
