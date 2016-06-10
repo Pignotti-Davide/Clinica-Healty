@@ -83,7 +83,7 @@ function processData(f1,f2,f3,f4,f5,f6){
 			</form:select><br>
 			Medico:
 			<form:select path="medico">
-				<form:options items="${medici}" itemLabel="nome"
+				<form:options items="${medici}" itemLabel="idMedico"
 					itemValue="idMedico" />
 			</form:select><br>
 			Paziente:

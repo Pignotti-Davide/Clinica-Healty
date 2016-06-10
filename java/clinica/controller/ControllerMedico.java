@@ -81,11 +81,15 @@ public class ControllerMedico {
 			return"index";
 		}
 	@RequestMapping(value="/ricercaEsamiMedico", method=RequestMethod.POST)
-	public String toEsamiMedico(@Validated Medico m,BindingResult bindingResult,@RequestParam("nome") String nome,
+	public String toEsamiMedico(@ModelAttribute Medico m,BindingResult bindingResult,@RequestParam("nome") String nome,
 			@RequestParam("cognome") String cognome,Model model){
-		if (bindingResult.hasErrors()) 
+		if (cognome==null || nome==null) 
 			return "protected/ricercaMedico";
 		Medico medico = facadeMedico.retrieveMedicoNomeCognome(nome, cognome);
+		if(medico==null){
+			model.addAttribute("medicoError","Nessun medico trovato");
+			return "protected/ricercaMedico";
+		}
 		List<Esame>lista=(ArrayList<Esame>)facadeMedico.listaEsami(medico.getIdMedico());
 		model.addAttribute("lista", lista);
 		model.addAttribute("medico",medico);

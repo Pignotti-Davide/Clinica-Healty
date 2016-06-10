@@ -67,7 +67,7 @@
 		
 		 </td></tr></table>
 	
-<a href="admin">Torna alla Pagina d'amministrazione</a><br><br>
-		<a href="index">Torna alla HomePage</a></center>
+<h4><a href="admin">Torna alla Pagina d'amministrazione</a><br>
+		<a href="index">Torna alla HomePage</a>
 </body>
 </html>

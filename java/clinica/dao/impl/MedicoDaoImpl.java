@@ -62,7 +62,7 @@ public class MedicoDaoImpl implements MedicoDao{
 	public Medico findMedicoPerNomeECognome(String nome, String cognome){
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		String hql = "FROM Medico m WHERE m.nome = :medico_nome and m.cognome=:medico_cognome";
+		String hql = "FROM Medico m WHERE m.nome = :medico_nome AND m.cognome=:medico_cognome";
 		Query query = session.createQuery(hql);
 		query.setParameter("medico_nome", nome);
 		query.setParameter("medico_cognome", cognome);

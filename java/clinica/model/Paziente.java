@@ -79,5 +79,9 @@ public class Paziente {
 			return false;
 		return true;
 	}
+	@Override
+	public String toString() {
+		return "Paziente [idPaziente=" + idPaziente + ", nome=" + nome + ", cognome=" + cognome + "]";
+	}
 	public Paziente(){}
 }
