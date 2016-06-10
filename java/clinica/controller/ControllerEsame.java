@@ -91,6 +91,9 @@ public class ControllerEsame {
 	@RequestMapping(value="/addEsame", method=RequestMethod.POST)
 	public String addEsame(@RequestParam("esecuzioneEsame")Date data, @ModelAttribute Esame esame, Model model){
 		if(data==null){
+			model.addAttribute("pazienti", facadePaziente.findAll());
+			model.addAttribute("medici", facadeMedico.findAll());
+			model.addAttribute("tipologieEsami", facadeTipologiaEsame.findAll());
 			model.addAttribute("dataError","Campo Obbligatorio");
 			return "protected/nuovoEsame";
 		}
@@ -147,13 +150,12 @@ public class ControllerEsame {
 			e.getRisultati().put(s, request.getParameter("risultato"+s));
 		}
 		for(String risultato: e.getRisultati().keySet()){
-			if(e.getRisultati().get(risultato)==null){
+			if(e.getRisultati().get(risultato).equals("")){
 				model.addAttribute("risultatoError","Inserisci risultato");
 				model.addAttribute("esami", facadeEsame.findAll());
 				model.addAttribute("esame", e);
 				return"/protected/inserimentoRisultati";
-			}
-				
+			}		
 		}
 		facadeEsame.updateEsame(e);
 		model.addAttribute("risultati",e.getRisultati());

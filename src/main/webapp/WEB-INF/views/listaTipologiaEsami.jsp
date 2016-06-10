@@ -91,12 +91,12 @@ function visualizza(id){
    </c:if>
 	<c:forEach items="${tipo.requisiti}" var="requisito" varStatus="status">
 	
-						  <td><u>Nome requisito</u>: ${requisito.key}:</td>
-               <td><u>Descrizione requisito</u>${requisito.value}</td>
+						  <td><u>Nome requisito</u>: ${requisito.key}</td>
+               <td><u> Descrizione requisito</u>:${requisito.value}</td><br>
 							<tr>
 							</c:forEach>
 							<c:forEach items="${tipo.indicatoriRisultati}" var="risultato" varStatus="status">
-						  <td><u>Tipo di risultato</u>: ${risultato}</td>
+						  <td><u>Tipo di risultato</u>: ${risultato}</td><br>
   
 							<tr>
 							</c:forEach></div>

@@ -53,19 +53,19 @@ public class ControllerMedico {
 	public String addMedico(@ModelAttribute Medico medico,Model model,
 			@Validated Medico m,BindingResult bindingResult){
 		if (bindingResult.hasErrors()) {
-			System.out.println("ciao");
+
 			return "protected/nuovoMedico";
-			
+
 		}
 
 		facadeMedico.addMedico(medico);
-		
+
 		return "protected/medicoinserito";
 	}
 	@RequestMapping(value="/listaMedici", method=RequestMethod.GET)
 	public String toListaMedici(Model model){
 		List<Medico>lista=(ArrayList<Medico>)facadeMedico.findAll();
-		
+
 		model.addAttribute("lista", lista);
 		return "listaMedici";
 
@@ -79,7 +79,7 @@ public class ControllerMedico {
 		}
 		else
 			return"index";
-		}
+	}
 	@RequestMapping(value="/ricercaEsamiMedico", method=RequestMethod.POST)
 	public String toEsamiMedico(@ModelAttribute Medico m,BindingResult bindingResult,@RequestParam("nome") String nome,
 			@RequestParam("cognome") String cognome,Model model){

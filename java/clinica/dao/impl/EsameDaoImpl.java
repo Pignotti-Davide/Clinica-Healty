@@ -47,8 +47,6 @@ public class EsameDaoImpl implements EsameDao{
 		String hql = "DELETE from Esame E WHERE E.id = :esame_id";
 		Query query = session.createQuery(hql);
 		query.setParameter("esame_id", esameId);
-//		Query query2 = session.createSQLQuery("DELETE from esame_risultati T WHERE T.esame_idesame = :esame_id");
-//		query2.setParameter("esame_id", esameId);
 		int result = query.executeUpdate();
 		System.out.println("Row affected: " + result);
 	}

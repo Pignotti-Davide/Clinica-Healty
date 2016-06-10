@@ -3,20 +3,13 @@ package clinica.model;
 import java.util.Date;
 import java.util.Map;
 
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
+import org.hibernate.annotations.Cascade;
 import org.springframework.format.annotation.DateTimeFormat;
 
 
+import org.hibernate.annotations.CascadeType;
 @Entity
 public class Esame {
 
@@ -37,6 +30,7 @@ public class Esame {
 	 @DateTimeFormat(pattern="dd/MM/yyyy")
 	private Date esecuzioneEsame;
 	@ElementCollection
+	 @Cascade(value={CascadeType.ALL})
 	private Map<String,String> risultati;
 	public Long getIdEsame() {
 		return idEsame;

@@ -76,7 +76,7 @@
 		<input type="submit" value="Elimina" />	
 </form:form>
 
-		<a href="admin">Torna alla Pagina d'amministrazione</a><br>
+		<h4><a href="admin">Torna alla Pagina d'amministrazione</a><br>
 		<a href="index">Torna alla HomePage</a>
 		</center>
 </body>
