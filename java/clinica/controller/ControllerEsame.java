@@ -1,5 +1,6 @@
 package clinica.controller;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
@@ -7,6 +8,7 @@ import java.util.Date;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -86,17 +88,14 @@ public class ControllerEsame {
 		else return"index";
 	}
 
-
 	@RequestMapping(value="/addEsame", method=RequestMethod.POST)
-
-
-
 	public String addEsame(@RequestParam("esecuzioneEsame")Date data, @ModelAttribute Esame esame, Model model){
 		if(data==null){
 			model.addAttribute("dataError","Campo Obbligatorio");
 			return "protected/nuovoEsame";
 		}
 		esame.setPrenotazione(Date.from(Instant.now()));
+		
 		Map<String,String> risultati=new HashMap<String, String>();
 		for(String s:esame.getTipologia().getIndicatoriRisultati())
 			risultati.put(s, "");
@@ -124,6 +123,7 @@ public class ControllerEsame {
 
 	@RequestMapping(value="/inserisciRisultati", method=RequestMethod.GET)
 	public String toInserisciRisultati(Model model){
+		model.addAttribute("esame",new Esame());
 		model.addAttribute("esami", facadeEsame.findAll());
 		return "/protected/inserimentoRisultati";
 	}
@@ -138,16 +138,22 @@ public class ControllerEsame {
 	}
 
 	@RequestMapping(value="/addRisultati", method=RequestMethod.POST)
-	public String addRisultati(@ModelAttribute Esame esame,HttpServletRequest request,Model model,
-			@Validated Esame m,BindingResult bindingResult){
-		if(bindingResult.hasErrors())
-			return "protected/inserimentoRisultati";
+	public String addRisultati(@ModelAttribute Esame esame,HttpServletRequest request,Model model){
 		long id= esame.getIdEsame();
 		Esame e = facadeEsame.findEsame(id);
 		System.out.print(e);
 		List<String> nomiRisultati = e.getTipologia().getIndicatoriRisultati();
 		for(String s:nomiRisultati){
 			e.getRisultati().put(s, request.getParameter("risultato"+s));
+		}
+		for(String risultato: e.getRisultati().keySet()){
+			if(e.getRisultati().get(risultato).isEmpty()){
+				model.addAttribute("risultatoError","Inserisci risultato");
+				model.addAttribute("esami", facadeEsame.findAll());
+				model.addAttribute("esame", e);
+				return"/protected/inserimentoRisultati";
+			}
+				
 		}
 		facadeEsame.updateEsame(e);
 		model.addAttribute("risultati",e.getRisultati());

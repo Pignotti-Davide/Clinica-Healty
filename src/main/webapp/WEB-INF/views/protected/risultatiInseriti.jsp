@@ -58,13 +58,13 @@
 	  <c:forEach items="${risultati}" var="risultati" 
         varStatus="status">
            <tr>
-                 <td>Nome risultato: ${risultati.key}:</td><br>
-               <td>Descrizione risultato:${risultati.value}</td>
+                 <b></b><td>Nome risultato</b>: ${risultati.key}:</td><br>
+               <td><b>Descrizione risultato</b>:${risultati.value}</td>
             </tr> 
                	<hr  size=”500″ width=”10″ color=”green” noshade>
           </c:forEach>
 		
-		<a href="admin">Torna alla Pagina d'amministrazione</a><br><br>
+		<h4><a href="admin">Torna alla Pagina d'amministrazione</a><br>
 		<a href="index">Torna alla HomePage</a>
 							
 		<center>

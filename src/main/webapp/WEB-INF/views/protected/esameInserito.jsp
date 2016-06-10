@@ -63,6 +63,7 @@
 	</h4>
 	<center>
 		Hai inserito un nuovo Esame<br> 
+		<b>Id</b>:${esame.idEsame}<br>
 		<b>Paziente</b>:${esame.paziente.cognome} ${esame.paziente.nome} <br>
 		 <b>Tipologia</b>:${esame.tipologia.nome}<br>
 		<b>Medico</b>: ${esame.medico.cognome} ${esame.medico.nome}<br>

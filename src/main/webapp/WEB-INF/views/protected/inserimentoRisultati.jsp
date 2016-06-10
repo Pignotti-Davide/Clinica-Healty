@@ -1,11 +1,10 @@
-<%@page import="org.springframework.ui.Model"%>
-<%@page import="clinica.dao.impl.EsameDaoImpl"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="clinica.model.Esame"%>
-<%@ page import="java.util.List"%>
+<%@page session="true"%>
+<%@ taglib uri="http://www.springframework.org/tags/form"
+	prefix="springForm"%>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -95,16 +94,17 @@
 		<input type="submit" value="Mostra esame" />
 	</form:form>
 <br>
+<b>Id esame</b>: ${esame.idEsame}<br>
 	<b>Tipologia esame</b>: ${esame.tipologia.nome}
 	<br> <b>Medico</b>: ${esame.medico.nome} ${esame.medico.cognome}
 	<br> <b>Paziente</b>: ${esame.paziente.nome} ${esame.paziente.cognome}
-	<br>
 	<form:form method="post" action="addRisultati" name="form" modelAttribute="esame">
-<%-- 		<form:input type="hidden" path='idEsame' placeholder="id" /><br/> --%>
+		<form:input type="hidden" path='idEsame' placeholder="id" /><br/>
 	<b>Elenco dei risultati</b>:<br>
 	<c:forEach items="${esame.tipologia.indicatoriRisultati}" var="risultato"><br>
 			<b>${risultato}</b>: 	
-	<input type="text" name='risultato${risultato}' size='10' /> <br>
+	<input type="text" name='risultato${risultato}' size='10' /> <br><font size="3" color="red">${risultatoError}</font>
+	
 	
 			</c:forEach>
 			<input type="submit" value="Invia" />

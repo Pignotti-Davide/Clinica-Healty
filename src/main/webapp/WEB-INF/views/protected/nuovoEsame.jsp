@@ -76,7 +76,7 @@ function processData(f1,f2,f3,f4,f5,f6){
 
 		<form:form method="post" action="addEsame" modelAttribute="esame"
 			name="form">
-		Tipologia
+		Tipologia:
 			<form:select path="tipologia">
 				<form:options items="${tipologieEsami}" itemLabel="nome"
 					itemValue="idTipologiaEsame" />
