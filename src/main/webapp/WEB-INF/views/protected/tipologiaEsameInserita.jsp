@@ -80,8 +80,8 @@
 	  <c:forEach items="${tipologiaEsame.requisiti}" var="requisiti" 
         varStatus="status">
            <tr>
-                 <td><b>Nome requisito</b>: ${requisiti.key}:</td>
-               <td><b>Descrizione requisito</b>:${requisiti.value}</td>
+                 <td><b>Nome requisito</b>: ${requisiti.key}:</td><br>
+               <td><b>Descrizione requisito</b>:${requisiti.value}</td><br>
             </tr> 
           </c:forEach>
 		<form:form method="post" action="eliminaTipologiaEsame" name="form" modelAttribute="tipologiaEsame">

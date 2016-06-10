@@ -68,10 +68,10 @@
 		Hai inserito un nuovo Paziente <br> 
 		<b><u>Nome:</u></b></b>${paziente.nome} <br>
 		 <b><u>Cognome:</b></u>${paziente.cognome} <br>
-		Si prega di comunicare al paziente il suo identificatore: <b>${paziente.idPaziente}</b><br><br> <br>
+		Si prega di comunicare al paziente il suo identificatore: <b>${paziente.idPaziente}</b> <br>
 		<form:form method="post" action="eliminaPaziente" name="form" modelAttribute="paziente">
 			<form:input type="hidden" path='idPaziente'
-							placeholder="id" /><br/>
+							placeholder="id" />
 						
 		<input type="submit" value="Elimina" />	
 </form:form>

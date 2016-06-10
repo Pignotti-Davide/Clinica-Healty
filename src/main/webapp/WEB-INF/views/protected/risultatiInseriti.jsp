@@ -9,7 +9,14 @@
 <title>Area Amministrazione - Tipologia Esame inserita</title>
  <!-- Bootstrap Core CSS -->
     <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
-
+<style type="text/css">
+	 body { 
+    background-image: url('./resources/Grafica/background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: right;
+}
+	   </style>
     <!-- Custom CSS -->
     <link href="<c:url value="/resources/css/shop-homepage.css" />" rel="stylesheet">
 </head>
@@ -54,11 +61,11 @@
 	<center>
 		Hai inserito i seguenti risultati all'esame con Id ${id}: <br> <br>
 	
-         <td>Lista Risultati: </td><br>
+         <td>Lista Risultati </td><br>
 	  <c:forEach items="${risultati}" var="risultati" 
         varStatus="status">
            <tr>
-                 <b></b><td>Nome risultato</b>: ${risultati.key}:</td><br>
+                 <b><td>Nome risultato</b>: ${risultati.key}</td><br>
                <td><b>Descrizione risultato</b>:${risultati.value}</td>
             </tr> 
                	<hr  size=”500″ width=”10″ color=”green” noshade>

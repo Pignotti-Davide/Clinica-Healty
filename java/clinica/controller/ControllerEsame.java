@@ -147,7 +147,7 @@ public class ControllerEsame {
 			e.getRisultati().put(s, request.getParameter("risultato"+s));
 		}
 		for(String risultato: e.getRisultati().keySet()){
-			if(e.getRisultati().get(risultato).isEmpty()){
+			if(e.getRisultati().get(risultato)==null){
 				model.addAttribute("risultatoError","Inserisci risultato");
 				model.addAttribute("esami", facadeEsame.findAll());
 				model.addAttribute("esame", e);

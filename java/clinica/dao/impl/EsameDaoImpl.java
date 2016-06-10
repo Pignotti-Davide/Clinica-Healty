@@ -37,7 +37,7 @@ public class EsameDaoImpl implements EsameDao{
 		String hql = "FROM Esame";
 		Query query = session.createQuery(hql);
 		List<Esame> empList = query.list();
-		logger.info("Esame List::" + empList);
+		System.out.println("Esame List::" + empList);
 		return empList;
 	}
 	@Override

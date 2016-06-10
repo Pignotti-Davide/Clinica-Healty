@@ -100,10 +100,11 @@
 	<br> <b>Paziente</b>: ${esame.paziente.nome} ${esame.paziente.cognome}
 	<form:form method="post" action="addRisultati" name="form" modelAttribute="esame">
 		<form:input type="hidden" path='idEsame' placeholder="id" /><br/>
+
 	<b>Elenco dei risultati</b>:<br>
-	<c:forEach items="${esame.tipologia.indicatoriRisultati}" var="risultato"><br>
-			<b>${risultato}</b>: 	
-	<input type="text" name='risultato${risultato}' size='10' /> <br><font size="3" color="red">${risultatoError}</font>
+	<c:forEach items="${esame.risultati}" var="risultato"><br>
+			<b>${risultato.key}</b>: 	
+	<input type="text" name='risultato${risultato.key}' size='10' /> <br><font size="3" color="red">${risultatoError}</font>
 	
 	
 			</c:forEach>
