@@ -6,10 +6,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Area Utenti</title>
+<title>Area Amministrazione</title>
  <!-- Bootstrap Core CSS -->
     <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
-
+<style type="text/css">
+	 body { 
+    background-image: url('./resources/Grafica/background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: right;
+}
+	   </style>
     <!-- Custom CSS -->
     <link href="<c:url value="/resources/css/shop-homepage.css" />" rel="stylesheet">
 </head>
@@ -26,7 +33,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="admin">Area Amministrazione:</a>
+                <a class="navbar-brand" href="utente">Area Paziente:</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -47,11 +54,14 @@
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
+        </nav>
 <h4>
 		<center>Consultazione risultati</center>
 	</h4>
 	<center>
 		Stai consultando i seguenti risultati: <br> Nome:${paziente.nome}; <br> Cognome:${paziente.cognome}; <br>
+		<a
+			href="<c:url value="/j_spring_security_logout" />" style="color:red"><b>(Logout)</b></a>
 		
 		<c:forEach items="${listaEsamiPaziente}" var="esame" varStatus="status">
 		Tipologia d'esame: ${esame.tipologia}<br/>
@@ -67,7 +77,7 @@
 						 	<hr  size=”60″ width=”200″ color=”green” noshade>
 							</c:forEach>
 								</c:forEach>
-		<a href="index">Torna alla HomePage</a>
+		<h4><a href="index">Torna alla HomePage</a>
 		</center>
 </body>
 </html>

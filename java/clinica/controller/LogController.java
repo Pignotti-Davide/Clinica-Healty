@@ -12,8 +12,12 @@ public class LogController {
 	}
 	
 	@RequestMapping(value="/admin**", method=RequestMethod.GET)
-	public String logUtente(){
+	public String logAdmin(){
 		return "protected/homeAdmin";
+	}
+	@RequestMapping(value="/utente**", method=RequestMethod.GET)
+	public String logUtente(){
+		return "utente/risultatiPaziente";
 	}
 	
 }

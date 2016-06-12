@@ -30,7 +30,6 @@ public class Esame {
 	 @DateTimeFormat(pattern="dd/MM/yyyy")
 	private Date esecuzioneEsame;
 	@ElementCollection
-	 @Cascade(value={CascadeType.ALL})
 	private Map<String,String> risultati;
 	public Long getIdEsame() {
 		return idEsame;

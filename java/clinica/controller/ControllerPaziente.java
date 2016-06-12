@@ -76,7 +76,7 @@ public class ControllerPaziente extends WebMvcConfigurerAdapter{
 			 model.addAttribute("listaEsamiPaziente",listaEsamiPaziente);
 			 }
 		}
-		return "risultatiPaziente";
+		return "utente/risultatiPaziente";
 		  }
 	
 

@@ -50,7 +50,7 @@ function visualizza(id){
 			<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
 			<span class="icon-bar"></span> <span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="admin">Area Amministrazione:</a>
+		<a class="navbar-brand" href="utente">Area Utente:</a>
 	</div>
 	<!-- Collect the nav links, forms, and other content for toggling -->
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -79,8 +79,8 @@ function visualizza(id){
 	<% if (request.getAttribute("pazienteNome")!=null) 
 	out.print("Stai consultando le informazioni di ");%>
 	${paziente.nome} ${paziente.cognome}<br/>
-	<font size="3" color="red">${pazienteError}</font>
-	
+	<font size="3" color="red">${pazienteError}</font><br>
+	<a href="<c:url value="/j_spring_security_logout" />" style="color:red"><b>(Logout)</b></a><br>
 	<c:forEach items="${listaEsamiPaziente}" var="esame" varStatus="status">
 		<a href="<c:url value="#" />" onclick="visualizza('immagine${status.index}');">
 		

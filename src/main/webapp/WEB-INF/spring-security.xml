@@ -8,16 +8,20 @@
 	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
 	<http auto-config="true">
-		<intercept-url pattern="/admin**" access="ROLE_USER" />
+		<intercept-url pattern="/admin**" access="ROLE_ADMIN" />
+		<intercept-url pattern="/utente**" access="ROLE_USER" />
 	</http>
-
-	<authentication-manager>
+<authentication-manager>
 	  <authentication-provider>
-	    <user-service>
-		<user name="x" password="x" authorities="ROLE_USER" />
-			<user name="susy" password="admin" authorities="ROLE_USER" />
-	    </user-service>
-	  </authentication-provider>
-	</authentication-manager>
-
+	      <jdbc-user-service data-source-ref="dataSource"
+     users-by-username-query="select username,password,TRUE from Utente where username = ?"
+                               authorities-by-username-query="select username,role from Utente where username = ?"  />
+</authentication-provider>
+</authentication-manager>
+  <beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <beans:property name="driverClassName" value="org.postgresql.Driver" />
+        <beans:property name="url" value="jdbc:postgresql://localhost:5432/clinica" />
+        <beans:property name="username" value="postgres" />
+        <beans:property name="password" value="postgres" />
+    </beans:bean>
 </beans:beans>
