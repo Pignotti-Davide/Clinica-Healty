@@ -41,13 +41,15 @@ public class EsameDaoImpl implements EsameDao{
 		return empList;
 	}
 	@Override
-	public void deleteEsame(long esameId) {
-		System.out.println("hql Using Delete");
-		Session session = sessionFactory.openSession();
-		String hql = "DELETE from Esame E WHERE E.id = :esame_id";
-		Query query = session.createQuery(hql);
-		query.setParameter("esame_id", esameId);
-		int result = query.executeUpdate();
+	public void deleteEsame(long id) {
+		Session session = sessionFactory.openSession();		
+		Query query = session.createSQLQuery("DELETE from esame_risultati T WHERE T.esame_idesame = :esame_id");
+		query.setParameter("esame_id", id);
+		int result = query.executeUpdate();	
+		String hql2 = "DELETE from Esame T WHERE T.id = :esame_id";
+		Query query2 = session.createQuery(hql2);
+		query2.setParameter("esame_id", id);
+
 		System.out.println("Row affected: " + result);
 	}
 	@Override

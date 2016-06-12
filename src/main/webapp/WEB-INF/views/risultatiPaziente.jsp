@@ -73,7 +73,7 @@ function visualizza(id){
 <form method="post" action="mostraRisultatiPaziente" name="form">
 				<td><input type='text' name="code" placeholder="codice"/></td>
 		<td><font size="3" color="red">${idError}</font></td><br>
-		<input type="submit" value="invia" />	
+		<input type="submit" value="invia" />	<br>
 </form>
 
 	<% if (request.getAttribute("pazienteNome")!=null) 
@@ -84,7 +84,7 @@ function visualizza(id){
 	<c:forEach items="${listaEsamiPaziente}" var="esame" varStatus="status">
 		<a href="<c:url value="#" />" onclick="visualizza('immagine${status.index}');">
 		
-				Tipologia d'esame${esame.tipologia}		<br/>		
+				Tipologia d'esame:${esame.tipologia}		<br/>		
 			</a>
 			<div id="immagine${status.index}" style="display: none">
 		<c:if test="${empty esame.risultati}">

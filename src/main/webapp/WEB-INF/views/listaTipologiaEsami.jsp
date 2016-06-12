@@ -81,21 +81,21 @@ function visualizza(id){
       <div id="testo">	
 		<b><u></u></b>
 			<a href="<c:url value="#" />" onclick="visualizza('immagine${status.index}');">
-				<b><u>Nome </u></b>:${tipo.nome}	<b><u>Descrizione</u></b> ${tipo.descrizione}<br>			
+				<b><u>Nome </u></b>:${tipo.nome}	<b><u>Descrizione</u></b>: ${tipo.descrizione}<br>	<br>		
 			</a>
 			
 		</div>		
 		<div id="immagine${status.index}" style="display: none">
-		<c:if test="${empty requisito}">
+		<c:if test="${empty tipo.requisiti}">
    <p><c:out value="Nessun Requisito"/><p>
    </c:if>
 	<c:forEach items="${tipo.requisiti}" var="requisito" varStatus="status">
 	
-						  <td><u>Nome requisito</u>: ${requisito.key}</td>
+						  <td><u>Nome requisito</u>: ${requisito.key}</td><br>
                <td><u> Descrizione requisito</u>:${requisito.value}</td><br>
 							<tr>
 							</c:forEach>
-							<c:forEach items="${tipo.indicatoriRisultati}" var="risultato" varStatus="status">
+							<c:forEach items="${tipo.indicatoriRisultati}" var="risultato" varStatus="status"><br>
 						  <td><u>Tipo di risultato</u>: ${risultato}</td><br>
   
 							<tr>
