@@ -28,11 +28,12 @@
 		<beans:bean id="esameValidator" class="clinica.controller.ValidatorEsame" />
 	<beans:bean id="pazienteValidator" class="clinica.controller.ValidatorPaziente" />
 		<beans:bean id="tipologiaEsameValidator" class="clinica.controller.ValidatorTipologiaEsame" />
+		<beans:bean id="utenteValidator" class="clinica.controller.ValidatorUtente" />
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="annotatedClasses"
-			value="clinica.model.TipologiaEsame,clinica.model.Paziente,clinica.model.Medico,clinica.model.Esame" />
+			value="clinica.model.Utente, clinica.model.TipologiaEsame,clinica.model.Paziente,clinica.model.Medico,clinica.model.Esame" />
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">${hibernate.dialect}</prop>

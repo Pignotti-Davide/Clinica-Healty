@@ -10,6 +10,7 @@
 	<http auto-config="true">
 		<intercept-url pattern="/admin**" access="ROLE_ADMIN" />
 		<intercept-url pattern="/utente**" access="ROLE_USER" />
+		 <form-login login-page="/login" default-target-url="/" authentication-failure-url="/login" />
 	</http>
 <authentication-manager>
 	  <authentication-provider>

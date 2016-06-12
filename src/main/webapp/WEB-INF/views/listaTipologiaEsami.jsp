@@ -80,7 +80,7 @@ function visualizza(id){
 <c:forEach items="${lista}" var="tipo" varStatus="status">
       <div id="testo">	
 		<b><u></u></b>
-			<a href="<c:url value="#" />" onclick="visualizza('immagine${status.index}');">
+			<a href="<c:url value="#immagine${status.index}" />" onclick="visualizza('immagine${status.index}');">
 				<b><u>Nome </u></b>:${tipo.nome}	<b><u>Descrizione</u></b>: ${tipo.descrizione}<br>	<br>		
 			</a>
 			

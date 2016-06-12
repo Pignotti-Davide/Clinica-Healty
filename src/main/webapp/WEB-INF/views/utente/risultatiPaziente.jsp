@@ -82,7 +82,7 @@ function visualizza(id){
 	<font size="3" color="red">${pazienteError}</font><br>
 	<a href="<c:url value="/j_spring_security_logout" />" style="color:red"><b>(Logout)</b></a><br>
 	<c:forEach items="${listaEsamiPaziente}" var="esame" varStatus="status">
-		<a href="<c:url value="#" />" onclick="visualizza('immagine${status.index}');">
+		<a href="<c:url value="#immagine${status.index}" />" onclick="visualizza('immagine${status.index}');">
 		
 				Tipologia d'esame:${esame.tipologia}		<br/>		
 			</a>
