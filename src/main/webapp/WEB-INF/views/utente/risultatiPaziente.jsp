@@ -70,6 +70,7 @@ function visualizza(id){
   <h4><center>Area dedicata agli utenti</center>    </h4>
 
  <br>Per consultare i risultati degli esami inserisci il codice personale:
+
 <form method="post" action="mostraRisultatiPaziente" name="form">
 				<td><input type='text' name="code" placeholder="codice"/></td>
 		<td><font size="3" color="red">${idError}</font></td><br>

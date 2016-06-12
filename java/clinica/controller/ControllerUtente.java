@@ -37,6 +37,12 @@ public class ControllerUtente extends WebMvcConfigurerAdapter{
 		return"registrazione";
 	}
 	@RequestMapping(value="/addUtente", method=RequestMethod.POST)
+	public String confermaUtente(@ModelAttribute Utente utente,Model model,@Validated Utente p,BindingResult bindingResult){
+		
+		facadeUtente.addUtente(utente);
+		return "utente/risultatiPaziente";   
+	}
+	@RequestMapping(value="/confermaUtente", method=RequestMethod.POST)
 	public String addUtente(@ModelAttribute Utente utente,Model model,@Validated Utente p,BindingResult bindingResult){
 		Utente u = facadeUtente.retrieveUtente(utente.getUsername());
 		if (bindingResult.hasErrors()) {
@@ -46,9 +52,7 @@ public class ControllerUtente extends WebMvcConfigurerAdapter{
 			model.addAttribute("usernameError","Username già esistente");
 			return "registrazione";
 		}
-		System.out.println(u);
-		facadeUtente.addUtente(utente);
-		return "utente/risultatiPaziente";   
+			model.addAttribute("utente",utente);
+		return "registrazione";   
 	}
-	
 }

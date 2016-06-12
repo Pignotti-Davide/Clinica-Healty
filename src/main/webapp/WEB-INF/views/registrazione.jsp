@@ -53,33 +53,33 @@
 	<h4>
 		<center>Crea un nuovo account</center>
 	</h4>
-<form:form method="post" action="addUtente" modelAttribute="utente" name="form">
-			
-			<table>
-				<tr>
-	
-				</tr>
-				<tr>
-	
+<form:form method="post" action="confermaUtente" modelAttribute="utente" name="form">
+		
 					<td>Username :</td><font size="3" color="red">${usernameError }</font>
-					<td><form:input type="text" path='username' placeholder="username" /></td>
-				</tr>
-				<tr>
-				</tr>
-
-				<tr>
+					<td><form:input type="text" path='username' placeholder="username" /></td><br>
 					<td>Password :</td>
 					<td><form:input type="password" path='password'
 							placeholder="password" /></td>
 
 							<font size="3" color="red"><springForm:errors path="username" cssClass="error" /></font><br/>
 			<font size="3" color="red"><springForm:errors path="password" cssClass="error" /></font><br/>
-
-				<tr>
 					<td><input type="submit" value="invia" /></td>
+					</form:form>
+					<br>
+					<c:if test="${ not empty utente}">
+				 	
+   <p><c:out value="Conferma le seguenti informazioni:"/><p>
+    <b><p><c:out value="Username:"/></b> ${utente.username}<br>
+     <b><p><c:out value="Password:"/> </b>${utente.password}<br>
+     <form:form method="post" action="addUtente" modelAttribute="utente" name="form2">
+     <form:input type="hidden" path='username' placeholder="id" /><br/>
+     <form:input type="hidden" path='password' placeholder="id" /><br/>
+     <td><input type="submit" value="Conferma" /></td>
+     </form:form>
+   </c:if>
 				</tr>
 			</table>
-		</form:form>
+		
           <h4><a href="index.html">Torna alla homepage</a>
 </body>
 </html>
