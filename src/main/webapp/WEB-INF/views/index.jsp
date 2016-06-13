@@ -50,7 +50,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="admin">Area Amministrazione:</a>
+                <a class="navbar-brand" href="admin">Area Amministrazione</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -86,10 +86,17 @@
                     <abbr title="Member1">Davide Pignotti:</abbr><a href="mailto:#">name@example.com</a>
                     <br>
                     
-                    <abbr title="Member2">Susanna Marinai:</abbr> <a href="mailto:#">name@example.com</a>
+                    <abbr title="Member2">Susanna Marinai:</abbr> <a href="mailto:#">sus.marinai@hotmail.it</a>
                 </address>
-                Bla bla bla bla clinica che offre questi sercizi etc nasce come progetto per l'esame di Sistemi Informativi su Web della facoltà di Ingegneria informatica Roma Tre tenutosi nel 2016 bla bla bla chiacchiere
-                </div>
+               Questo sito nasce come progetto per l'esame Sistemi Informativi su Web erogato nel 2016 nella facoltà di
+        			Ingegneria Informatica Roma Tre. Tecnologie utilizzate:<br>
+        			-JPA(Hibernate)<br>
+        			-framework CSS(<a href="http://startbootstrap.com/">Bootstrap</a>) <br>
+        			-framework app enterprise (Spring) <br>
+        			-framework MVC(SpringMVC)<br>
+        			-<a href="http://54.200.177.88/Clinica-Healthy/index">AWS</a> (disponibile per un periodo limitato)<br>
+        			- repository su <a href="https://github.com/Pignotti-Davide/Clinica-Healthy">Github</a>
+                </div> 
             </div>
 
             <div class="col-md-9">
