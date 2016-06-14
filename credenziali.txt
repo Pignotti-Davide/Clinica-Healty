@@ -1,0 +1,9 @@
+Credenziali Acccesso:
+
+- ADMIN:
+Username: susy -  Password: admin
+Username: prof -  Passsword: admin
+
+-UTENTE:
+Username: pippo - Password: utente
+Username: pluto - Password: utente
