@@ -1,0 +1,437 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.1
+-- Dumped by pg_dump version 9.5.1
+
+-- Started on 2016-06-14 22:59:58
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+DROP DATABASE clinica;
+--
+-- TOC entry 2162 (class 1262 OID 17040)
+-- Name: clinica; Type: DATABASE; Schema: -; Owner: postgres
+--
+
+CREATE DATABASE clinica WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'Italian_Italy.1252' LC_CTYPE = 'Italian_Italy.1252';
+
+
+ALTER DATABASE clinica OWNER TO postgres;
+
+\connect clinica
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 6 (class 2615 OID 2200)
+-- Name: public; Type: SCHEMA; Schema: -; Owner: postgres
+--
+
+CREATE SCHEMA public;
+
+
+ALTER SCHEMA public OWNER TO postgres;
+
+--
+-- TOC entry 2163 (class 0 OID 0)
+-- Dependencies: 6
+-- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: postgres
+--
+
+COMMENT ON SCHEMA public IS 'standard public schema';
+
+
+--
+-- TOC entry 1 (class 3079 OID 12355)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 2165 (class 0 OID 0)
+-- Dependencies: 1
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 181 (class 1259 OID 34499)
+-- Name: esame; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE esame (
+    idesame bigint NOT NULL,
+    esecuzioneesame timestamp without time zone NOT NULL,
+    prenotazione date NOT NULL,
+    medico_idmedico bigint,
+    paziente_idpaziente bigint,
+    tipologia_tipologia_id bigint
+);
+
+
+ALTER TABLE esame OWNER TO postgres;
+
+--
+-- TOC entry 182 (class 1259 OID 34504)
+-- Name: esame_risultati; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE esame_risultati (
+    esame_idesame bigint NOT NULL,
+    risultati character varying(255),
+    risultati_key character varying(255) NOT NULL
+);
+
+
+ALTER TABLE esame_risultati OWNER TO postgres;
+
+--
+-- TOC entry 189 (class 1259 OID 34585)
+-- Name: hibernate_sequence; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE hibernate_sequence
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE hibernate_sequence OWNER TO postgres;
+
+--
+-- TOC entry 183 (class 1259 OID 34512)
+-- Name: medico; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE medico (
+    idmedico bigint NOT NULL,
+    cognome character varying(255) NOT NULL,
+    nome character varying(255) NOT NULL,
+    specializzazione character varying(255) NOT NULL
+);
+
+
+ALTER TABLE medico OWNER TO postgres;
+
+--
+-- TOC entry 184 (class 1259 OID 34520)
+-- Name: paziente; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE paziente (
+    idpaziente bigint NOT NULL,
+    cognome character varying(255) NOT NULL,
+    nome character varying(255) NOT NULL
+);
+
+
+ALTER TABLE paziente OWNER TO postgres;
+
+--
+-- TOC entry 185 (class 1259 OID 34528)
+-- Name: tipologiaesame; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE tipologiaesame (
+    tipologia_id bigint NOT NULL,
+    descrizione character varying(255) NOT NULL,
+    nome character varying(255) NOT NULL
+);
+
+
+ALTER TABLE tipologiaesame OWNER TO postgres;
+
+--
+-- TOC entry 186 (class 1259 OID 34536)
+-- Name: tipologiaesame_indicatoririsultati; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE tipologiaesame_indicatoririsultati (
+    tipologiaesame_tipologia_id bigint NOT NULL,
+    indicatoririsultati character varying(255)
+);
+
+
+ALTER TABLE tipologiaesame_indicatoririsultati OWNER TO postgres;
+
+--
+-- TOC entry 187 (class 1259 OID 34539)
+-- Name: tipologiaesame_requisiti; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE tipologiaesame_requisiti (
+    tipologiaesame_tipologia_id bigint NOT NULL,
+    requisiti character varying(255),
+    requisiti_key character varying(255) NOT NULL
+);
+
+
+ALTER TABLE tipologiaesame_requisiti OWNER TO postgres;
+
+--
+-- TOC entry 188 (class 1259 OID 34547)
+-- Name: utente; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE utente (
+    id bigint NOT NULL,
+    password character varying(255) NOT NULL,
+    role character varying(255),
+    username character varying(255) NOT NULL
+);
+
+
+ALTER TABLE utente OWNER TO postgres;
+
+--
+-- TOC entry 2149 (class 0 OID 34499)
+-- Dependencies: 181
+-- Data for Name: esame; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO esame (idesame, esecuzioneesame, prenotazione, medico_idmedico, paziente_idpaziente, tipologia_tipologia_id) VALUES (9, '0017-11-05 00:00:00', '2016-06-14', 5, 3, 7);
+INSERT INTO esame (idesame, esecuzioneesame, prenotazione, medico_idmedico, paziente_idpaziente, tipologia_tipologia_id) VALUES (11, '0017-11-06 00:00:00', '2016-06-14', 6, 4, 8);
+
+
+--
+-- TOC entry 2150 (class 0 OID 34504)
+-- Dependencies: 182
+-- Data for Name: esame_risultati; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO esame_risultati (esame_idesame, risultati, risultati_key) VALUES (11, '', 'misurazione del visus');
+INSERT INTO esame_risultati (esame_idesame, risultati, risultati_key) VALUES (9, 'normale', 'elettrocardiogramma');
+
+
+--
+-- TOC entry 2166 (class 0 OID 0)
+-- Dependencies: 189
+-- Name: hibernate_sequence; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('hibernate_sequence', 13, true);
+
+
+--
+-- TOC entry 2151 (class 0 OID 34512)
+-- Dependencies: 183
+-- Data for Name: medico; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO medico (idmedico, cognome, nome, specializzazione) VALUES (5, 'Rossi', 'Paolo', 'cardiologo');
+INSERT INTO medico (idmedico, cognome, nome, specializzazione) VALUES (6, 'Bianchi', 'Valter', 'oculista');
+
+
+--
+-- TOC entry 2152 (class 0 OID 34520)
+-- Dependencies: 184
+-- Data for Name: paziente; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO paziente (idpaziente, cognome, nome) VALUES (3, 'Karenina', 'Anna');
+INSERT INTO paziente (idpaziente, cognome, nome) VALUES (4, 'Eyre', 'Jane');
+
+
+--
+-- TOC entry 2153 (class 0 OID 34528)
+-- Dependencies: 185
+-- Data for Name: tipologiaesame; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO tipologiaesame (tipologia_id, descrizione, nome) VALUES (7, 'salute del cuore', 'esame cardiaco');
+INSERT INTO tipologiaesame (tipologia_id, descrizione, nome) VALUES (8, 'controllo della vista', 'visita oculistica');
+
+
+--
+-- TOC entry 2154 (class 0 OID 34536)
+-- Dependencies: 186
+-- Data for Name: tipologiaesame_indicatoririsultati; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO tipologiaesame_indicatoririsultati (tipologiaesame_tipologia_id, indicatoririsultati) VALUES (7, 'elettrocardiogramma');
+INSERT INTO tipologiaesame_indicatoririsultati (tipologiaesame_tipologia_id, indicatoririsultati) VALUES (8, 'misurazione del visus');
+
+
+--
+-- TOC entry 2155 (class 0 OID 34539)
+-- Dependencies: 187
+-- Data for Name: tipologiaesame_requisiti; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO tipologiaesame_requisiti (tipologiaesame_tipologia_id, requisiti, requisiti_key) VALUES (7, 'No donne incinte', 'no pregnant');
+INSERT INTO tipologiaesame_requisiti (tipologiaesame_tipologia_id, requisiti, requisiti_key) VALUES (7, 'devi essere maggiorenne', '18');
+
+
+--
+-- TOC entry 2156 (class 0 OID 34547)
+-- Dependencies: 188
+-- Data for Name: utente; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO utente (id, password, role, username) VALUES (1, '$2a$10$I1iuvOMO4CIpKerf.FmtEuNcUJPJ2GWI7mJRlyQrO7Lokh5EZUwjO', 'ROLE_ADMIN', 'susy');
+INSERT INTO utente (id, password, role, username) VALUES (2, '$2a$10$87ebNTef88JvCJVrWU8TKeRca0snmByPMexdfHBet/ybdFKnMHxki', 'ROLE_ADMIN', 'prof');
+INSERT INTO utente (id, password, role, username) VALUES (12, '$2a$10$m1eXsXf7cH00iLLu77vdCur9OwZFPYMCO7eIQc99Kuor1RMc42y8G', 'ROLE_USER', 'pippo');
+INSERT INTO utente (id, password, role, username) VALUES (13, '$2a$10$x7o43OcLdx9zIHK5Sa3nNeTYCufa6FwqrCS6qaJtqQ2gNxN3xZs7K', 'ROLE_USER', 'pluto');
+
+
+--
+-- TOC entry 2016 (class 2606 OID 34503)
+-- Name: esame_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY esame
+    ADD CONSTRAINT esame_pkey PRIMARY KEY (idesame);
+
+
+--
+-- TOC entry 2018 (class 2606 OID 34511)
+-- Name: esame_risultati_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY esame_risultati
+    ADD CONSTRAINT esame_risultati_pkey PRIMARY KEY (esame_idesame, risultati_key);
+
+
+--
+-- TOC entry 2020 (class 2606 OID 34519)
+-- Name: medico_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY medico
+    ADD CONSTRAINT medico_pkey PRIMARY KEY (idmedico);
+
+
+--
+-- TOC entry 2022 (class 2606 OID 34527)
+-- Name: paziente_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY paziente
+    ADD CONSTRAINT paziente_pkey PRIMARY KEY (idpaziente);
+
+
+--
+-- TOC entry 2024 (class 2606 OID 34535)
+-- Name: tipologiaesame_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY tipologiaesame
+    ADD CONSTRAINT tipologiaesame_pkey PRIMARY KEY (tipologia_id);
+
+
+--
+-- TOC entry 2026 (class 2606 OID 34546)
+-- Name: tipologiaesame_requisiti_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY tipologiaesame_requisiti
+    ADD CONSTRAINT tipologiaesame_requisiti_pkey PRIMARY KEY (tipologiaesame_tipologia_id, requisiti_key);
+
+
+--
+-- TOC entry 2028 (class 2606 OID 34554)
+-- Name: utente_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY utente
+    ADD CONSTRAINT utente_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2030 (class 2606 OID 34560)
+-- Name: fk_43kwhuvumnhieqp7ph34wbiqj; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY esame
+    ADD CONSTRAINT fk_43kwhuvumnhieqp7ph34wbiqj FOREIGN KEY (paziente_idpaziente) REFERENCES paziente(idpaziente);
+
+
+--
+-- TOC entry 2031 (class 2606 OID 34565)
+-- Name: fk_5vydfbtrjvu1fg6ers8jqghw2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY esame
+    ADD CONSTRAINT fk_5vydfbtrjvu1fg6ers8jqghw2 FOREIGN KEY (tipologia_tipologia_id) REFERENCES tipologiaesame(tipologia_id);
+
+
+--
+-- TOC entry 2034 (class 2606 OID 34580)
+-- Name: fk_6db212yuf7jfhskrfq87uvs4q; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY tipologiaesame_requisiti
+    ADD CONSTRAINT fk_6db212yuf7jfhskrfq87uvs4q FOREIGN KEY (tipologiaesame_tipologia_id) REFERENCES tipologiaesame(tipologia_id);
+
+
+--
+-- TOC entry 2033 (class 2606 OID 34575)
+-- Name: fk_bgkl2dkxksl9890tygoqeq4bu; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY tipologiaesame_indicatoririsultati
+    ADD CONSTRAINT fk_bgkl2dkxksl9890tygoqeq4bu FOREIGN KEY (tipologiaesame_tipologia_id) REFERENCES tipologiaesame(tipologia_id);
+
+
+--
+-- TOC entry 2032 (class 2606 OID 34570)
+-- Name: fk_i9ic13l0jp4739qg1d3305a37; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY esame_risultati
+    ADD CONSTRAINT fk_i9ic13l0jp4739qg1d3305a37 FOREIGN KEY (esame_idesame) REFERENCES esame(idesame);
+
+
+--
+-- TOC entry 2029 (class 2606 OID 34555)
+-- Name: fk_lkp2c2frxabbya53skc2i6od0; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY esame
+    ADD CONSTRAINT fk_lkp2c2frxabbya53skc2i6od0 FOREIGN KEY (medico_idmedico) REFERENCES medico(idmedico);
+
+
+--
+-- TOC entry 2164 (class 0 OID 0)
+-- Dependencies: 6
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+-- Completed on 2016-06-14 22:59:58
+
+--
+-- PostgreSQL database dump complete
+--
+
