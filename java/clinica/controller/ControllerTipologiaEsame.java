@@ -54,7 +54,7 @@ public class ControllerTipologiaEsame {
 			HttpServletRequest request,@Validated TipologiaEsame t,BindingResult bindingResult){
 	if(bindingResult.hasFieldErrors() || num<=0){
 
-		model.addAttribute("risultatiError","Riempi tutti i campi");
+		model.addAttribute("risultatiError","Inserire almeno un risultato");
 		return "protected/nuovaTipologiaEsame";
 	}
 		Map<String, String> requisiti = new HashMap<>();
