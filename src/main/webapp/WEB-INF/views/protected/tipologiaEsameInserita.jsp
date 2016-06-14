@@ -58,7 +58,7 @@
         </div>
         <!-- /.container -->
     </nav>
-<img src="<c:url value="/resources/Grafica/logo3.jpg"/>">
+<center><img src="<c:url value="/resources/Grafica/logo3.jpg"/>">
 <body>
 	<h4>
 		<center>Inserimento tipologia</center>
@@ -80,7 +80,7 @@
 	  <c:forEach items="${tipologiaEsame.requisiti}" var="requisiti" 
         varStatus="status">
            <tr>
-                 <td><b>Nome requisito</b>: ${requisiti.key}:</td><br>
+                 <td><b>Nome requisito</b>: ${requisiti.key}</td><br>
                <td><b>Descrizione requisito</b>:${requisiti.value}</td><br>
             </tr> 
           </c:forEach>

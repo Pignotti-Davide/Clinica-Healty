@@ -62,17 +62,17 @@
 	</h4>
 		<center>Ciao, ${pageContext.request.userPrincipal.name} <a
 			href="<c:url value="/j_spring_security_logout" />" style="color:red"><b>(Logout)</b></a>.Ecco
-		ciò che puoi fare: <br>
+		ciò che puoi fare: <br><br>
 			<img src="<c:url value="/resources/Grafica/inseriscipaziente.png"/>"
 				usemap="#link1">
 			<map name="link1" id="link1">
-				<area shape="rect" coords="180, 100, 80, 200" href="nuovoPaziente"
+				<area shape="rect" coords="240, 100, 60, 240" href="nuovoPaziente"
 					alt="click">
 			</map>
 			<img src="<c:url value="/resources/Grafica/inseriscimedico.png"/>"
 				usemap="#link2">
 			<map name="link2" id="link2">
-				<area shape="rect" coords="180, 100, 80, 200" href="nuovoMedico"
+				<area shape="rect" coords="240, 100, 60, 240" href="nuovoMedico"
 					alt="click">
 			</map>
 			
@@ -81,7 +81,7 @@
 			<img src="<c:url value="/resources/Grafica/inseriscirisultati2.png"/>"
 				usemap="#link33">
 			<map name="link33" id="link2">
-				<area shape="rect" coords="180, 100, 80, 200" href="inserisciRisultati"
+				<area shape="rect" coords="240, 100, 60, 240" href="inserisciRisultati"
 					alt="click">
 			</map>
 			
@@ -89,7 +89,7 @@
 			<img src="<c:url value="/resources/Grafica/consultamedico3.png"/>"
 				usemap="#link22">
 			<map name="link22" id="link2">
-				<area shape="rect" coords="180, 100, 80, 200" href="ricercaMedico"
+				<area shape="rect" coords="240, 100, 60, 240" href="ricercaMedico"
 					alt="click">
 			</map>
 			
@@ -97,13 +97,13 @@
 				src="<c:url value="/resources/Grafica/inserisciesame.png"/>"
 				usemap="#link3">
 			<map name="link3" id="link3">
-				<area shape="rect" coords="180, 100, 80, 200" href="nuovoEsame"
+				<area shape="rect" coords="240, 100, 20, 240" href="nuovoEsame"
 					alt="click">
 			</map>
 			<img src="<c:url value="/resources/Grafica/inseriscitipologia.png"/>"
 				usemap="#link4">
 			<map name="link4" id="link4">
-				<area shape="rect" coords="180, 100, 80, 200"
+				<area shape="rect" coords="240, 100, 60, 240"
 					href="nuovaTipologiaEsame" alt="click">
 			</map>
 			<br>

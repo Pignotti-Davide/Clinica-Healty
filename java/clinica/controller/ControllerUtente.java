@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -31,6 +33,10 @@ public class ControllerUtente extends WebMvcConfigurerAdapter{
 	private void initBinder(WebDataBinder binder) {
 		binder.setValidator(validator);
 	}
+	@RequestMapping(value="/error")
+	public String toError(){
+		return "error";
+	}
 	@RequestMapping(value="/registrazione", method=RequestMethod.GET)
 	public String toRegistrazione(@ModelAttribute Utente utente){
 		
@@ -38,7 +44,9 @@ public class ControllerUtente extends WebMvcConfigurerAdapter{
 	}
 	@RequestMapping(value="/addUtente", method=RequestMethod.POST)
 	public String confermaUtente(@ModelAttribute Utente utente,Model model,@Validated Utente p,BindingResult bindingResult){
-		
+		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		  String passwordEncode = passwordEncoder.encode(utente.getPassword());
+		  utente.setPassword(passwordEncode);
 		facadeUtente.addUtente(utente);
 		return "utente/risultatiPaziente";   
 	}
@@ -52,6 +60,7 @@ public class ControllerUtente extends WebMvcConfigurerAdapter{
 			model.addAttribute("usernameError","Username già esistente");
 			return "registrazione";
 		}
+		
 			model.addAttribute("utente",utente);
 		return "registrazione";   
 	}

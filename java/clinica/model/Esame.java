@@ -8,19 +8,17 @@ import javax.persistence.*;
 import org.hibernate.annotations.Cascade;
 import org.springframework.format.annotation.DateTimeFormat;
 
-
-import org.hibernate.annotations.CascadeType;
 @Entity
 public class Esame {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long idEsame;
-	@OneToOne
+	@ManyToOne
 	private Medico medico;
 	@ManyToOne
 	private Paziente paziente;
-	@OneToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	private TipologiaEsame tipologia;
 	@Column(nullable=false)
 	@Temporal(TemporalType.DATE)

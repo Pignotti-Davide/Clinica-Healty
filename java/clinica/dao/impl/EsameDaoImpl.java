@@ -52,6 +52,7 @@ public class EsameDaoImpl implements EsameDao{
 
 		System.out.println("Row affected: " + result);
 	}
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Esame> findEsamiDelPaziente(Paziente p){
 		Session session=sessionFactory.openSession();

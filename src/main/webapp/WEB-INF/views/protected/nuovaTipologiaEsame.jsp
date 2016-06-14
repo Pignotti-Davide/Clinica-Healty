@@ -85,7 +85,6 @@
 		</button>
 		<a class="navbar-brand" href="admin">Area Amministrazione:</a>
 	</div>
-	<!-- Collect the nav links, forms, and other content for toggling -->
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		<ul class="nav navbar-nav">
 
@@ -108,47 +107,48 @@
 
 		<form:form method="post" action="addTipologiaEsame"
 			modelAttribute="tipologiaEsame" name="form">
-			<table>
-				<tr>
-				</tr>
+			<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;border:none;}
+.tg .tg-lqy6{font-size:18px;text-align:right;vertical-align:top}
+.tg .tg-yw4l{vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
 
-				<tr>
 				<font size="3" color="red"><springForm:errors path="nome" cssClass="error" /></font><br>
-					<td>Nome Tipologia Esame :<br>
-					<td><form:input type="text" path="nome" placeholder="nome" /></td>
+					 <th class="tg-lqy6">Nome Tipologia Esame :</th>
+					<td class="tg-yw4l"><form:input type="text" path="nome" placeholder="nome" /></td>
 				</tr>
 				<tr>
 				
 				</tr>
 				<tr><font size="3" color="red"><springForm:errors path="descrizione" cssClass="error" /></font><br>
-					<td>Descrizione Tipologia Esame:<br>
-					<td><form:input type="text" path="descrizione"
+					<th class="tg-lqy6">Descrizione Tipologia Esame:</th>
+					<td class="tg-yw4l"><form:input type="text" path="descrizione"
 							placeholder="descrizione" /></td>
 				</tr>
 				<tr>
 
-					<td>Numero di requisiti :</td>
-					<td><input type="text" name="num_requisiti" value="0"
+					<th class="tg-lqy6">Numero di requisiti :</th>
+					<td class="tg-yw4l"><input type="text" name="num_requisiti" value="0"
 						maxlength="2" onkeyup="AggiungiRequisito(this)" /></td>
 				</tr>
-			</table>
-			<table>
+
 				<tr>
-					<td><span id='box_requisiti'> </span></td>
+					<td class="tg-yw4l"><td><span id='box_requisiti'> </span></td>
 				</tr>
-			</table>
-			<table>
-				<tr><font size="3" color="red">${risultatiError}</font><br>
-					<td>Numero Risultati:<br>
+
+				<font size="3" color="red">${risultatiError}</font><br>
+					<th class="tg-lqy6">Numero Risultati:</th>
 			
-					<td><input type="text" name="num_risultati" value="0"
+					<td class="tg-yw4l"><input type="text" name="num_risultati" value="0"
 						maxlength="2" onkeyup="AggiungiRisultato(this)"></input></td>
 				</tr></table>
 				<table>
 					<tr>
-						<td><span id='box_risultati'> </span></td>
+						<td class="tg-yw4l"><span id='box_risultati'> </span></td>
 					</tr>
-				</table>
+				</table><br>
 					<input type="submit" value="Invia" />
 		</form:form>
 					<h4><a href="admin">Torna alla Pagina d'amministrazione</a>

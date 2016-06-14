@@ -41,6 +41,9 @@ public class Paziente {
 	}
 
 
+	public String getNomeCognome() {
+		return this.nome + " " + this.cognome;
+	}
 	public void setCognome(String cognome) {
 		this.cognome = cognome;
 	}

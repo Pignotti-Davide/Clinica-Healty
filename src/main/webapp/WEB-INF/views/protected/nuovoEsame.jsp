@@ -76,24 +76,41 @@ function processData(f1,f2,f3,f4,f5,f6){
 
 		<form:form method="post" action="addEsame" modelAttribute="esame"
 			name="form">
-		Tipologia:
-			<form:select path="tipologia">
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;border:none;}
+.tg .tg-lqy6{font-size:18px;text-align:right;vertical-align:top}
+.tg .tg-yw4l{vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-lqy6">Tipologia: </th>
+    <td class="tg-yw4l"><form:select path="tipologia">
 				<form:options items="${tipologieEsami}" itemLabel="nome"
 					itemValue="idTipologiaEsame" />
-			</form:select><br>
-			Medico:
-			<form:select path="medico">
-				<form:options items="${medici}" itemLabel="idMedico"
+			</form:select><br></th>
+  </tr>
+  <tr>
+    <th class="tg-lqy6">Medico: </th>
+				 <td class="tg-yw4l"><form:select path="medico">
+				<form:options items="${medici}" itemLabel="nomeCognome"
 					itemValue="idMedico" />
+				
 			</form:select><br>
-			Paziente:
-			<form:select path="paziente">
-				<form:options items="${pazienti}" itemLabel="idPaziente"
+  </tr>
+  <tr>
+    <th class="tg-lqy6">Paziente: </th>
+    <td class="tg-yw4l"><form:select path="paziente">
+				<form:options items="${pazienti}" itemLabel="nomeCognome"
 					itemValue="idPaziente" />
-			</form:select><br>
-			Inserisci la data:  
-<input type="date" name="esecuzioneEsame" />	<td><font size="3" color="red">${dataError}</font></td><br>
+			</form:select><br></td>
+  </tr>
+  <tr>
+    <th class="tg-lqy6">Data: </th>
+    <td class="tg-yw4l"><input type="date" name="esecuzioneEsame" />	
+  </tr>
+</table><td><font size="3" color="red">${dataError}</font></td><br></td>
 	<input  type="submit" value="Invia" /><br>
+	<br>
 		</form:form>
 	<h4><a href="admin">Torna alla Pagina d'amministrazione</a><br>
 		<a href="index">Torna alla HomePage</a>

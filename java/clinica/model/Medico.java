@@ -42,7 +42,9 @@ public class Medico  {
 		return result;
 	}
 
-
+	public String getNomeCognome() {
+		return this.nome + " " + this.cognome;
+	}
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -114,7 +116,7 @@ public class Medico  {
 		return cognome+" "+nome;
 	}
 
-		
-	}
-	
+
+}
+
 

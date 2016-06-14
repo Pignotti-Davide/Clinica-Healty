@@ -12,7 +12,6 @@
 <title>Clinica Healthy - Area amministrazione</title>
  <!-- Bootstrap Core CSS -->
     <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
-<title>Aggiungi un nuovo Paziente</title>
 <!-- Bootstrap Core CSS -->
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet">
@@ -67,30 +66,30 @@
 		<h4>Aggiungi un nuovo paziente</h4>
 
 		<form:form method="post" action="addPaziente" modelAttribute="paziente" name="form">
-			
-			<table>
-				<tr>
-	
-				</tr>
-				<tr>
-					<td>Nome Paziente :</td>
-					<td><form:input type="text" path='nome' placeholder="nome" /></td>
-				</tr>
-				<tr>
-				</tr>
+	   	<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;border:none;}
+.tg .tg-lqy6{font-size:18px;text-align:right;vertical-align:top}
+.tg .tg-yw4l{vertical-align:top}
+</style>		
+<table class="tg">
 
-				<tr>
-					<td>Cognome Paziente :</td>
-					<td><form:input type="text" path='cognome'
+					<th class="tg-lqy6">Nome Paziente :</th>
+					<td class="tg-yw4l"><form:input type="text" path='nome' placeholder="nome" /></td>
+					</tr><tr><td>
+      
+			<tr>
+					<th class="tg-lqy6">Cognome Paziente :</th>
+					<td class="tg-yw4l"><form:input type="text" path='cognome'
 							placeholder="cognome" /></td>
 
 							<font size="3" color="red"><springForm:errors path="nome" cssClass="error" /></font><br/>
 			<font size="3" color="red"><springForm:errors path="cognome" cssClass="error" /></font><br/>
 
 				<tr>
-					<td><input type="submit" value="invia" /></td>
+					
 				</tr>
 			</table>
+			<center><td><input type="submit" value="Invia" /></td>
 		</form:form>
 			<h4><a href="admin">Torna alla Pagina d'amministrazione</a>
 		<br><h4><a href="index">Torna alla homepage</a></h4> 

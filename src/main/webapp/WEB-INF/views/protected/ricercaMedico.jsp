@@ -57,16 +57,25 @@
 	<center><h4>Ricerca informazioni di un medico</h4>
 
 	<form:form method="post" action="ricercaEsamiMedico" modelAttribute="medico" name="form">
-				<td>Inserire Cognome e Nome  del medico :</td><br/>
-				<font size="3" color="red">${medicoError}</font></td><br>
-				<td>Cognome:<form:input type="text" path="cognome" placeholder="cognome" /></td><br></br>
-					<td>Nome:<form:input type="text" path="nome" placeholder="nome" /></td><br></br>
+		<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;border:none;}
+.tg .tg-lqy6{font-size:18px;text-align:right;vertical-align:top}
+.tg .tg-yw4l{vertical-align:top}
+</style>
+	<td>Inserire Cognome e Nome  del medico :</td>
+<table class="tg">
+				<th class="tg-lqy6">Cognome:</th>
+				<td class="tg-yw4l"><form:input type="text" path="cognome" placeholder="cognome" /></td>
+				<tr>
+					<th class="tg-lqy6">Nome:</th>
+					<td class="tg-yw4l"><form:input type="text" path="nome" placeholder="nome" /></td><br></br>
 					
 			</tr><tr><td>
                   
 		<input type="submit" value="invia" />
 		 </td></tr></table>
 	</form:form>
+		<center><font size="3" color="red">${medicoError}</font></td><br>
 	<h4><a href="admin">Torna alla Pagina d'amministrazione</a><br>
 		<a href="index">Torna alla HomePage</a>
 </body>

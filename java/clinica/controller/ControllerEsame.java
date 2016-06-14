@@ -126,9 +126,13 @@ public class ControllerEsame {
 
 	@RequestMapping(value="/inserisciRisultati", method=RequestMethod.GET)
 	public String toInserisciRisultati(Model model){
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if (!(auth instanceof AnonymousAuthenticationToken)) {
 		model.addAttribute("esame",new Esame());
 		model.addAttribute("esami", facadeEsame.findAll());
 		return "/protected/inserimentoRisultati";
+		}
+		else return"index";
 	}
 
 	@RequestMapping(value="/mostraEsame", method=RequestMethod.POST)

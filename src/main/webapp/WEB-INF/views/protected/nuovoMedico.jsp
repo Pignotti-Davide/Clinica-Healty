@@ -56,26 +56,29 @@
 	<center><h4>Aggiungi un nuovo medico</h4>
 
 	<form:form method="post" action="addMedico" modelAttribute="medico" name="form">
-		      <table>
-		      <tr><td>
-		           </td></tr>
-			<tr>
-				<td>Nome Medico :</td><font size="3" color="red"><springForm:errors path="nome" cssClass="error" /></font><br>
-				<td><form:input type='text' path='nome' placeholder="nome"/></td>
+		   	<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;border:none;}
+.tg .tg-lqy6{font-size:18px;text-align:right;vertical-align:top}
+.tg .tg-yw4l{vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+				<th class="tg-lqy6">Nome Medico :</th><font size="3" color="red"><springForm:errors path="nome" cssClass="error" /></font><br>
+			<td class="tg-yw4l"><form:input type='text' path='nome' placeholder="nome"/></td>
 				 
 			</tr><tr><td>
       
 			<tr>
-				<td>Cognome Medico :</td>        <font size="3" color="red"><springForm:errors path="cognome" cssClass="error" /></font>
-				<td><form:input type='text' path='cognome' placeholder="cognome" /></td><br>
+				<th class="tg-lqy6">Cognome Medico :</th>        <font size="3" color="red"><springForm:errors path="cognome" cssClass="error" /></font>
+				<td class="tg-yw4l"><form:input type='text' path='cognome' placeholder="cognome" /></td><br>
 			</tr><tr><td>
  
             <tr>
-            <td>Specializzazione Medico :</td><font size="3" color="red"><springForm:errors path="specializzazione" cssClass="error" /></font> 
-				<td><form:input type='text' path='specializzazione' placeholder="specializzazione"/></td>
+           <th class="tg-lqy6">Specializzazione Medico :</th><font size="3" color="red"><springForm:errors path="specializzazione" cssClass="error" /></font> 
+				<td class="tg-yw4l"><form:input type='text' path='specializzazione' placeholder="specializzazione"/></td>
 			</tr>
-		<tr><td>
-		<input type="submit" value="invia" />
+		<tr><td><br>
+		<center><input type="submit" value="Invia" />
 		 </td></tr></table>
 	</form:form>
 			<h4><a href="admin">Torna alla Pagina d'amministrazione</a>
