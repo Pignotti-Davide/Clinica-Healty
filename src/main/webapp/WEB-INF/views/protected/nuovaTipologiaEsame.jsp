@@ -128,8 +128,8 @@
 							placeholder="descrizione" /></td>
 				</tr>
 				<tr>
-
-					<th class="tg-lqy6">Numero di requisiti :</th>
+					<font size="3" color="red">${requisitiError}</font><br>
+					<th class="tg-lqy6">Numero di requisiti (anche 0):</th>
 					<td class="tg-yw4l"><input type="text" name="num_requisiti" value="0"
 						maxlength="2" onkeyup="AggiungiRequisito(this)" /></td>
 				</tr>
@@ -141,7 +141,7 @@
 				<font size="3" color="red">${risultatiError}</font><br>
 					<th class="tg-lqy6">Numero Risultati:</th>
 			
-					<td class="tg-yw4l"><input type="text" name="num_risultati" value="0"
+					<td class="tg-yw4l"><input type="text" name="num_risultati" placeholder="n° risultati"
 						maxlength="2" onkeyup="AggiungiRisultato(this)"></input></td>
 				</tr></table>
 				<table>

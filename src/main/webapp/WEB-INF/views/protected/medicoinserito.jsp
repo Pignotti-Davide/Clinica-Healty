@@ -61,9 +61,9 @@
 		<center>Inserimento medico</center>
 	</h4>
 	<center>
-		Hai inserito un nuovo medico <br> <b>Nome</b>:${medico.nome}; <br>
-		<b>Cognome</b>:${medico.cognome}; <br>
-		<b>Specializzazione</b>:${medico.specializzazione}; <br> <br> 
+		Hai inserito un nuovo medico <br> <b>Nome</b>:${medico.nome} <br>
+		<b>Cognome</b>:${medico.cognome} <br>
+		<b>Specializzazione</b>:${medico.specializzazione} <br> <br> 
 			<form:form method="post" action="eliminaMedico" name="form" modelAttribute="medico">
 			<form:input type="hidden" path='idMedico'
 							placeholder="id" /><br/>

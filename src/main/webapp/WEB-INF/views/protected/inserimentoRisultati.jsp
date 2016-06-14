@@ -86,7 +86,7 @@
 	<h4>Seleziona l'esame di cui inserire i risultati tramite il suo codice:</h4><br>
 
 	<form:form method="post" action="mostraEsame" name="form">
-		<select name="esame">
+		Inserisci l'id dell'esame:<select name="esame">
 			<c:forEach items="${esami}" var="esame">
 				<option value="${esame.idEsame}">${esame.idEsame}</option>
 			</c:forEach>

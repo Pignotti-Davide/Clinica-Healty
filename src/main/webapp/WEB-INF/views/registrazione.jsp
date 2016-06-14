@@ -66,8 +66,7 @@
 					<td><input type="submit" value="invia" /></td>
 					</form:form>
 					<br>
-					<c:if test="${ not empty utente}">
-				 	
+					<c:if test="${not empty utente.username}">
    <p><c:out value="Conferma le seguenti informazioni:"/><p>
     <b><p><c:out value="Username:"/></b> ${utente.username}<br>
      <b><p><c:out value="Password:"/> </b>${utente.password}<br>
